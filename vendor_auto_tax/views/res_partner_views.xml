@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partner_form_inherit_vendor_tax" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.vendor.tax</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='purchase']" position="inside">
+                <field name="x_default_purchase_tax_id" options="{'no_create': True, 'no_open': True}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

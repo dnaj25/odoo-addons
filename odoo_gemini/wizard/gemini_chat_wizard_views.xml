@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_gemini_chat_wizard_form" model="ir.ui.view">
+            <field name="name">gemini.chat.wizard.form</field>
+            <field name="model">gemini.chat.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Gemini AI Assistant">
+                    <sheet>
+                        <div class="row">
+                            <div class="col-12 mb-3">
+                                <field name="response" widget="html" readonly="1" nolabel="1" placeholder="Start your conversation with Gemini..."/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <field name="prompt" placeholder="Ask Gemini anything..." nolabel="1"/>
+                            </div>
+                        </div>
+                    </sheet>
+                    <footer>
+                        <button name="action_send" string="Ask Gemini" type="object" class="btn-primary"/>
+                        <button string="Close" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_gemini_chat_wizard" model="ir.actions.act_window">
+            <field name="name">Gemini AI Assistant</field>
+            <field name="res_model">gemini.chat.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

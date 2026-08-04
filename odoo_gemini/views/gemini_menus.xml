@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Top Level Menu -->
+        <menuitem id="menu_gemini_root" 
+                  name="Gemini AI" 
+                  sequence="5"/>
+
+        <!-- Menu Item to launch the chat wizard -->
+        <menuitem id="menu_gemini_assistant" 
+                  name="AI Assistant" 
+                  parent="menu_gemini_root" 
+                  action="action_gemini_chat_wizard" 
+                  sequence="10"/>
+    </data>
+</odoo>

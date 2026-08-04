@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="res_config_settings_view_form" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.inherit.gemini</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="20"/>
+            <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form" position="inside">
+                    <app data-string="Gemini AI" string="Gemini AI" name="odoo_gemini" style="display: none;">
+                        <block title="Google Gemini AI Integration" name="gemini_settings_block">
+                            <setting string="API Credentials" help="Set up your Google Gemini API key to enable AI features.">
+                                <div class="content-group">
+                                    <div class="row mt-3">
+                                        <label for="gemini_api_key" class="col-lg-3 o_light_label"/>
+                                        <field name="gemini_api_key" password="True" class="oe_inline"/>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <label for="gemini_model_name" class="col-lg-3 o_light_label"/>
+                                        <field name="gemini_model_name" class="oe_inline"/>
+                                    </div>
+                                </div>
+                            </setting>
+                        </block>
+                    </app>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
