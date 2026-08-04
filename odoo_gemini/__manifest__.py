@@ -7,6 +7,8 @@
 This module provides a secure way to save Google Gemini API keys in general settings.
 It offers a reusable python service helper for AI completions and a global chat wizard helper.
     """,
+    'author': 'dnaj25',
+    'website': 'https://github.com/dnaj25/odoo-addons',
     'depends': ['base', 'mail'],
     'data': [
         'security/ir.model.access.csv',

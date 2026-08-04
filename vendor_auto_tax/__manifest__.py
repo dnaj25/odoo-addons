@@ -7,6 +7,8 @@
 This module adds a default purchase tax field to res.partner (vendors).
 When creating a Purchase Order Line, Odoo will automatically apply this tax if configured on the vendor.
     """,
+    'author': 'dnaj25',
+    'website': 'https://github.com/dnaj25/odoo-addons',
     'depends': ['purchase', 'account'],
     'data': [
         'views/res_partner_views.xml',
