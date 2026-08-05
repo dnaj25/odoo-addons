@@ -1,7 +1,7 @@
 {
     'name': 'Odoo Gemini AI Integration',
     'version': '1.0',
-    'category': 'Productivity',
+    'category': 'Accounting',
     'summary': 'General integration module with Google Gemini AI to assist users across all Odoo modules.',
     'description': """
 This module provides a secure way to save Google Gemini API keys in general settings.

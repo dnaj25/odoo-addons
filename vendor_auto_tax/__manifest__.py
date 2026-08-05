@@ -1,7 +1,7 @@
 {
     'name': 'Vendor Auto Tax',
     'version': '1.0',
-    'category': 'Purchase',
+    'category': 'Accounting',
     'summary': 'Automatically apply default purchase tax configured on vendor to Purchase Order lines.',
     'description': """
 This module adds a default purchase tax field to res.partner (vendors).
