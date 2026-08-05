@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Product Template Inherit Form View -->
+    <record id="product_template_form_view_inherit_multi_barcode" model="ir.ui.view">
+        <field name="name">product.template.form.inherit.multi.barcode</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Extra Barcodes (الباركود الإضافي)" name="extra_barcodes">
+                    <field name="barcode_ids" context="{'default_product_tmpl_id': id}">
+                        <list editable="bottom">
+                            <field name="sequence" widget="handle"/>
+                            <field name="name"/>
+                            <field name="product_id" domain="[('product_tmpl_id', '=', parent.id)]" string="Product Variant"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Product Product Inherit Form View -->
+    <record id="product_product_form_view_inherit_multi_barcode" model="ir.ui.view">
+        <field name="name">product.product.form.inherit.multi.barcode</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Extra Barcodes (الباركود الإضافي)" name="extra_barcodes_variant">
+                    <field name="barcode_ids" context="{'default_product_id': id}">
+                        <list editable="bottom">
+                            <field name="sequence" widget="handle"/>
+                            <field name="name"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
