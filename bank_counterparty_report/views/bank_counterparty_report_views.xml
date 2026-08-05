@@ -5,16 +5,16 @@
         <field name="name">bank.counterparty.report.list</field>
         <field name="model">bank.counterparty.report</field>
         <field name="arch" type="xml">
-            <list string="Bank Counterparty Report" create="0" edit="0" delete="0">
-                <field name="date"/>
-                <field name="move_id"/>
-                <field name="journal_id"/>
-                <field name="bank_account_id"/>
-                <field name="counterparty_account_id"/>
-                <field name="partner_id"/>
-                <field name="payment_ref"/>
-                <field name="type" widget="badge"/>
-                <field name="amount" sum="Total Amount"/>
+            <list string="تقرير الطرف المقابل للبنوك" create="0" edit="0" delete="0">
+                <field name="date" string="التاريخ"/>
+                <field name="move_id" string="قيد اليومية"/>
+                <field name="journal_id" string="البنك (من أي بنك)"/>
+                <field name="bank_account_id" string="حساب البنك (الوسيط)"/>
+                <field name="partner_id" string="الطرف المقابل (من من / إلى من)"/>
+                <field name="counterparty_account_id" string="الحساب المقابل (الجهة)"/>
+                <field name="payment_ref" string="البيان / مرجع الدفع"/>
+                <field name="type" string="نوع الحركة" widget="badge"/>
+                <field name="amount" string="المبلغ" sum="إجمالي المبلغ"/>
             </list>
         </field>
     </record>
