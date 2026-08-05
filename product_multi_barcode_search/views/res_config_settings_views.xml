@@ -8,7 +8,7 @@
             <xpath expr="//app[@name='stock']" position="inside">
                 <block title="Extra Barcodes (الباركود الإضافي)" name="product_multi_barcode_settings">
                     <setting string="Unique Extra Barcodes" help="Enforce unique validation on extra product barcodes (تفعيل فرادة الباركود الإضافي للمنتجات).">
-                        <field name="module_product_multi_barcode_uniq"/>
+                        <field name="module_product_multi_barcode_search_uniq"/>
                     </setting>
                 </block>
             </xpath>

@@ -18,7 +18,7 @@ class ProductBarcode(models.Model):
             if not rec.name:
                 continue
             # Check if uniqueness setting is active
-            limit_unique = self.env['ir.config_parameter'].sudo().get_param('product_multi_barcode.uniq_barcode')
+            limit_unique = self.env['ir.config_parameter'].sudo().get_param('product_multi_barcode_search.uniq_barcode')
             if limit_unique == 'True' or limit_unique is True:
                 # Check in product.product barcodes
                 dup_product = self.env['product.product'].sudo().search([
