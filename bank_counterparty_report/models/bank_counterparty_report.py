@@ -48,7 +48,9 @@ class BankCounterpartyReport(models.Model):
                 JOIN account_account acc ON acc.id = aml_counter.account_id
                 
                 WHERE j.type = 'bank'
-                  AND (acc_bank.account_type = 'asset_cash')
-                  AND (acc.account_type != 'asset_cash')
+                  -- aml_bank is the bank/liquidity side
+                  AND (acc_bank.code_store::text LIKE '%101%' OR acc_bank.account_type = 'asset_cash')
+                  -- aml_counter is the counterparty side
+                  AND NOT (acc.code_store::text LIKE '%101%' OR acc.account_type = 'asset_cash')
             )
         """)
