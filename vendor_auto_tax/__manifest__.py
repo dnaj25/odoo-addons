@@ -13,6 +13,9 @@ When creating a Purchase Order Line, Odoo will automatically apply this tax if c
     'data': [
         'views/res_partner_views.xml',
     ],
+    'price': 19.00,
+    'currency': 'EUR',
+    'images': ['static/description/icon.png'],
     'installable': True,
     'application': False,
     'license': 'LGPL-3',
