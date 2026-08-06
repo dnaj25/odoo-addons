@@ -11,4 +11,4 @@ class PurchaseOrderLine(models.Model):
         for line in self:
             vendor = line.order_id.partner_id
             if vendor and vendor.x_default_purchase_tax_id:
-                line.taxes_id = [(6, 0, [vendor.x_default_purchase_tax_id.id])]
+                line.tax_ids = [(6, 0, [vendor.x_default_purchase_tax_id.id])]
