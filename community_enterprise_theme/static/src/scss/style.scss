@@ -1,0 +1,121 @@
+// Header / Navbar Styling
+.o_main_navbar {
+    background-color: #714B67 !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+    // Navbar items
+    a, button {
+        color: #ffffff !important;
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.1) !important;
+        }
+    }
+
+    // Active state in navbar
+    .o_nav_entry_active {
+        background-color: rgba(255, 255, 255, 0.15) !important;
+        font-weight: bold;
+    }
+}
+
+// Buttons override
+.btn-primary {
+    background-color: #714B67 !important;
+    border-color: #714B67 !important;
+    color: #ffffff !important;
+    box-shadow: 0 2px 4px rgba(113, 75, 103, 0.2);
+    border-radius: 6px !important;
+
+    &:hover, &:focus, &:active {
+        background-color: #5c3c54 !important;
+        border-color: #5c3c54 !important;
+    }
+}
+
+.btn-outline-primary {
+    color: #714B67 !important;
+    border-color: #714B67 !important;
+    border-radius: 6px !important;
+
+    &:hover, &:focus, &:active {
+        background-color: #714B67 !important;
+        color: #ffffff !important;
+    }
+}
+
+// Active badges
+.badge.bg-primary {
+    background-color: #714B67 !important;
+    color: #ffffff !important;
+}
+
+.badge.text-bg-primary {
+    background-color: #714B67 !important;
+    color: #ffffff !important;
+}
+
+// Active elements in sidebars, menus, list views
+.o_form_view {
+    background-color: #fafbfc !important;
+}
+
+.o_form_sheet {
+    border-radius: 12px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+    border: 1px solid #e5e7eb !important;
+}
+
+// Breadcrumb active state
+.breadcrumb-item.active {
+    color: #714B67 !important;
+    font-weight: 600;
+}
+
+// Active page in pagination
+.page-item.active .page-link {
+    background-color: #714B67 !important;
+    border-color: #714B67 !important;
+}
+
+// Form view tabs styling
+.nav-tabs {
+    border-bottom: 2px solid #e5e7eb !important;
+    
+    .nav-link {
+        border: none !important;
+        color: #6b7280 !important;
+        font-weight: 500;
+        
+        &.active {
+            color: #714B67 !important;
+            border-bottom: 2px solid #714B67 !important;
+            font-weight: 600;
+            background: transparent !important;
+        }
+    }
+}
+
+// App switcher / Home menu overrides (if present)
+.o_home_menu {
+    background: linear-gradient(135deg, #fbfbfb 0%, #f3f4f6 100%) !important;
+    
+    .o_app {
+        &:hover {
+            background-color: rgba(113, 75, 103, 0.05) !important;
+            border-radius: 12px;
+        }
+    }
+}
+
+// Kanban view styling improvements
+.o_kanban_record {
+    border-radius: 8px !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+    border: 1px solid #e5e7eb !important;
+    
+    &:hover {
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08) !important;
+        border-color: #714B67 !important;
+    }
+}
