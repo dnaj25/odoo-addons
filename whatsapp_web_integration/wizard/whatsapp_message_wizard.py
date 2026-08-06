@@ -66,6 +66,11 @@ class WhatsappMessageWizard(models.TransientModel):
             clean_phone = ''.join(c for c in raw_phone if c.isdigit())
             if clean_phone.startswith('00'):
                 clean_phone = clean_phone[2:]
+            elif clean_phone.startswith('0'):
+                clean_phone = clean_phone[1:]
+                country_code = self.env.company.country_id.phone_code
+                if country_code:
+                    clean_phone = str(country_code) + clean_phone
             res['phone'] = clean_phone
             res['message'] = message
             
@@ -80,6 +85,11 @@ class WhatsappMessageWizard(models.TransientModel):
         clean_phone = ''.join(c for c in self.phone if c.isdigit())
         if clean_phone.startswith('00'):
             clean_phone = clean_phone[2:]
+        elif clean_phone.startswith('0'):
+            clean_phone = clean_phone[1:]
+            country_code = self.env.company.country_id.phone_code
+            if country_code:
+                clean_phone = str(country_code) + clean_phone
             
         # URL encode message
         encoded_message = urllib.parse.quote(self.message)
