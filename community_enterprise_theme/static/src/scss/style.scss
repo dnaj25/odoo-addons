@@ -4,16 +4,25 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 
+    // Make navbar sub-containers transparent to keep uniform dark background
+    .o_menu_brand, .o_menu_sections, .o_menu_systray,
+    .o_menu_sections_more_li, .o_menu_sections_more,
+    .dropdown, .dropdown-menu {
+        background-color: transparent !important;
+    }
+
     // Navbar items
     a, button {
         color: #ffffff !important;
+        background-color: transparent !important;
+        
         &:hover {
             background-color: rgba(255, 255, 255, 0.1) !important;
         }
     }
 
     // Active state in navbar
-    .o_nav_entry_active {
+    .o_nav_entry_active, .active {
         background-color: rgba(255, 255, 255, 0.15) !important;
         font-weight: bold;
     }
