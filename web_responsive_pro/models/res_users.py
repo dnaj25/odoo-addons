@@ -34,9 +34,5 @@ class ResUsers(models.Model):
 
     @api.depends("action_id")
     def _compute_redirect_home(self):
-        """
-        Set is_redirect_home to False
-        when action_id has a value.
-        :return:
-        """
-        self.filtered("action_id").is_redirect_home = False
+        for record in self:
+            record.is_redirect_home = not record.action_id
