@@ -31,6 +31,8 @@ Key Features:
         'views/invoice_views.xml',
         'views/purchase_views.xml',
     ],
+    'price': 19.00,
+    'currency': 'EUR',
     'installable': True,
     'application': True,
     'auto_install': False,
