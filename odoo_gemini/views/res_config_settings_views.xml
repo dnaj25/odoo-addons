@@ -8,7 +8,7 @@
             <field name="inherit_id" ref="base.res_config_settings_view_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//form" position="inside">
-                    <app data-string="Gemini AI" string="Gemini AI" name="odoo_gemini" style="display: none;">
+                    <app data-string="Gemini AI" string="Gemini AI" name="odoo_gemini">
                         <block title="Google Gemini AI Integration" name="gemini_settings_block">
                             <setting string="API Credentials" help="Set up your Google Gemini API key to enable AI features.">
                                 <div class="content-group">
