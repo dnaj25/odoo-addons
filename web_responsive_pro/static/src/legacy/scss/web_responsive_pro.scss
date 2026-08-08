@@ -219,3 +219,9 @@ body:not(.o_statusbar_buttons) {
         }
     }
 }
+
+// Hide superuser yellow/black striped border in the top navbar
+body.o_is_superuser .o_menu_systray {
+    border-image: none !important;
+    border-image-width: 0 !important;
+}
