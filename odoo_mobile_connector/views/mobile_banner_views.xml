@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- Tree View -->
+    <!-- List View -->
     <record id="view_mobile_banner_tree" model="ir.ui.view">
-        <name>mobile.banner.tree</name>
-        <model>mobile.banner</model>
-        <arch type="xml">
+        <field name="name">mobile.banner.list</field>
+        <field name="model">mobile.banner</field>
+        <field name="arch" type="xml">
             <list string="Mobile Promotion Banners">
                 <field name="sequence" widget="handle"/>
                 <field name="name"/>
                 <field name="action_type"/>
                 <field name="active"/>
             </list>
-        </arch>
+        </field>
     </record>
 
     <!-- Form View -->
     <record id="view_mobile_banner_form" model="ir.ui.view">
-        <name>mobile.banner.form</name>
-        <model>mobile.banner</model>
-        <arch type="xml">
+        <field name="name">mobile.banner.form</field>
+        <field name="model">mobile.banner</field>
+        <field name="arch" type="xml">
             <form string="Mobile Promotion Banner">
                 <sheet>
                     <group>
@@ -39,22 +39,22 @@
                     </group>
                 </sheet>
             </form>
-        </arch>
+        </field>
     </record>
 
     <!-- Action -->
     <record id="action_mobile_banner" model="ir.actions.act_window">
-        <name>Mobile App Banners</name>
-        <res_model>mobile.banner</res_model>
-        <view_mode>list,form</view_mode>
-        <help type="html">
+        <field name="name">Mobile App Banners</field>
+        <field name="res_model">mobile.banner</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Create your first mobile app promotion banner!
             </p>
             <p>
                 Banners uploaded here will automatically sync and display on the homepage slider of your Flutter mobile app client.
             </p>
-        </help>
+        </field>
     </record>
 
     <!-- Menu Structure -->

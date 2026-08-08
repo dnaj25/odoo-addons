@@ -3,14 +3,16 @@ import 'package:http/http.dart' as http;
 
 class ApiService {
   final String baseUrl;
+  final String databaseName;
   String? sessionId;
 
-  ApiService({required this.baseUrl});
+  ApiService({required this.baseUrl, this.databaseName = 'odoo_db'});
 
   Future<Map<String, dynamic>> _post(String path, Map<String, dynamic> params) async {
     final url = Uri.parse('$baseUrl$path');
     final headers = {
       'Content-Type': 'application/json',
+      'X-Odoo-Database': databaseName,
       if (sessionId != null) 'Cookie': 'session_id=$sessionId',
     };
 
