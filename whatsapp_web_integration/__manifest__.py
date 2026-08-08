@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'WhatsApp Web Integration (Free)',
-    'summary': 'Send Sale Orders, Invoices, Purchase Orders and messages via WhatsApp Web for free',
+    'name': 'WhatsApp Web Integration',
+    'summary': 'Send Sale Orders, Invoices, Purchase Orders and messages via WhatsApp Web',
     'description': """
-WhatsApp Web Integration (Free)
-===============================
-This module allows users to send predefined and custom messages to partners (customers/vendors) via WhatsApp Web without paying API fees.
+WhatsApp Web Integration
+========================
+This module allows users to send predefined and custom messages to partners (customers/vendors) via WhatsApp Web.
 
 Key Features:
 -------------
@@ -15,7 +15,7 @@ Key Features:
 * Send messages from Invoices (account.move) with invoice reference and amount.
 * Send messages from Purchase Orders (purchase.order) to vendors.
 * Interactive pop-up wizard to customize messages before sending.
-* Completely free setup using the browser's active WhatsApp session.
+* Simple setup using the browser's active WhatsApp session.
 """,
     'author': 'dnaj25',
     'website': 'https://github.com/dnaj25/odoo-addons',
