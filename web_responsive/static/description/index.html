@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Web Responsive Pro | Odoo Apps Store</title>
+    <style>
+        :root {
+            --primary-color: #714B67;
+            --primary-dark: #583a50;
+            --primary-light: #f6f0f4;
+            --accent-color: #017e84;
+            --accent-dark: #006368;
+            --accent-light: #e6f4f5;
+            --whatsapp-color: #25D366;
+            --whatsapp-dark: #128C7E;
+            --text-color: #2d3748;
+            --text-light: #718096;
+            --bg-color: #ffffff;
+            --card-shadow: 0 10px 30px rgba(113, 75, 103, 0.08);
+            --transition-speed: 0.3s;
+        }
+
+        body {
+            font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-light) 0%, #ffffff 100%);
+            border-radius: 24px;
+            padding: 50px 30px;
+            text-align: center;
+            border: 1px solid rgba(113, 75, 103, 0.1);
+            margin-bottom: 50px;
+        }
+
+        .badges-wrapper {
+            margin-bottom: 25px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 30px;
+            margin: 0 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-version {
+            background-color: var(--primary-color);
+            color: #ffffff;
+        }
+
+        .badge-license {
+            background-color: var(--accent-color);
+            color: #ffffff;
+        }
+
+        .badge-price {
+            background-color: #2d3748;
+            color: #ffffff;
+        }
+
+        .main-title {
+            font-size: 2.8rem;
+            color: var(--primary-color);
+            font-weight: 800;
+            margin: 0 0 20px 0;
+            line-height: 1.2;
+        }
+
+        .sub-title {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            max-width: 750px;
+            margin: 0 auto 35px auto;
+        }
+
+        .btn-wrapper {
+            text-align: center;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all var(--transition-speed) ease;
+            margin: 10px 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .btn-email {
+            background-color: var(--primary-color);
+            color: #ffffff;
+        }
+
+        .btn-email:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(113, 75, 103, 0.2);
+        }
+
+        .btn-whatsapp {
+            background-color: var(--whatsapp-color);
+            color: #ffffff;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: var(--whatsapp-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.2);
+        }
+
+        .banner-container {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 50px;
+            border: 1px solid rgba(113, 75, 103, 0.1);
+        }
+
+        .banner-image {
+            width: 100%;
+            display: block;
+            height: auto;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 35px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent-color);
+            margin: 12px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        .features-grid {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -15px 50px -15px;
+        }
+
+        .feature-card {
+            flex: 1 1 300px;
+            margin: 15px;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 16px;
+            border: 1px solid #edf2f7;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            transition: all var(--transition-speed) ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-shadow);
+            border-color: rgba(113, 75, 103, 0.2);
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background-color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .feature-title {
+            font-size: 1.25rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            margin: 0 0 12px 0;
+        }
+
+        .feature-desc {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        .steps-container {
+            margin-bottom: 50px;
+        }
+
+        .step-row {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+
+        .step-num {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-size: 1.15rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            margin: 0 0 5px 0;
+        }
+
+        .step-text {
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        .footer-info {
+            background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+            color: #ffffff;
+            border-radius: 24px;
+            padding: 40px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .footer-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .footer-text {
+            color: #a0aec0;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <div class="badges-wrapper">
+                <span class="badge badge-version">v19.0</span>
+                <span class="badge badge-license">LGPL-3</span>
+                <span class="badge badge-price">Free</span>
+            </div>
+            <h1 class="main-title">Web Responsive Pro</h1>
+            <p class="sub-title">Enhance your Odoo Community backend interface with premium responsive designs. Provides sticky headers, split chatter view, and optimized layouts for mobile and tablet viewports.</p>
+            
+            <div class="btn-wrapper">
+                <a href="mailto:support@yourcompany.com" class="btn btn-email">Email Support</a>
+                <a href="https://wa.me/1234567890" class="btn btn-whatsapp">WhatsApp Chat</a>
+            </div>
+        </div>
+
+        <!-- Cover Banner Image -->
+        <div class="banner-container">
+            <img src="cover.jpg" alt="Web Responsive Cover" class="banner-image">
+        </div>
+
+        <!-- Overview Section -->
+        <h2 class="section-title">Key Responsive Enhancements</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3 class="feature-title">Sticky View Elements</h3>
+                <p class="feature-desc">Table headers in list view and action statusbars in form view remain pinned at the top while scrolling.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3 class="feature-title">Responsive Chatter</h3>
+                <p class="feature-desc">Displays side-by-side on wide screens for dual-column reading, and automatically wraps below the form sheet on tablet & mobile devices.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">✨</div>
+                <h3 class="feature-title">Touch-Optimized Inputs</h3>
+                <p class="feature-desc">Enlarged checkboxes, select dropdowns, and buttons to ensure high accessibility and comfortable navigation on touch screens.</p>
+            </div>
+        </div>
+
+        <!-- Steps Section -->
+        <h2 class="section-title">Design Highlights</h2>
+        <div class="steps-container">
+            <div class="step-row">
+                <div class="step-num">1</div>
+                <div class="step-content">
+                    <h3 class="step-title">Elegant Column Auto-fit</h3>
+                    <p class="step-text">Data columns and control panels dynamically fit smaller viewports, hiding low-priority actions into dropdowns to save screen space.</p>
+                </div>
+            </div>
+            <div class="step-row">
+                <div class="step-num">2</div>
+                <div class="step-content">
+                    <h3 class="step-title">Seamless Asset Integration</h3>
+                    <p class="step-text">Directly compiles inside Odoo's backend asset bundle ensuring blazing fast load times and zero interface flickering.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Section -->
+        <div class="footer-info">
+            <h3 class="footer-title">Need Help or Customization?</h3>
+            <p class="footer-text">Our support team is available to assist you with installation, setup, or tailoring this module to your exact business requirements.</p>
+            <div class="btn-wrapper">
+                <a href="mailto:support@yourcompany.com" class="btn btn-email">Contact Support</a>
+                <a href="https://wa.me/1234567890" class="btn btn-whatsapp">Message on WhatsApp</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
