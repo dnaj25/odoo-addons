@@ -17,7 +17,6 @@ class ProductPricelistItem(models.Model):
     product_template_attribute_value_id = fields.Many2one(
         'product.template.attribute.value',
         string="Product Attribute Value",
-        check_company=True,
         domain="[('product_tmpl_id', '=', product_tmpl_id)]"
     )
 
