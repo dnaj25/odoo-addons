@@ -17,7 +17,7 @@ This module provides a fully responsive layout for the Odoo Community backend in
     'depends': ['web'],
     'assets': {
         'web.assets_backend': [
-            'web_responsive/static/src/scss/web_responsive.scss',
+            'web_responsive_pro/static/src/scss/web_responsive.scss',
         ],
     },
     'images': [
