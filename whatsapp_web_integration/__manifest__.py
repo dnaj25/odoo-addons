@@ -33,6 +33,7 @@ Key Features:
     ],
     'price': 19.00,
     'currency': 'EUR',
+    'images': ['static/description/banner.png'],
     'installable': True,
     'application': True,
     'auto_install': False,
