@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <menuitem id="account.menu_finance" name="Accounting"/>
+    <menuitem id="account.menu_finance" name="Accounting" web_icon="community_accounting_kit,static/description/icon.png"/>
 
     <menuitem id="menu_account_templates"
               sequence="100"
