@@ -149,28 +149,26 @@
 
 /* --- Custom overrides for dark purple styling and removing light purple elements --- */
 
-// Remove the left colored border/strip from all kanban records
-.o_kanban_record {
-    border-left: 1px solid #e5e7eb !important;
-    
-    &::after, &::before {
-        display: none !important;
-        content: none !important;
-    }
+// Remove the default pseudo-element colored border/strip from all kanban records
+.o_kanban_record::after,
+.o_kanban_record::before {
+    display: none !important;
+    content: none !important;
 }
 
-// Ensure all kanban records, cards, and dashboards do not have any light purple side line or highlight
+// Set a clean, solid dark purple left border for all kanban cards in Odoo
+.o_kanban_record,
 .o_kanban_view .o_kanban_record,
 .o_account_kanban .o_kanban_record {
-    border-left: 1px solid #e5e7eb !important;
+    border-left: 4px solid #714B67 !important;
 }
 
-// Force all links, kanban card headers, titles, and text links in Odoo content views to be dark purple
-.o_content a,
-.o_kanban_record a,
-.o_kanban_record_title a,
+// Force all links, kanban card headers, and titles (excluding buttons) to be dark purple
+.o_content a:not(.btn),
+.o_kanban_record a:not(.btn),
+.o_kanban_record_title a:not(.btn),
 .o_kanban_record_title,
-.o_kanban_record .fs-4 {
+.o_kanban_record .fs-4:not(.btn) {
     color: #714B67 !important;
     
     &:hover, &:focus, &:active {
@@ -178,18 +176,42 @@
     }
 }
 
-// Specifically target the journal card titles (e.g., Sales, Purchases, Bank, etc.)
+// Specifically target the journal card titles (excluding buttons)
 .o_account_kanban {
     .o_kanban_record {
-        span.d-flex a,
-        .d-flex a,
-        a.fs-4,
-        a {
+        span.d-flex a:not(.btn),
+        .d-flex a:not(.btn),
+        a.fs-4:not(.btn),
+        a:not(.btn) {
             color: #714B67 !important;
             
             &:hover, &:focus, &:active {
                 color: #5c3c54 !important;
             }
         }
+    }
+}
+
+// Ensure primary buttons (including upload widgets) always display white text
+a.btn-primary,
+.btn-primary,
+.btn-primary a,
+.btn-primary span {
+    color: #ffffff !important;
+    
+    &:hover, &:focus, &:active {
+        color: #ffffff !important;
+    }
+}
+
+// Ensure secondary buttons always display dark/gray text
+a.btn-secondary,
+.btn-secondary,
+.btn-secondary a,
+.btn-secondary span {
+    color: #212529 !important;
+    
+    &:hover, &:focus, &:active {
+        color: #212529 !important;
     }
 }
