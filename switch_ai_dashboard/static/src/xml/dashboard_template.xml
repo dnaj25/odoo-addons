@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates xml:space="preserve">
+    <t t-name="switch_ai_dashboard.DashboardTemplate">
+        <div class="o_switch_dashboard_container">
+            <!-- Header section -->
+            <div class="dashboard-header-banner">
+                <div class="header-left">
+                    <h1>Switch AI Dashboard Studio</h1>
+                    <p>Real-time Odoo metrics supercharged by Google Gemini AI</p>
+                </div>
+                <div class="header-right">
+                    <button class="btn btn-outline-light refresh-btn" t-on-click="loadDashboardData">
+                        <i class="fa fa-refresh mr-1"></i> Refresh Data
+                    </button>
+                </div>
+            </div>
+
+            <!-- Error message if any -->
+            <div t-if="state.errorMessage" class="alert alert-danger mb-4 shadow-sm" role="alert">
+                <i class="fa fa-exclamation-triangle mr-2"></i> <t t-out="state.errorMessage"/>
+            </div>
+
+            <!-- KPI Cards Grid -->
+            <div class="dashboard-kpi-grid">
+                <!-- Sales Card -->
+                <div class="kpi-card sales-kpi">
+                    <div class="kpi-icon"><i class="fa fa-line-chart"></i></div>
+                    <div class="kpi-details">
+                        <span class="kpi-title">Total Sales</span>
+                        <h2 class="kpi-value"><t t-out="state.metrics.total_sales"/> <span class="currency">SAR</span></h2>
+                        <span class="kpi-subtitle"><t t-out="state.metrics.sales_count"/> Confirmed Orders</span>
+                    </div>
+                </div>
+
+                <!-- Purchases Card -->
+                <div class="kpi-card purchases-kpi">
+                    <div class="kpi-icon"><i class="fa fa-shopping-cart"></i></div>
+                    <div class="kpi-details">
+                        <span class="kpi-title">Total Purchases</span>
+                        <h2 class="kpi-value"><t t-out="state.metrics.total_purchases"/> <span class="currency">SAR</span></h2>
+                        <span class="kpi-subtitle"><t t-out="state.metrics.purchases_count"/> POs Plentiful</span>
+                    </div>
+                </div>
+
+                <!-- Receivables Card -->
+                <div class="kpi-card invoices-kpi">
+                    <div class="kpi-icon"><i class="fa fa-credit-card"></i></div>
+                    <div class="kpi-details">
+                        <span class="kpi-title">Unpaid Receivables</span>
+                        <h2 class="kpi-value warning-value"><t t-out="state.metrics.unpaid_invoices"/> <span class="currency">SAR</span></h2>
+                        <span class="kpi-subtitle">Out of <t t-out="state.metrics.total_invoices"/> SAR Invoiced</span>
+                    </div>
+                </div>
+
+                <!-- Customers Card -->
+                <div class="kpi-card customers-kpi">
+                    <div class="kpi-icon"><i class="fa fa-users"></i></div>
+                    <div class="kpi-details">
+                        <span class="kpi-title">Active Customers</span>
+                        <h2 class="kpi-value"><t t-out="state.metrics.customer_count"/></h2>
+                        <span class="kpi-subtitle">Registered Partners</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Split View: Chart & AI Insights -->
+            <div class="dashboard-split-view">
+                <!-- Left: Recent Sales Performance Chart -->
+                <div class="dashboard-panel chart-panel">
+                    <div class="panel-header">
+                        <h3><i class="fa fa-bar-chart mr-2"></i> Recent Sales Performance</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div t-if="!state.metrics.chart_data || state.metrics.chart_data.length == 0" class="empty-chart-state">
+                            <i class="fa fa-bar-chart-o mb-2"></i>
+                            <p>No monthly sales data found to plot.</p>
+                        </div>
+                        <div t-else="" class="custom-chart-wrapper">
+                            <div class="bar-chart-container">
+                                <t t-foreach="state.metrics.chart_data" t-as="item" t-key="item.month">
+                                    <div class="bar-column">
+                                        <div class="bar-fill-container">
+                                            <!-- Simple representation of bar height -->
+                                            <div class="bar-fill" t-attf-style="height: 100%;">
+                                                <span class="bar-value"><t t-out="item.total"/> SAR</span>
+                                            </div>
+                                        </div>
+                                        <span class="bar-label"><t t-out="item.month"/></span>
+                                    </div>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: AI Insights and Briefing -->
+                <div class="dashboard-panel ai-panel">
+                    <div class="panel-header">
+                        <h3><i class="fa fa-magic mr-2"></i> Gemini AI Smart Briefing</h3>
+                    </div>
+                    <div class="panel-body">
+                        <!-- Initial Action State -->
+                        <div t-if="!state.aiInsights &amp;&amp; !state.loadingAI" class="ai-action-state">
+                            <div class="ai-spark-icon"><i class="fa fa-bolt"></i></div>
+                            <h4>Request AI Executive Insights</h4>
+                            <p>Let Google Gemini review your sales numbers, purchases, and outstanding unpaid ratio to write a custom financial summary and recommendations.</p>
+                            <button class="btn btn-primary ai-btn" t-on-click="generateAIInsights">
+                                <i class="fa fa-lightbulb-o mr-1"></i> Generate Briefing
+                            </button>
+                        </div>
+
+                        <!-- Loading State -->
+                        <div t-if="state.loadingAI" class="ai-loading-state">
+                            <div class="spinner-border text-primary mb-3" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                            <h4>Analyzing database statistics...</h4>
+                            <p>Connecting to Google Gemini to formulate smart recommendations.</p>
+                        </div>
+
+                        <!-- Render Insights -->
+                        <div t-if="state.aiInsights" class="ai-insights-rendered">
+                            <div class="insights-scroll-content">
+                                <pre class="insights-raw-text"><t t-out="state.aiInsights"/></pre>
+                            </div>
+                            <div class="insights-footer mt-4">
+                                <button class="btn btn-outline-primary btn-sm" t-on-click="generateAIInsights">
+                                    <i class="fa fa-repeat mr-1"></i> Regenerate Analysis
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>
