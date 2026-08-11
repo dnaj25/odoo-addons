@@ -1,385 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Sales Product Labels | Odoo Apps Store</title>
-    <style>
-        :root {
-            --primary-color: #714B67;
-            --primary-dark: #583a50;
-            --primary-light: #f6f0f4;
-            --accent-color: #017e84;
-            --accent-dark: #006368;
-            --accent-light: #e6f4f5;
-            --whatsapp-color: #25D366;
-            --whatsapp-dark: #128C7E;
-            --text-color: #2d3748;
-            --text-light: #718096;
-            --bg-color: #ffffff;
-            --card-shadow: 0 10px 30px rgba(113, 75, 103, 0.08);
-            --transition-speed: 0.3s;
-        }
-
-        body {
-            font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        .hero-section {
-            background: linear-gradient(135deg, var(--primary-light) 0%, #ffffff 100%);
-            border-radius: 24px;
-            padding: 50px 30px;
-            text-align: center;
-            border: 1px solid rgba(113, 75, 103, 0.1);
-            margin-bottom: 50px;
-        }
-
-        .badges-wrapper {
-            margin-bottom: 25px;
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 6px 16px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            border-radius: 30px;
-            margin: 0 6px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .badge-version {
-            background-color: var(--primary-color);
-            color: #ffffff;
-        }
-
-        .badge-license {
-            background-color: var(--accent-color);
-            color: #ffffff;
-        }
-
-        .badge-price {
-            background-color: #2d3748;
-            color: #ffffff;
-        }
-
-        .main-title {
-            font-size: 2.8rem;
-            color: var(--primary-color);
-            font-weight: 800;
-            margin: 0 0 20px 0;
-            line-height: 1.2;
-        }
-
-        .sub-title {
-            font-size: 1.25rem;
-            color: var(--text-light);
-            max-width: 750px;
-            margin: 0 auto 35px auto;
-        }
-
-        .btn-wrapper {
-            text-align: center;
-            margin-top: 25px;
-            margin-bottom: 15px;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 14px 32px;
-            font-size: 1rem;
-            font-weight: 600;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: all var(--transition-speed) ease;
-            margin: 10px 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .btn-email {
-            background-color: var(--primary-color);
-            color: #ffffff;
-        }
-
-        .btn-email:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(113, 75, 103, 0.2);
-        }
-
-        .btn-whatsapp {
-            background-color: var(--whatsapp-color);
-            color: #ffffff;
-        }
-
-        .btn-whatsapp:hover {
-            background-color: var(--whatsapp-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.2);
-        }
-
-        .banner-container {
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--card-shadow);
-            margin-bottom: 50px;
-            border: 1px solid rgba(113, 75, 103, 0.1);
-        }
-
-        .banner-image {
-            width: 100%;
-            display: block;
-            height: auto;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            color: var(--primary-color);
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 35px;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 4px;
-            background-color: var(--accent-color);
-            margin: 12px auto 0 auto;
-            border-radius: 2px;
-        }
-
-        .features-grid {
-            display: flex;
-            flex-wrap: wrap;
-            margin: 0 -15px 50px -15px;
-        }
-
-        .feature-card {
-            flex: 1 1 300px;
-            margin: 15px;
-            padding: 30px;
-            background-color: #ffffff;
-            border-radius: 16px;
-            border: 1px solid #edf2f7;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
-            transition: all var(--transition-speed) ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--card-shadow);
-            border-color: rgba(113, 75, 103, 0.2);
-        }
-
-        .feature-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            background-color: var(--primary-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-color);
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        .feature-title {
-            font-size: 1.25rem;
-            color: var(--primary-color);
-            font-weight: 700;
-            margin: 0 0 12px 0;
-        }
-
-        .feature-desc {
-            font-size: 0.95rem;
-            color: var(--text-light);
-            margin: 0;
-        }
-
-        .business-case-box {
-            background-color: var(--primary-light);
-            border-radius: 20px;
-            padding: 40px;
-            margin-bottom: 50px;
-            border-left: 5px solid var(--primary-color);
-        }
-
-        .case-title {
-            font-size: 1.4rem;
-            color: var(--primary-color);
-            font-weight: 700;
-            margin-top: 0;
-            margin-bottom: 15px;
-        }
-
-        .case-text {
-            font-size: 1.05rem;
-            color: var(--text-color);
-            margin-bottom: 25px;
-        }
-
-        .steps-container {
-            margin-bottom: 50px;
-        }
-
-        .step-row {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 30px;
-        }
-
-        .step-num {
-            background-color: var(--primary-color);
-            color: #ffffff;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-right: 20px;
-            flex-shrink: 0;
-        }
-
-        .step-content {
-            flex: 1;
-        }
-
-        .step-title {
-            font-size: 1.15rem;
-            color: var(--primary-color);
-            font-weight: 700;
-            margin: 0 0 5px 0;
-        }
-
-        .step-text {
-            color: var(--text-light);
-            margin: 0;
-        }
-
-        .footer-info {
-            background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
-            color: #ffffff;
-            border-radius: 24px;
-            padding: 40px;
-            text-align: center;
-            margin-top: 60px;
-        }
-
-        .footer-title {
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-top: 0;
-            margin-bottom: 15px;
-            color: #ffffff;
-        }
-
-        .footer-text {
-            color: #a0aec0;
-            max-width: 600px;
-            margin: 0 auto 30px auto;
-        }
-    </style>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body>
-    <div class="container">
+<body style="margin: 0; padding: 0; background-color: #f8fafc;">
+    <div style="font-family: 'Inter', sans-serif; background-color: #ffffff; padding: 40px 20px; color: #1f2937; line-height: 1.6; max-width: 1000px; margin: 40px auto; border-radius: 24px; box-shadow: 0 10px 40px rgba(0,0,0,0.03); border: 1px solid #e5e7eb;">
+        
         <!-- Hero Section -->
-        <div class="hero-section">
-            <div class="badges-wrapper">
-                <span class="badge badge-version">v19.0</span>
-                <span class="badge badge-license">OPL-1</span>
-                <span class="badge badge-price">39.00 EUR</span>
+        <div style="background: linear-gradient(135deg, #714B67 0%, #483042 100%); padding: 60px 40px; border-radius: 20px; text-align: center; margin-bottom: 40px; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(113, 75, 103, 0.15);">
+            <!-- Badges -->
+            <div style="margin-bottom: 20px;">
+                <span style="background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); color: #ffffff; padding: 6px 16px; border-radius: 30px; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.5px; margin: 5px; display: inline-block;">Version 19.0.1.0.0</span>
+                <span style="background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); color: #ffffff; padding: 6px 16px; border-radius: 30px; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.5px; margin: 5px; display: inline-block;">Odoo 19.0</span>
+                <span style="background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); color: #ffffff; padding: 6px 16px; border-radius: 30px; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.5px; margin: 5px; display: inline-block;">OPL-1</span>
             </div>
-            <h1 class="main-title">Sales Product Labels</h1>
-            <p class="sub-title">Print price and barcode labels for products directly from your Quotations or Sales Orders. Quantities can be automatically calculated from ordered lines.</p>
-            
-            <div class="btn-wrapper">
-                <a href="mailto:support@yourcompany.com" class="btn btn-email">Email Support</a>
-                <a href="https://wa.me/1234567890" class="btn btn-whatsapp">WhatsApp Chat</a>
+            <!-- Title -->
+            <h1 style="font-family: 'Outfit', sans-serif; font-size: 2.85rem; font-weight: 800; color: #ffffff; margin: 0 0 15px 0; letter-spacing: -0.5px; line-height: 1.2;">Sales Product Labels</h1>
+            <!-- Subtitle -->
+            <p style="font-size: 1.15rem; color: rgba(255, 255, 255, 0.85); margin: 0 auto; max-width: 750px; line-height: 1.6; font-weight: 400;">Print product barcode and price labels directly from Sales Orders or Quotations.</p>
+        </div>
+
+        <!-- Features Section -->
+        <div style="margin-bottom: 45px;">
+            <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.85rem; font-weight: 700; color: #714B67; margin-top: 0; margin-bottom: 25px; border-bottom: 2px solid #f1f5f9; padding-bottom: 12px;">Key Features & Capabilities</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                
+            <div style="background-color: #fafbfc; border: 1px solid #e5e7eb; border-radius: 12px; padding: 25px; border-left: 4px solid #714B67; transition: transform 0.2s;">
+                <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.15rem; font-weight: 700; color: #714B67; margin: 0 0 8px 0;">Sales Product Labels</h3>
+                <p style="margin: 0; font-size: 0.95rem; color: #4b5563; line-height: 1.5;">Sales Product Labels</p>
+            </div>
+            <div style="background-color: #fafbfc; border: 1px solid #e5e7eb; border-radius: 12px; padding: 25px; border-left: 4px solid #714B67; transition: transform 0.2s;">
+                <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.15rem; font-weight: 700; color: #714B67; margin: 0 0 8px 0;">====================</h3>
+                <p style="margin: 0; font-size: 0.95rem; color: #4b5563; line-height: 1.5;">====================</p>
+            </div>
             </div>
         </div>
 
-        <!-- Cover Banner Image -->
-        <div class="banner-container">
-            <img src="cover.jpg" alt="Sales Product Labels Cover" class="banner-image">
+        <!-- Technical Information Table -->
+        <div style="border: 1px solid #e5e7eb; border-radius: 16px; padding: 30px; margin-bottom: 45px; background-color: #fafbfc;">
+            <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.5rem; font-weight: 700; color: #714B67; margin-top: 0; margin-bottom: 20px; border-bottom: 1px solid #e5e7eb; padding-bottom: 12px;">Technical Specifications</h2>
+            <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+                <tbody>
+                    <tr style="border-bottom: 1px solid #e5e7eb;">
+                        <td style="padding: 14px 0; font-weight: 600; color: #6b7280; width: 35%;">Category</td>
+                        <td style="padding: 14px 0; color: #1f2937; font-weight: 500;">Sales</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #e5e7eb;">
+                        <td style="padding: 14px 0; font-weight: 600; color: #6b7280;">Author</td>
+                        <td style="padding: 14px 0; color: #1f2937; font-weight: 500;">Custom Addons</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #e5e7eb;">
+                        <td style="padding: 14px 0; font-weight: 600; color: #6b7280;">Dependencies</td>
+                        <td style="padding: 14px 0; color: #714B67; font-family: monospace; font-weight: 500;">sale, product</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 14px 0; font-weight: 600; color: #6b7280;">Support</td>
+                        <td style="padding: 14px 0; color: #10b981; font-weight: 600;">Dedicated Developer Support Included</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
-        <!-- Overview Section -->
-        <h2 class="section-title">Overview & Features</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">1</div>
-                <h3 class="feature-title">Print Directly from Orders</h3>
-                <p class="feature-desc">Generate labels from the Sales Order list view (multi-selection) or inside any Sales Order form view with one click.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">2</div>
-                <h3 class="feature-title">Ordered Quantities Sync</h3>
-                <p class="feature-desc">Select "Ordered Quantities" to set the label count automatically matching the quantity ordered in the sales lines.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">3</div>
-                <h3 class="feature-title">Full Layout Compatibility</h3>
-                <p class="feature-desc">Fully supports all built-in Odoo layout grids (Dymo, 2x7, 4x7, 4x12, custom, and ZPL formats) and price options.</p>
-            </div>
-        </div>
-
-        <!-- How It Works Section -->
-        <h2 class="section-title">How It Works</h2>
-        <div class="steps-container">
-            <div class="step-row">
-                <div class="step-num">1</div>
-                <div class="step-content">
-                    <h3 class="step-title">Select Orders & Print</h3>
-                    <p class="step-text">Go to Sales -> Orders, select one or more orders, and choose "Print Custom Product Labels" from the Action menu.</p>
-                </div>
-            </div>
-            <div class="step-row">
-                <div class="step-num">2</div>
-                <div class="step-content">
-                    <h3 class="step-title">Choose Quantity Method</h3>
-                    <p class="step-text">In the layout wizard, choose "Ordered Quantities" to pull numbers automatically from lines, or "Custom" to set copies manually.</p>
-                </div>
-            </div>
-            <div class="step-row">
-                <div class="step-num">3</div>
-                <div class="step-content">
-                    <h3 class="step-title">Generate Labels</h3>
-                    <p class="step-text">Choose your sheet format and click Print. Odoo generates the PDF report ready to print on your label printer.</p>
-                </div>
+        <!-- Contact Section -->
+        <div style="background-color: #fafbfc; border-radius: 20px; padding: 40px; text-align: center; border: 1px solid #e5e7eb; box-shadow: 0 4px 12px rgba(0,0,0,0.01);">
+            <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.6rem; font-weight: 700; color: #714B67; margin-top: 0; margin-bottom: 10px;">Need Customizations or Support?</h2>
+            <p style="color: #4b5563; margin: 0 0 25px 0; font-size: 1.05rem; max-width: 600px; margin-left: auto; margin-right: auto;">We offer setup, third-party integrations, advanced reporting, and custom Odoo development tailored to your exact workflows.</p>
+            <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 15px;">
+                <a href="mailto:support@dnaj25.com" style="background-color: #714B67; color: #ffffff; padding: 12px 28px; border-radius: 10px; font-weight: 600; text-decoration: none; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(113, 75, 103, 0.15); display: inline-block;">Email Support</a>
+                <a href="https://wa.me/201100367292" target="_blank" style="background-color: #10b981; color: #ffffff; padding: 12px 28px; border-radius: 10px; font-weight: 600; text-decoration: none; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15); display: inline-block;">WhatsApp Chat</a>
             </div>
         </div>
 
-        <!-- Footer Section -->
-        <div class="footer-info">
-            <h3 class="footer-title">Need Help or Customization?</h3>
-            <p class="footer-text">Our support team is available to assist you with installation, setup, or tailoring this module to your exact business requirements.</p>
-            <div class="btn-wrapper">
-                <a href="mailto:support@yourcompany.com" class="btn btn-email">Contact Support</a>
-                <a href="https://wa.me/1234567890" class="btn btn-whatsapp">Message on WhatsApp</a>
-            </div>
-        </div>
     </div>
 </body>
 </html>
