@@ -135,20 +135,20 @@
     }
 }
 
-// Kanban view styling improvements: No shadows, grey borders, dark purple left border, no hover color change
+// Kanban view styling improvements: No shadows, no borders (except the dark purple left border), no hover color change
 .o_kanban_record,
 .o_kanban_view .o_kanban_record,
 .o_account_kanban .o_kanban_record {
     border-radius: 8px !important;
-    border: 1px solid #e5e7eb !important;
+    border: none !important;
     border-left: 4px solid #714B67 !important;
     box-shadow: none !important;
     transition: none !important;
     
     &:hover, &:focus, &:active, &.focus, &.active {
         box-shadow: none !important;
-        border-color: #e5e7eb !important;
-        border-left-color: #714B67 !important;
+        border: none !important;
+        border-left: 4px solid #714B67 !important;
         outline: none !important;
     }
 }
