@@ -1,40 +1,36 @@
 # -*- coding: utf-8 -*-
-{
-    'name': 'WhatsApp Web Integration',
-    'summary': 'Send Sale Orders, Invoices, Purchase Orders and messages via WhatsApp Web',
-    'description': """
-WhatsApp Web Integration
-========================
-This module allows users to send predefined and custom messages to partners (customers/vendors) via WhatsApp Web.
-
-Key Features:
--------------
-* One-click redirection to WhatsApp Web with pre-filled message texts.
-* Send messages from Contacts (res.partner).
-* Send messages from Sales Orders (sale.order) with order reference, amount, and links.
-* Send messages from Invoices (account.move) with invoice reference and amount.
-* Send messages from Purchase Orders (purchase.order) to vendors.
-* Interactive pop-up wizard to customize messages before sending.
-* Simple setup using the browser's active WhatsApp session.
-""",
+{   'application': True,
     'author': 'dnaj25',
-    'website': 'https://github.com/dnaj25/odoo-addons',
+    'auto_install': False,
     'category': 'Sales/CRM',
-    'version': '19.0.1.0.0',
-    'license': 'LGPL-3',
-    'depends': ['base', 'sale', 'account', 'purchase'],
-    'data': [
-        'security/ir.model.access.csv',
-        'views/whatsapp_wizard_views.xml',
-        'views/partner_views.xml',
-        'views/sale_views.xml',
-        'views/invoice_views.xml',
-        'views/purchase_views.xml',
-    ],
-    'price': 19.00,
     'currency': 'EUR',
+    'data': [   'security/ir.model.access.csv',
+                'views/whatsapp_wizard_views.xml',
+                'views/partner_views.xml',
+                'views/sale_views.xml',
+                'views/invoice_views.xml',
+                'views/purchase_views.xml'],
+    'depends': ['base', 'sale', 'account', 'purchase'],
+    'description': '\n'
+                   'WhatsApp Web Integration\n'
+                   '========================\n'
+                   'This module allows users to send predefined and custom messages to partners (customers/vendors) '
+                   'via WhatsApp Web.\n'
+                   '\n'
+                   'Key Features:\n'
+                   '-------------\n'
+                   '* One-click redirection to WhatsApp Web with pre-filled message texts.\n'
+                   '* Send messages from Contacts (res.partner).\n'
+                   '* Send messages from Sales Orders (sale.order) with order reference, amount, and links.\n'
+                   '* Send messages from Invoices (account.move) with invoice reference and amount.\n'
+                   '* Send messages from Purchase Orders (purchase.order) to vendors.\n'
+                   '* Interactive pop-up wizard to customize messages before sending.\n'
+                   "* Simple setup using the browser's active WhatsApp session.\n",
     'images': ['static/description/banner.png'],
     'installable': True,
-    'application': True,
-    'auto_install': False,
-}
+    'license': 'LGPL-3',
+    'name': 'WhatsApp Web Integration',
+    'price': 19.0,
+    'summary': 'Send Sale Orders, Invoices, Purchase Orders and messages via WhatsApp Web',
+    'version': '19.0.1.0.0',
+    'website': 'https://github.com/dnaj25/odoo-addons'}

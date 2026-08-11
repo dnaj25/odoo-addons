@@ -1,22 +1,20 @@
-{
-    'name': 'Vendor Auto Tax',
-    'version': '1.0',
-    'category': 'Accounting',
-    'summary': 'Automatically apply default purchase tax configured on vendor to Purchase Order lines.',
-    'description': """
-This module adds a default purchase tax field to res.partner (vendors).
-When creating a Purchase Order Line, Odoo will automatically apply this tax if configured on the vendor.
-    """,
+# -*- coding: utf-8 -*-
+{   'application': False,
     'author': 'dnaj25',
-    'website': 'https://github.com/dnaj25/odoo-addons',
-    'depends': ['purchase', 'account'],
-    'data': [
-        'views/res_partner_views.xml',
-    ],
-    'price': 19.00,
+    'category': 'Accounting',
     'currency': 'EUR',
-    'images': ['static/description/icon.png'],
+    'data': ['views/res_partner_views.xml'],
+    'depends': ['purchase', 'account'],
+    'description': '\n'
+                   'This module adds a default purchase tax field to res.partner (vendors).\n'
+                   'When creating a Purchase Order Line, Odoo will automatically apply this tax if configured on the '
+                   'vendor.\n'
+                   '    ',
+    'images': ['static/description/banner.png'],
     'installable': True,
-    'application': False,
     'license': 'LGPL-3',
-}
+    'name': 'Vendor Auto Tax',
+    'price': 19.0,
+    'summary': 'Automatically apply default purchase tax configured on vendor to Purchase Order lines.',
+    'version': '1.0',
+    'website': 'https://github.com/dnaj25/odoo-addons'}
