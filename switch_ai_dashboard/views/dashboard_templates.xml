@@ -7,10 +7,10 @@
         <field name="target">current</field>
     </record>
 
-    <!-- Root Menu Item -->
-    <menuitem id="menu_switch_ai_dashboard_root"
+    <!-- Submenu under standard Dashboards root menu -->
+    <menuitem id="menu_switch_ai_dashboard"
               name="AI Dashboard"
               action="action_switch_ai_dashboard"
-              web_icon="switch_ai_dashboard,static/description/icon.png"
-              sequence="10"/>
+              parent="spreadsheet_dashboard.spreadsheet_dashboard_menu_root"
+              sequence="5"/>
 </odoo>

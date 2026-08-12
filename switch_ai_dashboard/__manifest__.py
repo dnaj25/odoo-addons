@@ -7,7 +7,7 @@
     'category': 'Productivity/AI',
     'currency': 'EUR',
     'data': ['security/ir.model.access.csv', 'views/dashboard_templates.xml'],
-    'depends': ['base', 'web', 'mail', 'odoo_gemini'],
+    'depends': ['base', 'web', 'mail', 'odoo_gemini', 'spreadsheet_dashboard'],
     'description': '\n'
                    'This module provides a beautiful, branded business intelligence dashboard inside Odoo.\n'
                    'It calculates key statistics from your sales, purchases, and invoices, and integrates\n'
