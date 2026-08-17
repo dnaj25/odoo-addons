@@ -1,0 +1,18 @@
+# -*- coding: utf-8 -*-
+{   'application': False,
+    'assets': {'web.assets_frontend': ['switch_login_theme/static/src/scss/login_theme.scss']},
+    'author': 'dnaj25',
+    'auto_install': False,
+    'category': 'Theme/Corporate',
+    'currency': 'EUR',
+    'data': ['views/login_templates.xml'],
+    'depends': ['web'],
+    'description': 'A premium, modern dark purple login screen customized for Switch Fintech.',
+    'images': ['static/description/banner.png'],
+    'installable': True,
+    'license': 'LGPL-3',
+    'name': 'Switch Fintech Login Theme',
+    'price': 29.0,
+    'summary': 'Custom beautiful login theme for Switch Fintech',
+    'version': '19.0.1.0.0',
+    'website': 'https://github.com/dnaj25/odoo-addons'}

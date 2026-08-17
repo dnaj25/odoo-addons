@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_pricelist_item_form_view_inherit" model="ir.ui.view">
+        <field name="name">product.pricelist.item.form.inherit.attribute</field>
+        <field name="model">product.pricelist.item</field>
+        <field name="inherit_id" ref="product.product_pricelist_item_form_view"/>
+        <field name="arch" type="xml">
+            <field name="product_tmpl_id" position="attributes">
+                <attribute name="invisible">display_applied_on not in ('1_product', '4_attribute')</attribute>
+                <attribute name="required">display_applied_on in ('1_product', '4_attribute')</attribute>
+            </field>
+            <field name="product_tmpl_id" position="after">
+                <field name="product_template_attribute_value_id"
+                    options="{'no_create': 1, 'no_open': 1}"
+                    invisible="display_applied_on != '4_attribute'"
+                    required="display_applied_on == '4_attribute'"
+                    placeholder="Select Attribute Value"/>
+            </field>
+        </field>
+    </record>
+</odoo>

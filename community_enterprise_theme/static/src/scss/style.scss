@@ -1,0 +1,216 @@
+// Header / Navbar Styling
+.o_main_navbar {
+    background-color: #714B67 !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+    // Make navbar sub-containers transparent to keep uniform dark background
+    .o_menu_brand, .o_menu_sections, .o_menu_systray,
+    .o_menu_sections_more_li, .o_menu_sections_more,
+    .dropdown, .dropdown-menu {
+        background-color: transparent !important;
+    }
+
+    // Navbar items
+    a, button {
+        color: #ffffff !important;
+        background-color: transparent !important;
+        
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.1) !important;
+        }
+    }
+
+    // Active state in navbar
+    .o_nav_entry_active, .active {
+        background-color: rgba(255, 255, 255, 0.15) !important;
+        font-weight: bold;
+    }
+}
+
+// Buttons override
+.btn-primary {
+    background-color: #714B67 !important;
+    border-color: #714B67 !important;
+    color: #ffffff !important;
+    box-shadow: 0 2px 4px rgba(113, 75, 103, 0.2);
+    border-radius: 6px !important;
+
+    &:hover, &:focus, &:active {
+        background-color: #5c3c54 !important;
+        border-color: #5c3c54 !important;
+    }
+}
+
+.btn-outline-primary {
+    color: #714B67 !important;
+    border-color: #714B67 !important;
+    border-radius: 6px !important;
+
+    &:hover, &:focus, &:active {
+        background-color: #714B67 !important;
+        color: #ffffff !important;
+    }
+}
+
+// Active badges
+.badge.bg-primary {
+    background-color: #714B67 !important;
+    color: #ffffff !important;
+}
+
+.badge.text-bg-primary {
+    background-color: #714B67 !important;
+    color: #ffffff !important;
+}
+
+// Active elements in sidebars, menus, list views
+.o_form_view {
+    background-color: #fafbfc !important;
+}
+
+.o_form_sheet {
+    border-radius: 12px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+    border: 1px solid #e5e7eb !important;
+}
+
+// Breadcrumb active state
+.breadcrumb-item.active {
+    color: #714B67 !important;
+    font-weight: 600;
+}
+
+// Active page in pagination
+.page-item.active .page-link {
+    background-color: #714B67 !important;
+    border-color: #714B67 !important;
+}
+
+// Form view tabs styling
+.nav-tabs {
+    border-bottom: 2px solid #e5e7eb !important;
+    
+    .nav-link {
+        border: none !important;
+        color: #6b7280 !important;
+        font-weight: 500;
+        
+        &.active {
+            color: #714B67 !important;
+            border-bottom: 2px solid #714B67 !important;
+            font-weight: 600;
+            background: transparent !important;
+        }
+    }
+}
+
+// App switcher / Home menu overrides (if present)
+.o_home_menu {
+    background: radial-gradient(circle, #714B67 0%, #483042 100%) !important;
+    
+    .o_app {
+        color: #ffffff !important;
+        
+        .o_caption {
+            color: #ffffff !important;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+        }
+        
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.1) !important;
+            border-radius: 12px;
+        }
+    }
+
+    // Search bar styling inside home menu
+    .o_menu_search_input {
+        background-color: rgba(255, 255, 255, 0.15) !important;
+        border: 1px solid rgba(255, 255, 255, 0.25) !important;
+        color: #ffffff !important;
+        
+        &::placeholder {
+            color: rgba(255, 255, 255, 0.6) !important;
+        }
+    }
+}
+
+// Kanban view styling improvements: No shadows, no borders (except the dark purple left border), no hover color change
+.o_kanban_record,
+.o_kanban_view .o_kanban_record,
+.o_account_kanban .o_kanban_record {
+    border-radius: 8px !important;
+    border: none !important;
+    border-left: 4px solid #714B67 !important;
+    box-shadow: none !important;
+    transition: none !important;
+    
+    &:hover, &:focus, &:active, &.focus, &.active {
+        box-shadow: none !important;
+        border: none !important;
+        border-left: 4px solid #714B67 !important;
+        outline: none !important;
+    }
+}
+
+/* --- Custom overrides for dark purple styling and removing light purple elements --- */
+
+// Remove the default pseudo-element colored border/strip from all kanban records
+.o_kanban_record::after,
+.o_kanban_record::before {
+    display: none !important;
+    content: none !important;
+}
+
+// Force all links, kanban card headers, and titles (excluding buttons) to be dark purple
+.o_content a:not(.btn),
+.o_kanban_record a:not(.btn),
+.o_kanban_record_title a:not(.btn),
+.o_kanban_record_title,
+.o_kanban_record .fs-4:not(.btn) {
+    color: #714B67 !important;
+    
+    &:hover, &:focus, &:active {
+        color: #5c3c54 !important;
+    }
+}
+
+// Specifically target the journal card titles (excluding buttons)
+.o_account_kanban {
+    .o_kanban_record {
+        span.d-flex a:not(.btn),
+        .d-flex a:not(.btn),
+        a.fs-4:not(.btn),
+        a:not(.btn) {
+            color: #714B67 !important;
+            
+            &:hover, &:focus, &:active {
+                color: #5c3c54 !important;
+            }
+        }
+    }
+}
+
+// Ensure primary buttons (including upload widgets) always display white text
+a.btn-primary,
+.btn-primary,
+.btn-primary a,
+.btn-primary span {
+    color: #ffffff !important;
+    
+    &:hover, &:focus, &:active {
+        color: #ffffff !important;
+    }
+}
+
+// Ensure secondary buttons always display dark/gray text
+a.btn-secondary,
+.btn-secondary,
+.btn-secondary a,
+.btn-secondary span {
+    color: #212529 !important;
+    
+    &:hover, &:focus, &:active {
+        color: #212529 !important;
+    }
+}

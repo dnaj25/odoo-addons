@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_employee_separation" model="ir.actions.report">
+        <field name="name">Final Settlement Report</field>
+        <field name="model">hr.employee.separation</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">employee_separation_management.report_separation_document</field>
+        <field name="report_file">employee_separation_management.report_separation_document</field>
+        <field name="print_report_name">'Settlement - %s' % (object.employee_id.name)</field>
+        <field name="binding_model_id" ref="model_hr_employee_separation"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

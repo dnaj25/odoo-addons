@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <!-- Top Level Menu -->
         <menuitem id="menu_gemini_root" 
                   name="Gemini AI" 
+                  web_icon="odoo_gemini,static/description/icon.png"
                   sequence="5"/>
 
         <!-- Menu Item to launch the chat wizard -->

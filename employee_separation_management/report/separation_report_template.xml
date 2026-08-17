@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_separation_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page" style="font-family: 'Inter', sans-serif; color: #1f2937;">
+                        <!-- Header -->
+                        <div class="text-center" style="border-bottom: 2px solid #1e3a8a; padding-bottom: 15px; margin-bottom: 30px;">
+                            <h2 style="font-weight: bold; color: #1e3a8a; margin: 0;">Employee Final Settlement Report</h2>
+                            <h4 style="color: #6b7280; margin: 5px 0 0 0;">تقرير تسوية مستحقات الموظف النهائية</h4>
+                            <div class="text-end" style="font-size: 0.9rem; color: #4b5563;">
+                                <strong>Date:</strong> <span t-field="o.request_date"/><br/>
+                                <strong>Reference:</strong> <span t-field="o.name"/>
+                            </div>
+                        </div>
+
+                        <!-- Employee Details -->
+                        <h4 style="border-left: 4px solid #1e3a8a; padding-left: 10px; color: #1e3a8a; margin-bottom: 15px; font-weight: bold;">
+                            Employee Details / بيانات الموظف
+                        </h4>
+                        <table class="table table-bordered table-sm" style="margin-bottom: 30px; font-size: 0.9rem;">
+                            <tbody>
+                                <tr>
+                                    <td style="width: 25%; font-weight: bold; background-color: #f9fafb;">Employee Name</td>
+                                    <td style="width: 25%;"><span t-field="o.employee_id.name"/></td>
+                                    <td style="width: 25%; font-weight: bold; background-color: #f9fafb;">Department</td>
+                                    <td style="width: 25%;"><span t-field="o.department_id.name"/></td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: bold; background-color: #f9fafb;">Job Title</td>
+                                    <td><span t-field="o.job_id.name"/></td>
+                                    <td style="font-weight: bold; background-color: #f9fafb;">Basic Salary</td>
+                                    <td><span t-field="o.wage"/> <span t-field="o.employee_id.company_id.currency_id.symbol"/></td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: bold; background-color: #f9fafb;">Joining Date</td>
+                                    <td><span t-field="o.joining_date"/></td>
+                                    <td style="font-weight: bold; background-color: #f9fafb;">Last Day of Work</td>
+                                    <td><span t-field="o.last_day_date"/></td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: bold; background-color: #f9fafb;">Departure Reason</td>
+                                    <td><span t-field="o.departure_reason"/></td>
+                                    <td style="font-weight: bold; background-color: #f9fafb;">Status</td>
+                                    <td><span t-field="o.state"/></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <!-- Settlement Details -->
+                        <div class="row">
+                            <!-- Earnings -->
+                            <div class="col-6">
+                                <h5 style="color: #1e3a8a; font-weight: bold; border-bottom: 1px solid #e5e7eb; padding-bottom: 5px;">Earnings / المستحقات</h5>
+                                <table class="table table-sm table-clean" style="font-size: 0.9rem;">
+                                    <tbody>
+                                        <tr>
+                                            <td>End of Service Gratuity</td>
+                                            <td class="text-end"><span t-field="o.gratuity_amount"/> <span t-field="o.employee_id.company_id.currency_id.symbol"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Leave Encashment (<span t-field="o.remaining_leaves"/> Days)</td>
+                                            <td class="text-end"><span t-field="o.leave_encashment_amount"/> <span t-field="o.employee_id.company_id.currency_id.symbol"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Overtime Amount</td>
+                                            <td class="text-end"><span t-field="o.overtime_amount"/> <span t-field="o.employee_id.company_id.currency_id.symbol"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Other Allowances</td>
+                                            <td class="text-end"><span t-field="o.other_allowances"/> <span t-field="o.employee_id.company_id.currency_id.symbol"/></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- Deductions -->
+                            <div class="col-6">
+                                <h5 style="color: #ef4444; font-weight: bold; border-bottom: 1px solid #e5e7eb; padding-bottom: 5px;">Deductions / الاستقطاعات</h5>
+                                <table class="table table-sm table-clean" style="font-size: 0.9rem;">
+                                    <tbody>
+                                        <tr>
+                                            <td>Loan / Advance Deductions</td>
+                                            <td class="text-end"><span t-field="o.loan_deduction"/> <span t-field="o.employee_id.company_id.currency_id.symbol"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Other Deductions / Damages</td>
+                                            <td class="text-end"><span t-field="o.other_deductions"/> <span t-field="o.employee_id.company_id.currency_id.symbol"/></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Summary Net -->
+                        <div class="row justify-content-end" style="margin-top: 30px; margin-bottom: 40px;">
+                            <div class="col-6">
+                                <div style="background-color: #f3f4f6; border-radius: 12px; padding: 20px; border: 1px solid #e5e7eb;">
+                                    <table style="width: 100%; font-size: 1rem;">
+                                        <tbody>
+                                            <tr style="border-bottom: 1px solid #d1d5db;">
+                                                <td style="padding: 5px 0;">Total Earnings</td>
+                                                <td class="text-end" style="font-weight: bold;"><span t-esc="o.gratuity_amount + o.leave_encashment_amount + o.overtime_amount + o.other_allowances"/> <span t-field="o.employee_id.company_id.currency_id.symbol"/></td>
+                                            </tr>
+                                            <tr style="border-bottom: 1px solid #d1d5db;">
+                                                <td style="padding: 5px 0; color: #ef4444;">Total Deductions</td>
+                                                <td class="text-end" style="font-weight: bold; color: #ef4444;"><span t-esc="o.loan_deduction + o.other_deductions"/> <span t-field="o.employee_id.company_id.currency_id.symbol"/></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding: 10px 0 0 0; font-size: 1.2rem; font-weight: bold; color: #1e3a8a;">Net Settlement</td>
+                                                <td class="text-end" style="padding: 10px 0 0 0; font-size: 1.2rem; font-weight: bold; color: #1e3a8a;"><span t-field="o.total_settlement"/> <span t-field="o.employee_id.company_id.currency_id.symbol"/></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Signatures -->
+                        <div class="row text-center" style="margin-top: 60px; font-size: 0.95rem;">
+                            <div class="col-3">
+                                <div style="border-top: 1px solid #9ca3af; padding-top: 10px;">
+                                    <strong>Employee Signature</strong><br/>
+                                    توقيع الموظف
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div style="border-top: 1px solid #9ca3af; padding-top: 10px;">
+                                    <strong>HR Manager</strong><br/>
+                                    مدير الموارد البشرية
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div style="border-top: 1px solid #9ca3af; padding-top: 10px;">
+                                    <strong>Finance Manager</strong><br/>
+                                    المدير المالي
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div style="border-top: 1px solid #9ca3af; padding-top: 10px;">
+                                    <strong>CEO / GM</strong><br/>
+                                    المدير العام
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
