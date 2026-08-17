@@ -1,10 +1,37 @@
 <odoo>
-    <!-- Tree View -->
-    <record id="view_contract_contract_tree" model="ir.ui.view">
-        <field name="name">contract.contract.tree</field>
+    <!-- Actions -->
+    <record id="action_contract_all" model="ir.actions.act_window">
+        <field name="name">All Contracts</field>
+        <field name="res_model">contract.contract</field>
+        <field name="view_mode">list,kanban,form,graph,pivot</field>
+    </record>
+
+    <record id="action_contract_expiring_dashboard" model="ir.actions.act_window">
+        <field name="name">Expiring Contracts Dashboard</field>
+        <field name="res_model">contract.contract</field>
+        <field name="view_mode">list,kanban,pivot,graph,form</field>
+        <field name="domain">[('state', 'in', ['expiring', 'expired'])]</field>
+        <field name="context">{'search_default_expiring': 1}</field>
+    </record>
+
+    <!-- Graph View -->
+    <record id="view_contract_graph" model="ir.ui.view">
+        <field name="name">contract.contract.graph</field>
         <field name="model">contract.contract</field>
         <field name="arch" type="xml">
-            <tree string="Contracts" 
+            <graph string="Contracts by Status" type="pie">
+                <field name="state"/>
+                <field name="amount" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- List View -->
+    <record id="view_contract_contract_list" model="ir.ui.view">
+        <field name="name">contract.contract.list</field>
+        <field name="model">contract.contract</field>
+        <field name="arch" type="xml">
+            <list string="Contracts" 
                   decoration-info="state == 'draft'" 
                   decoration-success="state == 'active'" 
                   decoration-warning="state == 'expiring'" 
@@ -19,7 +46,48 @@
                 <field name="days_to_expire"/>
                 <field name="amount" widget="monetary"/>
                 <field name="state" widget="badge"/>
-            </tree>
+            </list>
+        </field>
+    </record>
+
+    <!-- Kanban View -->
+    <record id="view_contract_contract_kanban" model="ir.ui.view">
+        <field name="name">contract.contract.kanban</field>
+        <field name="model">contract.contract</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="state">
+                <field name="name"/>
+                <field name="contract_type_id"/>
+                <field name="partner_id"/>
+                <field name="amount"/>
+                <field name="currency_id"/>
+                <field name="end_date"/>
+                <field name="days_to_expire"/>
+                <field name="state"/>
+                <templates>
+                    <t t-name="card">
+                        <div class="oe_kanban_global_click p-3 rounded shadow-sm bg-white">
+                            <div class="o_kanban_record_top mb-2">
+                                <div class="o_kanban_record_headings">
+                                    <strong class="o_kanban_record_title text-primary"><field name="name"/></strong>
+                                </div>
+                                <span class="badge rounded-pill bg-info">
+                                    <field name="state"/>
+                                </span>
+                            </div>
+                            <div class="o_kanban_record_body">
+                                <div><field name="contract_type_id"/></div>
+                                <div><field name="partner_id"/></div>
+                                <div>Expires: <field name="end_date"/></div>
+                            </div>
+                            <div class="o_kanban_record_bottom mt-2 pt-2 border-top d-flex justify-content-between align-items-center">
+                                <span class="fw-bold text-dark"><field name="amount" widget="monetary"/></span>
+                                <field name="responsible_id" widget="many2one_avatar_user"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
         </field>
     </record>
 
@@ -30,9 +98,9 @@
         <field name="arch" type="xml">
             <form string="Contract">
                 <header>
-                    <button name="action_activate" string="Activate" type="object" class="oe_highlight" states="draft"/>
-                    <button name="action_renew" string="Renew Contract" type="object" class="oe_highlight" states="active,expiring,expired"/>
-                    <button name="action_cancel" string="Cancel" type="object" states="draft,active,expiring"/>
+                    <button name="action_activate" string="Activate" type="object" class="oe_highlight" invisible="state != 'draft'"/>
+                    <button name="action_renew" string="Renew Contract" type="object" class="oe_highlight" invisible="state not in ('active', 'expiring', 'expired')"/>
+                    <button name="action_cancel" string="Cancel" type="object" invisible="state not in ('draft', 'active', 'expiring')"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,active,expiring,expired"/>
                 </header>
                 <sheet>
@@ -63,14 +131,14 @@
                         </page>
                         <page string="Renewal History">
                             <field name="renewal_log_ids" readonly="1">
-                                <tree>
+                                <list>
                                     <field name="renewal_date"/>
                                     <field name="old_end_date"/>
                                     <field name="new_start_date"/>
                                     <field name="new_end_date"/>
                                     <field name="new_amount"/>
                                     <field name="note"/>
-                                </tree>
+                                </list>
                             </field>
                         </page>
                     </notebook>
@@ -84,24 +152,53 @@
         </field>
     </record>
 
-    <!-- Search View & Dashboard Filters -->
+    <!-- Search View -->
     <record id="view_contract_contract_search" model="ir.ui.view">
         <field name="name">contract.contract.search</field>
         <field name="model">contract.contract</field>
         <field name="arch" type="xml">
-            <search string="Search Contracts">
+            <search>
                 <field name="name"/>
                 <field name="partner_id"/>
                 <field name="contract_type_id"/>
+                <field name="responsible_id"/>
                 <filter string="Expiring Soon" name="expiring" domain="[('state', '=', 'expiring')]"/>
                 <filter string="Expired" name="expired" domain="[('state', '=', 'expired')]"/>
                 <filter string="Active" name="active" domain="[('state', '=', 'active')]"/>
-                <group expand="0" string="Group By">
-                    <filter string="Contract Type" name="group_type" context="{'group_by':'contract_type_id'}"/>
-                    <filter string="Status" name="group_state" context="{'group_by':'state'}"/>
-                    <filter string="Manager" name="group_manager" context="{'group_by':'responsible_id'}"/>
-                </group>
             </search>
         </field>
     </record>
+
+    <!-- Menus -->
+    <menuitem id="menu_contract_root"
+              name="Contracts"
+              sequence="10"/>
+
+    <menuitem id="menu_contract_management"
+              name="Contracts"
+              parent="menu_contract_root"
+              sequence="10"/>
+
+    <menuitem id="menu_contract_all"
+              name="All Contracts"
+              parent="menu_contract_management"
+              action="action_contract_all"
+              sequence="10"/>
+
+    <menuitem id="menu_contract_expiring"
+              name="Expiring Contracts"
+              parent="menu_contract_management"
+              action="action_contract_expiring_dashboard"
+              sequence="20"/>
+
+    <menuitem id="menu_contract_configuration"
+              name="Configuration"
+              parent="menu_contract_root"
+              sequence="90"/>
+
+    <menuitem id="menu_contract_type"
+              name="Contract Types"
+              parent="menu_contract_configuration"
+              action="action_contract_type"
+              sequence="10"/>
 </odoo>

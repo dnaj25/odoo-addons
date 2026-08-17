@@ -107,6 +107,7 @@ class ContractContract(models.Model):
 
     def _create_expiry_activity(self, note):
         """إنشاء نشاط/تنبيه للمسؤول عن العقد"""
+        model_id = self.env['ir.model']._get_id('contract.contract')
         for rec in self:
             existing_activity = self.env['mail.activity'].search([
                 ('res_model', '=', 'contract.contract'),
@@ -122,6 +123,7 @@ class ContractContract(models.Model):
                     'summary': _('Contract Expiry Notice'),
                     'user_id': rec.responsible_id.id,
                     'res_id': rec.id,
-                    'res_model_id': self.env.ref('txp_contract_management.model_contract_contract').id,
+                    'res_model': 'contract.contract',
+                    'res_model_id': model_id,
                     'date_deadline': rec.end_date,
                 })
