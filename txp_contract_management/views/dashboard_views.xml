@@ -1,0 +1,26 @@
+<!-- Graph & Pivot Views in contract_contract_views.xml -->
+<record id="view_contract_graph" model="ir.ui.view">
+    <field name="name">contract.contract.graph</field>
+    <field name="model">contract.contract</field>
+    <field name="arch" type="xml">
+        <graph string="Contracts by Status" type="pie">
+            <field name="state"/>
+            <field name="amount" type="measure"/>
+        </graph>
+    </field>
+</record>
+
+<!-- Menu Actions -->
+<record id="action_contract_all" model="ir.actions.act_window">
+    <field name="name">All Contracts</field>
+    <field name="res_model">contract.contract</field>
+    <field name="view_mode">tree,kanban,form,graph,pivot</field>
+</record>
+
+<record id="action_contract_expiring_dashboard" model="ir.actions.act_window">
+    <field name="name">Expiring Contracts Dashboard</field>
+    <field name="res_model">contract.contract</field>
+    <field name="view_mode">tree,kanban,pivot,graph,form</field>
+    <field name="domain">[('state', 'in', ['expiring', 'expired'])]</field>
+    <field name="context">{'search_default_expiring': 1}</field>
+</record>
