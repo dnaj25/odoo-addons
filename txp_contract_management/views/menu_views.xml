@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Top Menu -->
+    <menuitem id="menu_contract_root"
+              name="Contracts"
+              sequence="10"/>
+
+    <!-- Sub Menus -->
+    <menuitem id="menu_contract_management"
+              name="Contracts"
+              parent="menu_contract_root"
+              sequence="10"/>
+
+    <menuitem id="menu_contract_all"
+              name="All Contracts"
+              parent="menu_contract_management"
+              action="action_contract_all"
+              sequence="10"/>
+
+    <menuitem id="menu_contract_expiring"
+              name="Expiring Contracts"
+              parent="menu_contract_management"
+              action="action_contract_expiring_dashboard"
+              sequence="20"/>
+
+    <!-- Configuration Menu -->
+    <menuitem id="menu_contract_configuration"
+              name="Configuration"
+              parent="menu_contract_root"
+              sequence="90"/>
+
+    <menuitem id="menu_contract_type"
+              name="Contract Types"
+              parent="menu_contract_configuration"
+              action="action_contract_type"
+              sequence="10"/>
+</odoo>
