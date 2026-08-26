@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- إعلان تقرير PDF لقيد اليومية -->
+    <record id="action_report_journal_entry" model="ir.actions.report">
+        <field name="name">Journal Entry Report</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">txp_print_journal_entries.report_journal_entry_document</field>
+        <field name="report_file">txp_print_journal_entries.report_journal_entry_document</field>
+
+        <field name="binding_model_id" ref="account.model_account_move"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

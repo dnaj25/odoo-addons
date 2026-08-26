@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_journal_entry_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page" style="font-family: Arial, sans-serif; font-size: 13px;">
+                        
+                        <!-- عنوان التقرير -->
+                        <div class="row text-center mb-4">
+                            <div class="col-12">
+                                <h2 style="font-weight: bold; border-bottom: 2px solid #000; padding-bottom: 8px;">
+                                    قيد يومية / JOURNAL ENTRY
+                                </h2>
+                            </div>
+                        </div>
+
+                        <!-- بيانات القيد الرئيسية -->
+                        <table class="table table-bordered mb-4" style="width: 100%;">
+                            <tr>
+                                <td style="width: 20%; background-color: #f2f2f2; font-weight: bold;">رقم القيد / Number:</td>
+                                <td style="width: 30%;"><span t-field="o.name"/></td>
+                                <td style="width: 20%; background-color: #f2f2f2; font-weight: bold;">التاريخ / Date:</td>
+                                <td style="width: 30%;"><span t-field="o.date"/></td>
+                            </tr>
+                            <tr>
+                                <td style="background-color: #f2f2f2; font-weight: bold;">الدفتر / Journal:</td>
+                                <td><span t-field="o.journal_id.name"/></td>
+                                <td style="background-color: #f2f2f2; font-weight: bold;">المرجع / Reference:</td>
+                                <td><span t-field="o.ref"/></td>
+                            </tr>
+                        </table>
+
+                        <!-- جدول بنود القيد (Journal Items) -->
+                        <table class="table table-striped table-bordered text-center" style="width: 100%;">
+                            <thead style="background-color: #2c3e50; color: #ffffff;">
+                                <tr>
+                                    <th style="width: 25%;">الحساب / Account</th>
+                                    <th style="width: 20%;">العميل/المورد / Partner</th>
+                                    <th style="width: 25%;">البيان / Label</th>
+                                    <th style="width: 15%;">مدين / Debit</th>
+                                    <th style="width: 15%;">دائن / Credit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="o.line_ids" t-as="line">
+                                    <tr>
+                                        <td class="text-start">
+                                            [<span t-field="line.account_id.code"/>] <span t-field="line.account_id.name"/>
+                                        </td>
+                                        <td class="text-start"><span t-field="line.partner_id.name"/></td>
+                                        <td class="text-start"><span t-field="line.name"/></td>
+                                        <td class="text-end">
+                                            <span t-field="line.debit" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                        </td>
+                                        <td class="text-end">
+                                            <span t-field="line.credit" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                            <!-- الإجمالي -->
+                            <tfoot style="background-color: #eaeded; font-weight: bold;">
+                                <tr>
+                                    <td colspan="3" class="text-end">الإجمالي / Total:</td>
+                                    <td class="text-end">
+                                        <span t-esc="o.get_total_debit()" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                    </td>
+                                    <td class="text-end">
+                                        <span t-esc="o.get_total_credit()" t-options='{"widget": "monetary", "display_currency": o.currency_id}'/>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+
+                        <!-- توقيعات الاعتماد -->
+                        <div class="row mt-5 pt-4 text-center">
+                            <div class="col-4">
+                                <p style="font-weight: bold;">إعداد / Prepared By</p>
+                                <p class="mt-4">__________________</p>
+                            </div>
+                            <div class="col-4">
+                                <p style="font-weight: bold;">مراجعة / Checked By</p>
+                                <p class="mt-4">__________________</p>
+                            </div>
+                            <div class="col-4">
+                                <p style="font-weight: bold;">اعتماد / Approved By</p>
+                                <p class="mt-4">__________________</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
