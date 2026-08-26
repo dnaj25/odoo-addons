@@ -4,3 +4,4 @@ access_contract_type_manager,contract.type.manager,model_contract_type,base.grou
 access_contract_contract_user,contract.contract.user,model_contract_contract,base.group_user,1,1,1,0
 access_contract_contract_manager,contract.contract.manager,model_contract_contract,base.group_system,1,1,1,1
 access_contract_renewal_log_user,contract.renewal.log.user,model_contract_renewal_log,base.group_user,1,1,1,0
+access_contract_renewal_wizard_user,contract.renewal.wizard.user,model_contract_renewal_wizard,base.group_user,1,1,1,1
