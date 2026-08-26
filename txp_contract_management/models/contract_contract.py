@@ -22,10 +22,13 @@ class ContractContract(models.Model):
     end_date = fields.Date(string='End Date', required=True, tracking=True)
     days_to_expire = fields.Integer(string='Days Until Expiry', compute='_compute_days_to_expire', store=True)
     alert_days = fields.Selection([
+        ('2', '2 Days'),
+        ('7', '7 Days'),
+        ('15', '15 Days'),
         ('30', '30 Days'),
         ('60', '60 Days'),
         ('90', '90 Days'),
-    ], string='Alert Trigger Window', default='30', required=True)
+    ], string='Alert Trigger Window', default='2', required=True)
 
     # التفاصيل المالية والمرفقات
     amount = fields.Monetary(string='Contract Value', currency_field='currency_id', tracking=True)
@@ -65,10 +68,11 @@ class ContractContract(models.Model):
 
     def action_renew(self):
         """فتح نافذة تجديد العقد وحفظ السجل القديم"""
+        self.ensure_one()
         return {
             'name': _('Renew Contract'),
             'type': 'ir.actions.act_window',
-            'res_model': 'contract.renewal.log',
+            'res_model': 'contract.renewal.wizard',
             'view_mode': 'form',
             'target': 'new',
             'context': {
@@ -76,6 +80,8 @@ class ContractContract(models.Model):
                 'default_old_start_date': self.start_date,
                 'default_old_end_date': self.end_date,
                 'default_old_amount': self.amount,
+                'default_new_start_date': self.end_date or fields.Date.today(),
+                'default_new_amount': self.amount,
             }
         }
 
@@ -99,11 +105,13 @@ class ContractContract(models.Model):
             if days_left <= 0:
                 contract.write({'state': 'expired'})
                 contract._create_expiry_activity(_("Contract %s has expired!") % contract.name)
+                contract._send_discuss_notification(_("⚠️ Expiry Alert: Contract '%s' has expired on %s!") % (contract.name, contract.end_date))
             
-            # حالة وشيك الانتهاء
+            # حالة وشيك الانتهاء (أقل من أو تساوي الأيام المحددة للتنبيه)
             elif days_left <= alert_limit:
                 contract.write({'state': 'expiring'})
                 contract._create_expiry_activity(_("Contract %s will expire in %d days.") % (contract.name, days_left))
+                contract._send_discuss_notification(_("⏰ Expiry Warning: Contract '%s' will expire in %d days (on %s).") % (contract.name, days_left, contract.end_date))
 
     def _create_expiry_activity(self, note):
         """إنشاء نشاط/تنبيه للمسؤول عن العقد"""
@@ -127,3 +135,16 @@ class ContractContract(models.Model):
                     'res_model_id': model_id,
                     'date_deadline': rec.end_date,
                 })
+
+    def _send_discuss_notification(self, body):
+        """إرسال إشعار من OdooBot يظهر فوراً في شاشة Notifications"""
+        odoobot_partner = self.env.ref('base.partner_root', raise_if_not_found=False)
+        for rec in self:
+            if rec.responsible_id and rec.responsible_id.partner_id:
+                rec.message_post(
+                    body=body,
+                    message_type='comment',
+                    subtype_xmlid='mail.mt_comment',
+                    author_id=odoobot_partner.id if odoobot_partner else False,
+                    partner_ids=[rec.responsible_id.partner_id.id],
+                )

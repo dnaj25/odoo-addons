@@ -143,11 +143,39 @@
                         </page>
                     </notebook>
                 </sheet>
-                <div class="oe_chatter">
-                    <field name="message_follower_ids"/>
-                    <field name="activity_ids"/>
-                    <field name="message_ids"/>
-                </div>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!-- Renewal Popup Wizard Form View -->
+    <record id="view_contract_renewal_wizard_form" model="ir.ui.view">
+        <field name="name">contract.renewal.wizard.form</field>
+        <field name="model">contract.renewal.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Renew Contract">
+                <sheet>
+                    <group>
+                        <group string="Previous Terms">
+                            <field name="old_start_date" readonly="1"/>
+                            <field name="old_end_date" readonly="1"/>
+                            <field name="old_amount" widget="monetary" readonly="1"/>
+                        </group>
+                        <group string="New Renewal Terms">
+                            <field name="new_start_date"/>
+                            <field name="new_end_date"/>
+                            <field name="new_amount" widget="monetary"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="note" placeholder="Notes regarding this renewal..."/>
+                        <field name="contract_id" invisible="1"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_confirm_renewal" string="Confirm Renewal" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
             </form>
         </field>
     </record>

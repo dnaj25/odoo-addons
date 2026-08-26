@@ -1,73 +1,378 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-</head>
-<body style="margin: 0; padding: 0; background-color: #f8fafc;">
-    <div style="font-family: 'Inter', sans-serif; background-color: #ffffff; padding: 40px 20px; color: #1f2937; line-height: 1.6; max-width: 1000px; margin: 40px auto; border-radius: 24px; box-shadow: 0 10px 40px rgba(0,0,0,0.03); border: 1px solid #e5e7eb;">
-        
-        <!-- Hero Section -->
-        <div style="background: linear-gradient(135deg, #714B67 0%, #483042 100%); padding: 60px 40px; border-radius: 20px; text-align: center; margin-bottom: 40px; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(113, 75, 103, 0.15);">
-            <!-- Badges -->
-            <div style="margin-bottom: 20px;">
-                <span style="background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); color: #ffffff; padding: 6px 16px; border-radius: 30px; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.5px; margin: 5px; display: inline-block;">Version 1.0.3</span>
-                <span style="background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); color: #ffffff; padding: 6px 16px; border-radius: 30px; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.5px; margin: 5px; display: inline-block;">Odoo 19.0</span>
-                <span style="background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); color: #ffffff; padding: 6px 16px; border-radius: 30px; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.5px; margin: 5px; display: inline-block;">LGPL-3</span>
-            </div>
-            <!-- Title -->
-            <h1 style="font-family: 'Outfit', sans-serif; font-size: 2.85rem; font-weight: 800; color: #ffffff; margin: 0 0 15px 0; letter-spacing: -0.5px; line-height: 1.2;">Odoo 19 Accounting Community Kit</h1>
-            <!-- Subtitle -->
-            <p style="font-size: 1.15rem; color: rgba(255, 255, 255, 0.85); margin: 0 auto; max-width: 750px; line-height: 1.6; font-weight: 400;">Accounting Reports, Asset Management and Budget, Recurring Payments, Lock Dates, Fiscal Year, Accounting Dashboard, Financial Reports, Customer Follow up Management, Bank Statement Import</p>
-        </div>
+<div class="oe_styling_v8" style="font-family:Arial, sans-serif; color:#273142; line-height:1.6">
 
-        <!-- Features Section -->
-        <div style="margin-bottom: 45px;">
-            <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.85rem; font-weight: 700; color: #714B67; margin-top: 0; margin-bottom: 25px; border-bottom: 2px solid #f1f5f9; padding-bottom: 12px;">Key Features & Capabilities</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-                
-            <div style="background-color: #fafbfc; border: 1px solid #e5e7eb; border-radius: 12px; padding: 25px; border-left: 4px solid #714B67; transition: transform 0.2s;">
-                <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.15rem; font-weight: 700; color: #714B67; margin: 0 0 8px 0;">Odoo 19 Financial</h3>
-                <p style="margin: 0; font-size: 0.95rem; color: #4b5563; line-height: 1.5;">Odoo 19 Financial Reports, Asset Management and Budget, Financial Reports, Recurring Payments, Bank Statement Import, Customer Follow Up Management,Account Lock Date, Accounting Dashboard</p>
-            </div>
+    <!-- SECTION 1: COVER IMAGE -->
+    <section class="oe_container my-4">
+        <div class="text-center">
+            <img src="cover.png"
+                 alt="Odoo 19 Accounting Community Kit"
+                 class="img-fluid rounded border" style="width:100%">
+        </div>
+    </section>
+
+    <!-- SECTION 2: HEADLINE + BADGES -->
+    <section class="oe_container my-5">
+        <div class="text-center px-3">
+            <h1 class="mb-3" style="font-size:38px; font-weight:800; color:#3f3040">
+                A complete accounting toolkit, built for the Odoo community
+            </h1>
+            <p class="lead mx-auto mb-4" style="max-width:900px; color:#596579">
+                Financial Reports, Asset Management, Budget Control, Recurring Payments, Fiscal Year Lock,
+                Accounting Dashboard, Customer Follow-Up, Daily Reports, and Bank Statement Import - all in one module.
+            </p>
+            <div class="d-flex flex-wrap justify-content-center gap-2">
+                <span class="badge bg-secondary p-2">Odoo 19</span>
+                <span class="badge bg-secondary p-2">Community Edition</span>
+                <span class="badge bg-secondary p-2">Financial Reports</span>
+                <span class="badge bg-secondary p-2">Asset Management</span>
+                <span class="badge bg-secondary p-2">Budget</span>
+                <span class="badge bg-secondary p-2">Recurring Payments</span>
+                <span class="badge bg-secondary p-2">Fiscal Year</span>
+                <span class="badge bg-secondary p-2">Customer Follow-Up</span>
             </div>
         </div>
+    </section>
 
-        <!-- Technical Information Table -->
-        <div style="border: 1px solid #e5e7eb; border-radius: 16px; padding: 30px; margin-bottom: 45px; background-color: #fafbfc;">
-            <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.5rem; font-weight: 700; color: #714B67; margin-top: 0; margin-bottom: 20px; border-bottom: 1px solid #e5e7eb; padding-bottom: 12px;">Technical Specifications</h2>
-            <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+    <!-- SECTION 3: ACCOUNTING DASHBOARD -->
+    <section class="oe_container my-5">
+        <div class="row align-items-center g-4">
+            <div class="col-lg-5">
+                <span class="badge bg-primary mb-3">ACCOUNTING DASHBOARD</span>
+                <h2 style="font-size:30px; font-weight:800; color:#3f3040">
+                    Everything at a glance, a dedicated accounting home screen
+                </h2>
+                <p style="font-size:17px; color:#596579">
+                    The Accounting Dashboard gives your finance team a unified view of the most
+                    important metrics: outstanding invoices, bank balances, journal entries, and cash flow,
+                    all accessible the moment they log in.
+                </p>
+                <ul class="ps-3" style="color:#4f5a6b">
+                    <li class="mb-2">Receivables and payables at a glance</li>
+                    <li class="mb-2">Journal activity and bank balance summary</li>
+                    <li class="mb-2">Quick access to all accounting operations</li>
+                </ul>
+            </div>
+            <div class="col-lg-7">
+                <img src="account_dashboard.png"
+                     alt="Odoo 19 Accounting Dashboard"
+                     class="img-fluid rounded border shadow-sm" style="width:100%">
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: WORKFLOW STEPS -->
+    <section class="oe_container bg-light rounded p-4 my-5">
+        <div class="text-center mb-4">
+            <h2 style="font-size:31px; font-weight:800; color:#3f3040">
+                One module, eight essential accounting functions
+            </h2>
+            <p class="mb-0" style="font-size:17px; color:#647085">
+                Everything your accounting team needs, working together seamlessly inside Odoo.
+            </p>
+        </div>
+        <div class="row g-3">
+            <div class="col-md-4">
+                <div class="card h-100 border shadow-sm">
+                    <div class="card-body p-4">
+                        <span class="badge bg-primary rounded-pill mb-2">1</span>
+                        <h3 class="h5">Financial Reports</h3>
+                        <p class="mb-0 text-muted">P&amp;L, Balance Sheet, Cash Flow, and General Ledger - all exportable to PDF and Excel.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 border shadow-sm">
+                    <div class="card-body p-4">
+                        <span class="badge bg-primary rounded-pill mb-2">2</span>
+                        <h3 class="h5">Asset Management</h3>
+                        <p class="mb-0 text-muted">Track fixed assets, compute depreciation, and manage asset lifecycles automatically.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 border shadow-sm">
+                    <div class="card-body p-4">
+                        <span class="badge bg-primary rounded-pill mb-2">3</span>
+                        <h3 class="h5">Budget Management</h3>
+                        <p class="mb-0 text-muted">Define budgets per analytic account and monitor actual vs. planned spending in real time.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 border shadow-sm">
+                    <div class="card-body p-4">
+                        <span class="badge bg-secondary rounded-pill mb-2">4</span>
+                        <h3 class="h5">Recurring Payments</h3>
+                        <p class="mb-0 text-muted">Automate journal entries for subscriptions, rent, and other recurring transactions.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 border shadow-sm">
+                    <div class="card-body p-4">
+                        <span class="badge bg-secondary rounded-pill mb-2">5</span>
+                        <h3 class="h5">Fiscal Year &amp; Lock Dates</h3>
+                        <p class="mb-0 text-muted">Define fiscal years and lock periods to prevent unauthorized modifications.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 border shadow-sm">
+                    <div class="card-body p-4">
+                        <span class="badge bg-secondary rounded-pill mb-2">6</span>
+                        <h3 class="h5">Customer Follow-Up</h3>
+                        <p class="mb-0 text-muted">Send payment reminders, track overdue invoices, and manage collection workflows.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 border shadow-sm">
+                    <div class="card-body p-4">
+                        <span class="badge bg-secondary rounded-pill mb-2">7</span>
+                        <h3 class="h5">Daily Reports</h3>
+                        <p class="mb-0 text-muted">End-of-day cash and journal summaries in print-ready PDF format.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 border shadow-sm">
+                    <div class="card-body p-4">
+                        <span class="badge bg-secondary rounded-pill mb-2">8</span>
+                        <h3 class="h5">Bank Statement Import</h3>
+                        <p class="mb-0 text-muted">Import bank statements in OFX, QIF, and CSV formats for quick reconciliation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: FINANCIAL REPORTS -->
+    <section class="oe_container my-5">
+        <div class="row align-items-center g-4">
+            <div class="col-lg-7">
+                <img src="financial_reports.png"
+                     alt="Odoo 19 Financial Reports"
+                     class="img-fluid rounded border shadow-sm" style="width:100%">
+            </div>
+            <div class="col-lg-5">
+                <span class="badge bg-primary mb-3">FINANCIAL REPORTS</span>
+                <h2 style="font-size:30px; font-weight:800; color:#3f3040">
+                    Powerful reports that give the full financial picture
+                </h2>
+                <p style="font-size:17px; color:#596579">
+                    Generate Profit &amp; Loss, Balance Sheet, Trial Balance, Cash Flow Statement,
+                    and General Ledger reports, all filterable by date range, company, and journal.
+                </p>
+                <ul class="ps-3" style="color:#4f5a6b">
+                    <li class="mb-2">Multi-currency and multi-company support</li>
+                    <li class="mb-2">Export to PDF and Excel formats</li>
+                    <li class="mb-2">Drill-down into individual journal items</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: ASSET MANAGEMENT (Dark) -->
+    <section class="oe_container bg-dark text-white rounded p-4 my-5">
+        <div class="row align-items-center g-4">
+            <div class="col-lg-5">
+                <span class="badge bg-light text-dark mb-3">ASSET MANAGEMENT</span>
+                <h2 class="text-white" style="font-size:30px; font-weight:800">
+                    Manage your fixed assets from purchase to disposal
+                </h2>
+                <p class="text-white mb-3" style="font-size:17px">
+                    Track the full lifecycle of every fixed asset, from acquisition and depreciation
+                    to disposal, with automatic journal entries at every stage.
+                </p>
+                <ul class="ps-3" style="color:rgba(255,255,255,0.85)">
+                    <li class="mb-2">Straight-line and declining balance depreciation methods</li>
+                    <li class="mb-2">Automatic depreciation journal entries</li>
+                    <li class="mb-2">Asset disposal and write-off management</li>
+                </ul>
+            </div>
+            <div class="col-lg-7">
+                <img src="odoo18_asset_management.png"
+                     alt="Odoo 19 Asset Management"
+                     class="img-fluid rounded border" style="width:100%">
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7: BUDGET FULL WIDTH -->
+    <section class="oe_container my-5">
+        <div class="text-center mb-4">
+            <h2 style="font-size:31px; font-weight:800; color:#3f3040">
+                Set budgets. Monitor spending. Stay in control.
+            </h2>
+            <p class="mx-auto" style="max-width:850px; font-size:17px; color:#647085">
+                Define budgets against analytic accounts and watch actual spending measured in real time
+                against your planned figures, by department, project, or cost center.
+            </p>
+        </div>
+        <img src="odoo18_budget.png"
+             alt="Odoo 19 Budget Management"
+             class="img-fluid rounded border shadow-sm" style="width:100%">
+    </section>
+
+    <!-- SECTION 8: RECURRING + FOLLOWUP SIDE BY SIDE -->
+    <section class="oe_container bg-light rounded p-4 my-5">
+        <div class="text-center mb-4">
+            <h2 style="font-size:31px; font-weight:800; color:#3f3040">
+                Automate recurring transactions and follow up on overdue invoices
+            </h2>
+            <p style="font-size:17px; color:#647085">
+                Save time on repetitive tasks and never miss a collection opportunity.
+            </p>
+        </div>
+        <div class="row g-3">
+            <div class="col-lg-6">
+                <img src="recurring_payment.png"
+                     alt="Recurring Payments in Odoo 19"
+                     class="img-fluid rounded border shadow-sm" style="width:100%">
+            </div>
+            <div class="col-lg-6">
+                <img src="customer_followup.png"
+                     alt="Customer Follow-Up in Odoo 19"
+                     class="img-fluid rounded border shadow-sm" style="width:100%">
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 9: DAILY REPORTS -->
+    <section class="oe_container my-5">
+        <div class="row align-items-center g-4">
+            <div class="col-lg-7">
+                <img src="daily_reports.png"
+                     alt="Daily Accounting Reports"
+                     class="img-fluid rounded border shadow-sm" style="width:100%">
+            </div>
+            <div class="col-lg-5">
+                <span class="badge bg-primary mb-3">DAILY REPORTS</span>
+                <h2 style="font-size:30px; font-weight:800; color:#3f3040">
+                    End-of-day reports for cashiers and accountants
+                </h2>
+                <p style="font-size:17px; color:#596579">
+                    Print daily transaction summaries, cash receipts, and journal reports - perfect
+                    for teams that need a paper trail of every day's accounting activity.
+                </p>
+                <ul class="ps-3" style="color:#4f5a6b">
+                    <li class="mb-2">Daily cash report by journal</li>
+                    <li class="mb-2">Print-ready PDF layout</li>
+                    <li class="mb-2">Filter by date, user, and journal</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 10: FISCAL YEAR + SETTINGS -->
+    <section class="oe_container my-5">
+        <div class="text-center mb-4">
+            <h2 style="font-size:31px; font-weight:800; color:#3f3040">
+                Fiscal Year management and accounting configuration
+            </h2>
+            <p class="mx-auto" style="max-width:850px; font-size:17px; color:#647085">
+                Define your fiscal year, set lock dates for closed periods, and configure all
+                accounting settings from one central place.
+            </p>
+        </div>
+        <div class="row g-3">
+            <div class="col-lg-6">
+                <img src="odoo18_fiscal_year.png"
+                     alt="Fiscal Year in Odoo 19"
+                     class="img-fluid rounded border shadow-sm" style="width:100%">
+            </div>
+            <div class="col-lg-6">
+                <img src="account_settings.png"
+                     alt="Accounting Settings in Odoo 19"
+                     class="img-fluid rounded border shadow-sm" style="width:100%">
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 11: CAPABILITIES TABLE -->
+    <section class="oe_container my-5">
+        <div class="text-center mb-4">
+            <h2 style="font-size:31px; font-weight:800; color:#3f3040">Capabilities at a glance</h2>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered align-middle">
+                <thead class="table-dark">
+                    <tr><th>Sub-Module</th><th>What it provides</th></tr>
+                </thead>
                 <tbody>
-                    <tr style="border-bottom: 1px solid #e5e7eb;">
-                        <td style="padding: 14px 0; font-weight: 600; color: #6b7280; width: 35%;">Category</td>
-                        <td style="padding: 14px 0; color: #1f2937; font-weight: 500;">Accounting</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #e5e7eb;">
-                        <td style="padding: 14px 0; font-weight: 600; color: #6b7280;">Author</td>
-                        <td style="padding: 14px 0; color: #1f2937; font-weight: 500;">dnaj25</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #e5e7eb;">
-                        <td style="padding: 14px 0; font-weight: 600; color: #6b7280;">Dependencies</td>
-                        <td style="padding: 14px 0; color: #714B67; font-family: monospace; font-weight: 500;">community_pdf_reports, community_accounting_asset, community_accounting_budget, community_accounting_fiscal_year, community_accounting_recurring_payments, community_accounting_daily_reports, community_accounting_followup</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 14px 0; font-weight: 600; color: #6b7280;">Support</td>
-                        <td style="padding: 14px 0; color: #10b981; font-weight: 600;">Dedicated Developer Support Included</td>
-                    </tr>
+                    <tr><td><strong>Financial Reports</strong></td><td>P&amp;L, Balance Sheet, Cash Flow, Trial Balance, General Ledger with PDF/Excel export.</td></tr>
+                    <tr><td><strong>Asset Management</strong></td><td>Fixed asset tracking, depreciation scheduling, disposal, and automatic journal entries.</td></tr>
+                    <tr><td><strong>Budget Management</strong></td><td>Budget vs. actual tracking per analytic account, department, or project.</td></tr>
+                    <tr><td><strong>Recurring Payments</strong></td><td>Automated journal entry templates on daily, weekly, monthly, or custom schedules.</td></tr>
+                    <tr><td><strong>Fiscal Year &amp; Lock Dates</strong></td><td>Custom fiscal year definition and period locking to prevent unauthorized edits.</td></tr>
+                    <tr><td><strong>Customer Follow-Up</strong></td><td>Overdue invoice reminders, follow-up levels, and collection activity tracking.</td></tr>
+                    <tr><td><strong>Daily Reports</strong></td><td>End-of-day cash and journal summaries in print-ready PDF format.</td></tr>
+                    <tr><td><strong>Bank Statement Import</strong></td><td>Import bank statements in OFX, QIF, and CSV formats for reconciliation.</td></tr>
                 </tbody>
             </table>
         </div>
+    </section>
 
-        <!-- Contact Section -->
-        <div style="background-color: #fafbfc; border-radius: 20px; padding: 40px; text-align: center; border: 1px solid #e5e7eb; box-shadow: 0 4px 12px rgba(0,0,0,0.01);">
-            <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.6rem; font-weight: 700; color: #714B67; margin-top: 0; margin-bottom: 10px;">Need Customizations or Support?</h2>
-            <p style="color: #4b5563; margin: 0 0 25px 0; font-size: 1.05rem; max-width: 600px; margin-left: auto; margin-right: auto;">We offer setup, third-party integrations, advanced reporting, and custom Odoo development tailored to your exact workflows.</p>
-            <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 15px;">
-                <a href="mailto:support@dnaj25.com" style="background-color: #714B67; color: #ffffff; padding: 12px 28px; border-radius: 10px; font-weight: 600; text-decoration: none; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(113, 75, 103, 0.15); display: inline-block;">Email Support</a>
-                <a href="https://wa.me/201100367292" target="_blank" style="background-color: #10b981; color: #ffffff; padding: 12px 28px; border-radius: 10px; font-weight: 600; text-decoration: none; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15); display: inline-block;">WhatsApp Chat</a>
+    <!-- SECTION 12: FEATURE CARDS -->
+    <section class="oe_container my-5">
+        <div class="row g-3">
+            <div class="col-md-4">
+                <div class="card h-100 border">
+                    <div class="card-body">
+                        <h3 class="h5"><i class="fa fa-globe text-primary me-2"></i>Multi-company Ready</h3>
+                        <p class="mb-0 text-muted">All reports and features fully support multi-company and multi-currency Odoo setups.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 border">
+                    <div class="card-body">
+                        <h3 class="h5"><i class="fa fa-lock text-primary me-2"></i>Period Lock Protection</h3>
+                        <p class="mb-0 text-muted">Lock closed accounting periods to prevent accidental modifications after month-end close.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 border">
+                    <div class="card-body">
+                        <h3 class="h5"><i class="fa fa-file-pdf-o text-primary me-2"></i>PDF and Excel Export</h3>
+                        <p class="mb-0 text-muted">Every report can be exported to PDF or Excel for sharing, archiving, and auditing.</p>
+                    </div>
+                </div>
             </div>
         </div>
+    </section>
 
-    </div>
-</body>
-</html>
+    <!-- SECTION 13: INFO BOX -->
+    <section class="oe_container my-5">
+        <div class="alert alert-warning p-4 mb-0">
+            <div class="row align-items-start">
+                <div class="col-auto"><i class="fa fa-info-circle fa-2x"></i></div>
+                <div class="col">
+                    <h2 class="h4"><strong>Community Edition, built on Odoo's open-source foundation</strong></h2>
+                    <p class="mb-0">
+                        This module is designed for businesses running Odoo Community Edition.
+                        It does not require Odoo Enterprise and works entirely with the free, open-source version of Odoo 19.
+                        All sub-modules are included and installed as dependencies automatically upon installation.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 14: CTA FOOTER -->
+    <section class="oe_container bg-dark text-white rounded p-5 my-5 text-center">
+        <h2 class="text-white" style="font-size:31px; font-weight:800">
+            Get the full accounting toolkit for Odoo 19 Community
+        </h2>
+        <p class="lead text-white mx-auto mb-3" style="max-width:850px">
+            One install. Eight accounting features. Full community support included.
+        </p>
+        <p class="text-white mb-0">
+            <i class="fa fa-github me-2"></i>
+            <a href="https://github.com/dnaj25/odoo-addons" class="text-white">
+                <strong>github.com/dnaj25/odoo-addons</strong>
+            </a>
+        </p>
+    </section>
+
+</div>
