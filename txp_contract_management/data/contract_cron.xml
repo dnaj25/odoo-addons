@@ -1,5 +1,5 @@
 <odoo>
-    <data noupdate="1">
+    <data noupdate="0">
         <record id="ir_cron_contract_expiry_check" model="ir.cron">
             <field name="name">Contract Expiry Check &amp; Alerts</field>
             <field name="model_id" ref="model_contract_contract"/>
@@ -8,6 +8,7 @@
             <field name="interval_number">1</field>
             <field name="interval_type">days</field>
             <field name="active">True</field>
+            <field name="nextcall" eval="(datetime.utcnow().replace(hour=15, minute=40, second=0)).strftime('%Y-%m-%d %H:%M:%S')"/>
         </record>
     </data>
 </odoo>
