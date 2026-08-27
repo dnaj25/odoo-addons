@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-{   'assets': {'web.assets_backend': ['community_accounting_asset/static/src/scss/account_asset.scss']},
+{   'application': True,   'assets': {'web.assets_backend': ['community_accounting_asset/static/src/scss/account_asset.scss']},
     'author': 'dnaj25',
     'category': 'Accounting',
     'currency': 'EUR',

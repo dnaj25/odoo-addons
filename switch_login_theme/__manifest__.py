@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-{   'application': False,
+{   'application': True,
     'assets': {'web.assets_frontend': ['switch_login_theme/static/src/scss/login_theme.scss']},
     'author': 'dnaj25',
     'auto_install': False,
