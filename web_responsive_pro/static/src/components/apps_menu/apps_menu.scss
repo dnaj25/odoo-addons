@@ -85,11 +85,10 @@
     @include full-screen-dropdown();
     overflow: auto;
     background-clip: border-box;
-    padding: 1rem 0.5rem;
-    gap: 1rem;
-    background: var(--app-menu-background);
-    background-size: cover;
+    padding: 2.5rem 1.5rem;
+    gap: 1.5rem;
     border-radius: 0;
+    
     // Display apps in a grid
     align-content: flex-start;
     display: flex !important;
@@ -97,6 +96,24 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
+    
+    // Glassmorphism and iOS Blur effect
+    backdrop-filter: blur(30px) saturate(180%);
+    -webkit-backdrop-filter: blur(30px) saturate(180%);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    
+    [data-theme="milk"] & {
+        background: rgba(255, 255, 255, 0.55) !important;
+    }
+    
+    [data-theme="community"] & {
+        background: rgba(43, 20, 39, 0.7) !important;
+    }
+
+    // Smooth entry animation for app list
+    .o-app-menu-list {
+        animation: slideUpFade 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
 
     // Hide app icons when searching
     .has-results ~ .o-app-menu-list {
@@ -110,6 +127,19 @@
         }
     }
 }
+
+// Animation definition
+@keyframes slideUpFade {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 
 // Sidebar positioning
 .o_app_menu_sidebar {

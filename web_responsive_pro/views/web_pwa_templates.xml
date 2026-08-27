@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="web_pwa_layout" inherit_id="web.layout" name="Web PWA Layout">
+        <xpath expr="//head" position="inside">
+            <link rel="manifest" href="/manifest.json"/>
+            <meta name="theme-color" content="#714B67"/>
+            <meta name="apple-mobile-web-app-capable" content="yes"/>
+            <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+            <link rel="apple-touch-icon" href="/web_responsive_pro/static/description/icon.png"/>
+        </xpath>
+    </template>
+</odoo>

@@ -29,7 +29,10 @@
     'author': 'dnaj25',
     'category': 'Website',
     'currency': 'EUR',
-    'data': ['views/res_users_views.xml'],
+    'data': [
+        'views/res_users_views.xml',
+        'views/web_pwa_templates.xml',
+    ],
     'depends': ['web', 'web_tour', 'mail'],
     'development_status': 'Production/Stable',
     'excludes': ['web_enterprise'],
