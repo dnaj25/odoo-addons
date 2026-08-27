@@ -3,7 +3,7 @@
     'version': '1.0',
     'summary': 'Print PDF voucher and report for Journal Entries',
     'category': 'Accounting/Accounting',
-    'author': 'TornadoXP',
+    'author': 'dnaj25',
     'depends': ['account'],
     'data': [
         'report/journal_entry_report.xml',
