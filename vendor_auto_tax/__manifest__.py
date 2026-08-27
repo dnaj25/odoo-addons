@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-{   'application': False,
+{   'application': True,
     'author': 'dnaj25',
     'category': 'Accounting',
     'currency': 'EUR',

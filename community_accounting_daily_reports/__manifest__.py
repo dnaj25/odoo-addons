@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-{   'author': 'dnaj25',
+{   'application': True,   'author': 'dnaj25',
     'category': 'Invoicing Management',
     'company': 'Odoo Mates',
     'currency': 'EUR',

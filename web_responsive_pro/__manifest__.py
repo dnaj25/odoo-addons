@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-{   'assets': {   'web._assets_primary_variables': {   '/web_responsive_pro/static/src/legacy/scss/form_variable.scss',
+{   'application': True,   'assets': {   'web._assets_primary_variables': {   '/web_responsive_pro/static/src/legacy/scss/form_variable.scss',
                                                        '/web_responsive_pro/static/src/legacy/scss/primary_variable.scss'},
                   'web.assets_backend': [   'web_responsive_pro/static/src/lib/fuse/fuse.basic.min.js',
                                             '/web_responsive_pro/static/src/legacy/scss/web_responsive_pro.scss',

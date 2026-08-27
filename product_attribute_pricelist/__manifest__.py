@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-{   'author': 'dnaj25',
+{   'application': True,   'author': 'dnaj25',
     'auto_install': False,
     'category': 'Sales',
     'currency': 'EUR',

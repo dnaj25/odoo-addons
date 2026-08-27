@@ -1,31 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template id="login_layout" inherit_id="web.login_layout" name="Custom Switch Login Layout">
+    <template id="login_layout" inherit_id="web.login_layout" name="Branded Login Theme Layout">
         <xpath expr="//div[hasclass('container')]" position="replace">
             <div class="switch-login-wrapper">
                 <!-- Left side background visual panel -->
                 <div class="switch-login-hero">
                     <div class="switch-hero-content">
                         <h2>Welcome to</h2>
-                        <h1>Switch Fintech</h1>
-                        <p>The next generation financial technology platform.</p>
+                        <h1 t-esc="request.env.company.name or 'Your Company'"/>
+                        <p>Sign in to access your business platform.</p>
                     </div>
                 </div>
-                
+
                 <!-- Right side login form panel -->
                 <div class="switch-login-form-container">
                     <div class="switch-login-card">
                         <div class="text-center mb-4">
-                            <img src="/switch_login_theme/static/src/img/logo.png" alt="Switch Fintech" class="switch-login-logo"/>
+                            <img t-attf-src="/web/image/res.company/#{request.env.company.id}/logo"
+                                 alt="Company Logo" class="switch-login-logo"/>
                         </div>
-                        
+
                         <t t-out="0"/>
-                        
+
                         <div class="switch-login-footer mt-5 text-center" t-if="not disable_footer">
                             <t t-if="not disable_database_manager">
                                 <a class="manage-db-link" href="/web/database/manager">Manage Databases</a>
                             </t>
-                            <span class="powered-by">Powered by <strong>Switch Fintech</strong></span>
+                            <span class="powered-by">Powered by <strong>Odoo 19</strong></span>
                         </div>
                     </div>
                 </div>
