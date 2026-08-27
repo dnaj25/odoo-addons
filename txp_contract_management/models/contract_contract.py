@@ -137,14 +137,17 @@ class ContractContract(models.Model):
                 })
 
     def _send_discuss_notification(self, body):
-        """إرسال إشعار من OdooBot يظهر فوراً في شاشة Notifications"""
+        """إرسال إشعار من OdooBot يظهر فوراً في شاشة Notifications العلوية"""
         odoobot_partner = self.env.ref('base.partner_root', raise_if_not_found=False)
         for rec in self:
             if rec.responsible_id and rec.responsible_id.partner_id:
-                rec.message_post(
-                    body=body,
-                    message_type='comment',
-                    subtype_xmlid='mail.mt_comment',
-                    author_id=odoobot_partner.id if odoobot_partner else False,
-                    partner_ids=[rec.responsible_id.partner_id.id],
-                )
+                # الحصول على أو إنشاء قناة محادثة مباشرة بين OdooBot والمسؤول عن العقد
+                channel_info = self.env['discuss.channel'].channel_get([rec.responsible_id.partner_id.id])
+                if channel_info and 'id' in channel_info:
+                    channel = self.env['discuss.channel'].browse(channel_info['id'])
+                    channel.message_post(
+                        body=body,
+                        message_type='comment',
+                        subtype_xmlid='mail.mt_comment',
+                        author_id=odoobot_partner.id if odoobot_partner else False,
+                    )
