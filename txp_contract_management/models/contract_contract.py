@@ -142,9 +142,8 @@ class ContractContract(models.Model):
         for rec in self:
             if rec.responsible_id and rec.responsible_id.partner_id:
                 # الحصول على أو إنشاء قناة محادثة مباشرة بين OdooBot والمسؤول عن العقد
-                channel_info = self.env['discuss.channel'].channel_get([rec.responsible_id.partner_id.id])
-                if channel_info and 'id' in channel_info:
-                    channel = self.env['discuss.channel'].browse(channel_info['id'])
+                channel = self.env['discuss.channel']._get_or_create_chat([rec.responsible_id.partner_id.id])
+                if channel:
                     channel.message_post(
                         body=body,
                         message_type='comment',
