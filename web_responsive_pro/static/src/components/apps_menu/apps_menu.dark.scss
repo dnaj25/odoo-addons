@@ -1,66 +1,59 @@
-/* Copyright 2023 Taras Shabaranskyi
- * License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). */
+/* Premium Dark Mode Styling for Apps Menu */
 
-:root {
-    .o_grid_apps_menu[data-theme="milk"],
-    .o_grid_apps_menu[data-theme="community"] {
-        --app-menu-background: linear-gradient(
-            to bottom,
-            #{$o-gray-300},
-            #{desaturate(darken($o-gray-300, 5%), 15)}
-        );
-        --app-menu-text-color: #{$o-gray-900};
-        --app-menu-text-shadow: 1px 1px 1px #{rgba(black, 0.4)};
-        --app-menu-hover-background: #{rgba(white, 0.08)};
-        --apps-menu-scrollbar-background: #{$o-gray-400};
-        --apps-menu-empty-search-color: #{$o-gray-900};
+.app-menu-container {
+    background: rgba(15, 23, 42, 0.88) !important;
+    backdrop-filter: blur(25px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(25px) saturate(180%) !important;
+
+    .o-app-menu-item__name {
+        color: #f8fafc !important;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
     }
 }
 
 .o_grid_apps_menu {
     .o-app-menu-item {
-        &__icon {
-            background-color: $o-gray-400;
+        &__name {
+            color: #f8fafc !important;
         }
 
         &__active {
-            background-color: $o-gray-900;
-            border-radius: 50%;
-            color: $o-gray-100;
-            text-shadow: none;
+            background-color: #3b82f6 !important;
+            color: #ffffff !important;
         }
     }
 
     .search-container {
-        // Search box
         .search-input {
-            background-color: $o-gray-300;
+            background-color: rgba(30, 41, 59, 0.9) !important;
+            border: 1px solid rgba(255, 255, 255, 0.15) !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
 
             .search-icon {
-                color: $o-gray-900;
+                color: #cbd5e1 !important;
             }
 
             .form-control {
-                color: $o-gray-900;
+                color: #ffffff !important;
 
                 &::placeholder {
-                    color: $o-gray-700;
+                    color: #94a3b8 !important;
+                    opacity: 1 !important;
                 }
             }
         }
 
-        // Search results (canonical searchbar)
         .search-item {
-            background-color: $o-gray-300;
+            background-color: #1e293b !important;
+            color: #f8fafc !important;
 
             &__name {
-                color: $o-gray-900;
-                text-shadow: none;
+                color: #f8fafc !important;
             }
 
             &.highlight,
             &:hover {
-                background-color: $o-gray-400;
+                background-color: #334155 !important;
             }
         }
     }

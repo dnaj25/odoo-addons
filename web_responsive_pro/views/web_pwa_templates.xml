@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template id="web_pwa_layout" inherit_id="web.layout" name="Web PWA Layout">
+    <template id="web_pwa_layout" inherit_id="web.layout" name="Web PWA &amp; Custom Dark Theme Layout">
         <xpath expr="//head" position="inside">
             <link rel="manifest" href="/manifest.json"/>
-            <meta name="theme-color" content="#714B67"/>
+            <meta name="theme-color" content="#1e1e2d"/>
             <meta name="apple-mobile-web-app-capable" content="yes"/>
             <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
             <link rel="apple-touch-icon" href="/web_responsive_pro/static/description/icon.png"/>
+            <script type="text/javascript">
+                (function() {
+                    var cookies = document.cookie.split(';');
+                    for (var i = 0; i &lt; cookies.length; i++) {
+                        var c = cookies[i].trim();
+                        if (c.indexOf('color_scheme=dark') === 0) {
+                            document.documentElement.setAttribute('data-bs-theme', 'dark');
+                            document.documentElement.setAttribute('data-color-scheme', 'dark');
+                            document.addEventListener('DOMContentLoaded', function() {
+                                document.body.classList.add('o_dark_theme');
+                            });
+                            break;
+                        }
+                    }
+                })();
+            </script>
         </xpath>
     </template>
 </odoo>

@@ -225,3 +225,522 @@ body.o_is_superuser .o_menu_systray {
     border-image: none !important;
     border-image-width: 0 !important;
 }
+
+// Theme Toggle styles
+.o_theme_toggle {
+    width: 44px;
+    height: 100%;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+        background-color: rgba(120, 120, 120, 0.15);
+        
+        .theme-toggle-sun {
+            transform: scale(1.15) rotate(20deg);
+        }
+        .theme-toggle-moon {
+            transform: scale(1.15) rotate(-15deg);
+        }
+    }
+
+    .theme-toggle-sun,
+    .theme-toggle-moon {
+        display: inline-block;
+        transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.3s ease;
+    }
+}
+
+
+
+// Theme Toggle Component Base Styling
+.o_theme_toggle {
+    width: 44px;
+    height: 100%;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.15);
+    }
+}
+
+/* ==========================================================================
+   EXACT REFERENCE DARK THEME FOR ODOO 19 DISCUSS & ALL MODULES
+   ========================================================================== */
+
+[data-bs-theme="dark"],
+[data-color-scheme="dark"],
+body.o_dark_theme {
+    color-scheme: dark !important;
+    background-color: #1e1e2d !important;
+    color: #ffffff !important;
+
+    // 1. Top Main Navbar & Sub-menu Sections
+    .o_main_navbar {
+        background-color: #1e1e2d !important;
+        border-bottom: 1px solid #2b2b40 !important;
+        color: #ffffff !important;
+
+        .o_menu_brand,
+        .o_nav_entry,
+        .o_menu_sections,
+        .o_menu_sections > li,
+        .o_menu_sections .nav-link,
+        .o_menu_sections > a,
+        .o_menu_sections .dropdown-toggle {
+            background-color: transparent !important;
+            color: #ffffff !important;
+        }
+
+        .o_menu_sections {
+            background-color: transparent !important;
+
+            > li, > a, .nav-link, .dropdown-toggle {
+                background-color: transparent !important;
+                color: #ffffff !important;
+
+                &:hover, &:focus, &.active, &.show {
+                    background-color: #2b2b40 !important;
+                    color: #ffffff !important;
+                }
+            }
+
+            .dropdown-menu {
+                background-color: #1e1e2d !important;
+                border-color: #2b2b40 !important;
+
+                .dropdown-item {
+                    color: #ffffff !important;
+
+                    &:hover, &:focus {
+                        background-color: #2b2b40 !important;
+                        color: #ffffff !important;
+                    }
+                }
+            }
+        }
+
+        .o_menu_systray {
+            background-color: transparent !important;
+
+            .btn, a, i, span {
+                color: #ffffff !important;
+            }
+
+            > div:hover, > button:hover, > a:hover {
+                background-color: #2b2b40 !important;
+            }
+        }
+    }
+
+    // 2. Main Web Client & Content Area
+    .o_web_client,
+    .o_action_manager,
+    .o_content {
+        background-color: #1e1e2d !important;
+        color: #ffffff !important;
+    }
+
+    // 3. Odoo 19 DISCUSS / INBOX MODULE (HYPHENATED CLASSES)
+    .o-mail-Discuss,
+    .o-mail-DiscussContent,
+    .o-mail-DiscussContent-main,
+    .o-mail-DiscussContent-core,
+    .o-mail-DiscussContent-header,
+    .o-mail-Thread,
+    .o-mail-Discuss-mobileLoading,
+    .o_mail_discuss {
+        background-color: #1e1e2d !important;
+        color: #ffffff !important;
+
+        .o-mail-Thread-empty, p, h1, h2, h3, h4, span, div {
+            color: #ffffff !important;
+        }
+    }
+
+    // Discuss Sidebar (.o-mail-DiscussSidebar)
+    .o-mail-DiscussSidebar,
+    .o-mail-DiscussSearch,
+    .o-mail-DiscussSidebar-item,
+    .o_mail_discuss_sidebar {
+        background-color: #151521 !important;
+        border-right: 1px solid #2b2b40 !important;
+        border-left: 1px solid #2b2b40 !important;
+        color: #ffffff !important;
+
+        .o-mail-DiscussSidebarCategory-title,
+        .o-mail-DiscussSidebarChannel-itemName,
+        .o-mail-DiscussSidebarChannel-floatingName,
+        span, div, button, a, i, label {
+            color: #ffffff !important;
+        }
+
+        .o-mail-DiscussSidebarCategory-title {
+            color: #a1a5b7 !important;
+            font-weight: 600;
+        }
+
+        .o-mail-DiscussSidebarChannel {
+            color: #ffffff !important;
+
+            &.active, &.o_active, &:hover {
+                background-color: #2b2b40 !important;
+                color: #ffffff !important;
+            }
+        }
+
+        .o-mail-DiscussSearch-inputContainer, input {
+            background-color: #1e1e2d !important;
+            color: #ffffff !important;
+            border-color: #2b2b40 !important;
+            &::placeholder { color: #a1a5b7 !important; }
+        }
+    }
+
+    // Discuss Header Buttons (e.g. "Start Meeting" / "بدء اجتماع")
+    .o-mail-DiscussContent-header {
+        background-color: #1e1e2d !important;
+        border-bottom: 1px solid #2b2b40 !important;
+        color: #ffffff !important;
+
+        .btn-primary, button {
+            background-color: #7239ea !important;
+            border-color: #7239ea !important;
+            color: #ffffff !important;
+        }
+    }
+
+    // 4. Control Panel & Search Bar
+    .o_control_panel {
+        background-color: #1e1e2d !important;
+        border-bottom: 1px solid #2b2b40 !important;
+        color: #ffffff !important;
+
+        .breadcrumb, .breadcrumb-item, .o_breadcrumb {
+            color: #a1a5b7 !important;
+            a, span, .active { color: #ffffff !important; }
+        }
+
+        .o_searchview {
+            background-color: #151521 !important;
+            border: 1px solid #2b2b40 !important;
+            color: #ffffff !important;
+
+            input, .o_searchview_input {
+                background-color: transparent !important;
+                color: #ffffff !important;
+                &::placeholder { color: #a1a5b7 !important; }
+            }
+
+            .o_searchview_icon, .o_searchview_facet {
+                color: #a1a5b7 !important;
+                background-color: #2b2b40 !important;
+            }
+        }
+
+        .o_cp_switch_buttons .btn {
+            background-color: #151521 !important;
+            border-color: #2b2b40 !important;
+            color: #a1a5b7 !important;
+
+            &.active, &:hover {
+                background-color: #7239ea !important;
+                color: #ffffff !important;
+            }
+        }
+    }
+
+    // 5. Buttons (Primary = Vibrant Purple #7239ea, Secondary = #2b2b40)
+    .btn-primary, .btn-outline-primary {
+        background-color: #7239ea !important;
+        border-color: #7239ea !important;
+        color: #ffffff !important;
+
+        &:hover, &:focus {
+            background-color: #582bb5 !important;
+            border-color: #582bb5 !important;
+        }
+    }
+
+    .btn-secondary, .btn-light, .btn-outline-secondary {
+        background-color: #2b2b40 !important;
+        border-color: #363654 !important;
+        color: #ffffff !important;
+
+        &:hover, &:focus {
+            background-color: #363654 !important;
+            color: #ffffff !important;
+        }
+    }
+
+    // 6. List Views & Data Tables
+    .o_list_view, .o_list_renderer {
+        background-color: #1e1e2d !important;
+
+        .o_list_table, .table {
+            --bs-table-bg: #1e1e2d !important;
+            --bs-table-color: #ffffff !important;
+            --bs-table-striped-bg: #1e1e2d !important;
+            --bs-table-hover-bg: #2b2b40 !important;
+            background-color: #1e1e2d !important;
+            color: #ffffff !important;
+            border-color: #2b2b40 !important;
+
+            thead, tbody, tr, th, td {
+                background-color: #1e1e2d !important;
+                color: #ffffff !important;
+                border-color: #2b2b40 !important;
+            }
+
+            th {
+                background-color: #151521 !important;
+                color: #a1a5b7 !important;
+                font-weight: 600;
+            }
+
+            td.o_data_cell {
+                color: #ffffff !important;
+            }
+
+            a {
+                color: #3699ff !important;
+                text-decoration: none;
+                &:hover { text-decoration: underline; }
+            }
+
+            .o_data_row:hover td {
+                background-color: #2b2b40 !important;
+            }
+        }
+    }
+
+    // 7. Form Views & Sheets
+    .o_form_view {
+        background-color: #1e1e2d !important;
+        color: #ffffff !important;
+
+        .o_form_sheet_bg {
+            background-color: #151521 !important;
+            border-bottom-color: #2b2b40 !important;
+        }
+
+        .o_form_sheet {
+            background-color: #1e1e2d !important;
+            color: #ffffff !important;
+            border: 1px solid #2b2b40 !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+        }
+
+        .o_form_label {
+            color: #a1a5b7 !important;
+        }
+
+        .o_field_widget {
+            color: #ffffff !important;
+        }
+
+        input, select, textarea, .o_input {
+            background-color: #151521 !important;
+            color: #ffffff !important;
+            border-color: #2b2b40 !important;
+
+            &:focus {
+                border-color: #7239ea !important;
+                box-shadow: 0 0 0 2px rgba(114, 57, 234, 0.25) !important;
+            }
+        }
+
+        .nav-tabs {
+            border-bottom-color: #2b2b40 !important;
+
+            .nav-link {
+                color: #a1a5b7 !important;
+                background-color: transparent !important;
+                border-color: transparent !important;
+
+                &.active {
+                    color: #7239ea !important;
+                    background-color: #1e1e2d !important;
+                    border-color: #2b2b40 #2b2b40 #1e1e2d !important;
+                }
+            }
+        }
+    }
+
+    // 8. Kanban View & Board Columns (To-do, Projects, Sales, CRM)
+    .o_kanban_view,
+    .o_kanban_renderer,
+    .o_kanban_group,
+    .o_kanban_header,
+    .o_kanban_record {
+        background-color: #1e1e2d !important;
+        color: #ffffff !important;
+
+        --Kanban-background: #1e1e2d !important;
+        --kanban-background: #1e1e2d !important;
+        --KanbanGroup-background: #151521 !important;
+        --kanban-group-background: #151521 !important;
+    }
+
+    .o_kanban_renderer {
+        background-color: #1e1e2d !important;
+
+        .o_kanban_group {
+            background-color: #151521 !important;
+            border-radius: 8px;
+            border: 1px solid #2b2b40 !important;
+
+            .o_kanban_header {
+                background-color: transparent !important;
+                color: #ffffff !important;
+                border-bottom: 1px solid #2b2b40 !important;
+
+                .o_kanban_header_title, span, div, h1, h2, h3, h4, i {
+                    color: #ffffff !important;
+                }
+
+                .o_kanban_quick_add {
+                    color: #a1a5b7 !important;
+                    &:hover { color: #ffffff !important; }
+                }
+            }
+
+            .o_kanban_record {
+                background-color: #1e1e2d !important;
+                color: #ffffff !important;
+                border: 1px solid #2b2b40 !important;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
+                border-radius: 6px;
+
+                .o_kanban_record_title, span, div, p, a, i {
+                    color: #ffffff !important;
+                }
+
+                .text-muted {
+                    color: #a1a5b7 !important;
+                }
+            }
+        }
+    }
+
+    // 9. Modals & Dropdowns
+    .modal-content, .dropdown-menu, .popover {
+        background-color: #1e1e2d !important;
+        color: #ffffff !important;
+        border-color: #2b2b40 !important;
+
+        .modal-header, .modal-footer {
+            border-color: #2b2b40 !important;
+        }
+
+        .dropdown-item {
+            color: #ffffff !important;
+            &:hover, &:focus {
+                background-color: #2b2b40 !important;
+                color: #ffffff !important;
+            }
+        }
+    }
+
+    // 10. App Drawer Glassmorphism
+    .app-menu-container {
+        background: rgba(21, 21, 33, 0.95) !important;
+        backdrop-filter: blur(25px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(25px) saturate(180%) !important;
+    }
+
+    .o_grid_apps_menu {
+        background: #1e1e2d !important;
+        background-image: none !important;
+
+        .o-app-menu-item__name {
+            color: #ffffff !important;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+        }
+
+        .search-container .search-input {
+            background-color: rgba(43, 43, 64, 0.95) !important;
+            border: 1px solid rgba(255, 255, 255, 0.15) !important;
+            .search-icon { color: #a1a5b7 !important; }
+            .form-control {
+                color: #ffffff !important;
+                &::placeholder { color: #a1a5b7 !important; }
+            }
+        }
+    }
+
+    // 11. Dashboards, Spreadsheets, Graphs & KPI Cards
+    .o_spreadsheet_dashboard_action,
+    .o_spreadsheet_container,
+    .o_dashboard,
+    .o_dashboards,
+    .o-dashboard-layout,
+    .o-dashboard-column,
+    .o_graph_view,
+    .o_pivot_view,
+    .o_board_view,
+    .o_view_controller {
+        background-color: #1e1e2d !important;
+        color: #ffffff !important;
+    }
+
+    // Dashboard Search Panel / Sidebar ("Invoicing" button/tab)
+    .o_spreadsheet_dashboard_search_panel,
+    .o_search_panel {
+        background-color: #151521 !important;
+        border-right: 1px solid #2b2b40 !important;
+        border-left: 1px solid #2b2b40 !important;
+        color: #ffffff !important;
+
+        .list-group-item, .o_search_panel_category_value, button, a {
+            background-color: transparent !important;
+            color: #ffffff !important;
+
+            &.active, &:hover {
+                background-color: #2b2b40 !important;
+                color: #7239ea !important;
+            }
+        }
+    }
+
+    // KPI Cards ("Invoiced 0", "Average Invoice 0", "DSO 0 days")
+    .o-chart-dashboard-item,
+    .kpi_cell,
+    .o_kpi_card,
+    .o_kpi_box,
+    .o_dashboard_card,
+    .kpi_border_col {
+        background-color: #151521 !important;
+        color: #ffffff !important;
+        border: 1px solid #2b2b40 !important;
+        border-radius: 8px !important;
+
+        .kpi_header, .kpi_value, span, div, h1, h2, h3, h4, p {
+            color: #ffffff !important;
+        }
+
+        .text-muted {
+            color: #a1a5b7 !important;
+        }
+    }
+
+    // Charts & Graphs Canvas Area
+    .o_graph_canvas_container,
+    .chart-container,
+    .o-chart-container,
+    .s_chart {
+        background-color: #1e1e2d !important;
+        color: #ffffff !important;
+    }
+}
+
+
+
+
+
+
+
+
+
+
