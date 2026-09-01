@@ -279,19 +279,19 @@ html[data-color-scheme="dark"] {
     color: #ffffff !important;
 
     // 0. Universal Bootstrap 5 & Odoo Root Variables
-    --bs-body-bg: #151521 !important;
-    --bs-body-color: #ffffff !important;
-    --bs-tertiary-bg: #1e1e2d !important;
-    --bs-secondary-bg: #1e1e2d !important;
-    --bs-light-rgb: 30, 30, 45 !important;
-    --bs-white-rgb: 30, 30, 45 !important;
-    --bs-dark-rgb: 255, 255, 255 !important;
-    --bs-border-color: #2b2b40 !important;
-    --bs-card-bg: #1e1e2d !important;
-    --bs-modal-bg: #1e1e2d !important;
-    --bs-dropdown-bg: #1e1e2d !important;
-    --bs-table-bg: #1e1e2d !important;
-    --bs-table-color: #ffffff !important;
+    --bs-body-bg: #151521;
+    --bs-body-color: #ffffff;
+    --bs-tertiary-bg: #1e1e2d;
+    --bs-secondary-bg: #1e1e2d;
+    --bs-light-rgb: 30, 30, 45;
+    --bs-white-rgb: 30, 30, 45;
+    --bs-dark-rgb: 255, 255, 255;
+    --bs-border-color: #2b2b40;
+    --bs-card-bg: #1e1e2d;
+    --bs-modal-bg: #1e1e2d;
+    --bs-dropdown-bg: #1e1e2d;
+    --bs-table-bg: #1e1e2d;
+    --bs-table-color: #ffffff;
 
     // Universal Text Contrast Overrides
     .text-dark,
