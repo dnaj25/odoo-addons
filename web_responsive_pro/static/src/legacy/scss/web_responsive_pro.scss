@@ -271,10 +271,92 @@ body.o_is_superuser .o_menu_systray {
 
 [data-bs-theme="dark"],
 [data-color-scheme="dark"],
-body.o_dark_theme {
+body.o_dark_theme,
+html[data-bs-theme="dark"],
+html[data-color-scheme="dark"],
+.o_dark_theme {
     color-scheme: dark !important;
     background-color: #1e1e2d !important;
     color: #ffffff !important;
+
+    // 0. Universal Bootstrap 5 & Odoo Root Variables
+    --bs-body-bg: #151521 !important;
+    --bs-body-color: #ffffff !important;
+    --bs-tertiary-bg: #1e1e2d !important;
+    --bs-secondary-bg: #1e1e2d !important;
+    --bs-light-rgb: 30, 30, 45 !important;
+    --bs-white-rgb: 30, 30, 45 !important;
+    --bs-dark-rgb: 255, 255, 255 !important;
+    --bs-border-color: #2b2b40 !important;
+    --bs-card-bg: #1e1e2d !important;
+    --bs-modal-bg: #1e1e2d !important;
+    --bs-dropdown-bg: #1e1e2d !important;
+    --bs-table-bg: #1e1e2d !important;
+    --bs-table-color: #ffffff !important;
+
+    // Universal Background & Text Utility Classes across ALL modules
+    .bg-white,
+    .bg-light,
+    .bg-view,
+    .bg-body,
+    .bg-100,
+    .bg-200,
+    .bg-300,
+    .bg-400 {
+        background-color: #1e1e2d !important;
+        color: #ffffff !important;
+    }
+
+    .text-dark,
+    .text-body,
+    .text-black,
+    .text-900,
+    .text-800,
+    .text-700,
+    .text-600 {
+        color: #ffffff !important;
+    }
+
+    .text-muted,
+    .text-500 {
+        color: #a1a5b7 !important;
+    }
+
+    // Settings Page (General Settings, Users, Languages, Companies, All Apps Settings)
+    .o_base_settings,
+    .o_setting_container,
+    .o_settings_container,
+    .app_settings_block,
+    .o_setting_box,
+    .o_setting_right_pane,
+    .o_setting_left_pane,
+    .o_settings_page {
+        background-color: #1e1e2d !important;
+        color: #ffffff !important;
+
+        .o_form_sheet_bg,
+        .o_form_sheet {
+            background-color: #1e1e2d !important;
+            color: #ffffff !important;
+        }
+
+        .o_setting_search,
+        .o_settings_header {
+            background-color: #151521 !important;
+            color: #ffffff !important;
+            border-color: #2b2b40 !important;
+        }
+
+        .text-muted,
+        .o_setting_comment,
+        .text-500 {
+            color: #a1a5b7 !important;
+        }
+
+        a {
+            color: #3699ff !important;
+        }
+    }
 
     // 1. Top Main Navbar & Sub-menu Sections
     .o_main_navbar {
