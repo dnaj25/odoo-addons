@@ -359,10 +359,30 @@ html[data-color-scheme="dark"] {
 
         .o_setting_box {
             background-color: #1e1e2d !important;
-            border-color: #2b2b40 !important;
+            border: 1px solid #2b2b40 !important;
             border-radius: 8px !important;
             padding: 16px !important;
             margin-bottom: 12px !important;
+
+            .o_setting_right_pane,
+            .o_setting_left_pane,
+            > div,
+            div {
+                background: transparent !important;
+                background-color: transparent !important;
+                border: none !important;
+                box-shadow: none !important;
+            }
+
+            input:not([type="checkbox"]):not([type="radio"]),
+            select,
+            textarea,
+            .o_input {
+                background-color: #151521 !important;
+                color: #ffffff !important;
+                border: 1px solid #2b2b40 !important;
+                border-radius: 6px !important;
+            }
         }
 
         .o_form_sheet_bg,
