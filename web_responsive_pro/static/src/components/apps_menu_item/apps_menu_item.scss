@@ -64,19 +64,24 @@
         position: absolute !important;
         bottom: 2px !important;
         right: 2px !important;
-        width: 20px !important;
-        height: 20px !important;
+        width: 18px !important;
+        height: 18px !important;
         border-radius: 50% !important;
         background: linear-gradient(135deg, #7239ea, #5a27c6) !important;
         color: #ffffff !important;
         display: inline-flex !important;
         align-items: center !important;
         justify-content: center !important;
-        font-size: 11px !important;
-        box-shadow: 0 2px 8px rgba(114, 57, 234, 0.5), 0 0 0 2px rgba(255, 255, 255, 0.8) !important;
+        font-size: 10px !important;
+        box-shadow: 0 2px 6px rgba(114, 57, 234, 0.6), 0 0 0 2px rgba(15, 23, 42, 0.9) !important;
         border: none !important;
         line-height: 1 !important;
         z-index: 2 !important;
+
+        &::before {
+            display: block !important;
+            line-height: 1 !important;
+        }
     }
 
     &:focus,
