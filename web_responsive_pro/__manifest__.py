@@ -41,7 +41,7 @@
     'installable': True,
     'license': 'LGPL-3',
     'maintainers': ['Dana Alajmi'],
-    'name': 'Web Responsive Pro - Mobile Client & Dark Theme',
+    'name': 'Web Responsive Pro',
     'price': 39.0,
     'sequence': 1,
     'summary': 'Responsive web client, PWA & Glassmorphism Dark Theme for Odoo 19',
