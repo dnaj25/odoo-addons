@@ -37,8 +37,9 @@
         }
 
         &__active {
-            background-color: #3b82f6 !important;
+            background: linear-gradient(135deg, #7239ea, #5a27c6) !important;
             color: #ffffff !important;
+            box-shadow: 0 2px 8px rgba(114, 57, 234, 0.6), 0 0 0 2px rgba(15, 23, 42, 0.9) !important;
         }
 
         &:hover, &:focus {
