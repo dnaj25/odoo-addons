@@ -145,3 +145,98 @@
 .o_app_menu_sidebar {
     transform: translateX(-100%);
 }
+
+/* Premium Dark Mode Styling for Apps Menu */
+[data-bs-theme="dark"],
+[data-color-scheme="dark"],
+body.o_dark_theme,
+html[data-bs-theme="dark"],
+html[data-color-scheme="dark"],
+.o_dark_theme {
+    .app-menu-container {
+        background: rgba(15, 23, 42, 0.88) !important;
+        backdrop-filter: blur(25px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(25px) saturate(180%) !important;
+
+        .o-app-menu-item__name {
+            color: #f8fafc !important;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+        }
+
+        .o-app-menu-item__icon {
+            background-color: rgba(30, 41, 59, 0.85) !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35) !important;
+        }
+
+        .o-app-menu-item:hover .o-app-menu-item__icon,
+        .o-app-menu-item:focus .o-app-menu-item__icon {
+            background-color: rgba(51, 65, 85, 0.95) !important;
+            border-color: rgba(255, 255, 255, 0.25) !important;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5) !important;
+        }
+    }
+
+    .o_grid_apps_menu {
+        .o-app-menu-item {
+            &__icon {
+                background-color: rgba(30, 41, 59, 0.85) !important;
+                border: 1px solid rgba(255, 255, 255, 0.12) !important;
+                box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35) !important;
+            }
+
+            &__name {
+                color: #f8fafc !important;
+            }
+
+            &__active {
+                background: linear-gradient(135deg, #7239ea, #5a27c6) !important;
+                color: #ffffff !important;
+                box-shadow: 0 2px 8px rgba(114, 57, 234, 0.6), 0 0 0 2px rgba(15, 23, 42, 0.9) !important;
+            }
+
+            &:hover, &:focus {
+                .o-app-menu-item__icon {
+                    background-color: rgba(51, 65, 85, 0.95) !important;
+                    border-color: rgba(255, 255, 255, 0.25) !important;
+                    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5) !important;
+                }
+            }
+        }
+
+        .search-container {
+            .search-input {
+                background-color: rgba(30, 41, 59, 0.9) !important;
+                border: 1px solid rgba(255, 255, 255, 0.15) !important;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+
+                .search-icon {
+                    color: #cbd5e1 !important;
+                }
+
+                .form-control {
+                    color: #ffffff !important;
+
+                    &::placeholder {
+                        color: #94a3b8 !important;
+                        opacity: 1 !important;
+                    }
+                }
+            }
+
+            .search-item {
+                background-color: #1e293b !important;
+                color: #f8fafc !important;
+
+                &__name {
+                    color: #f8fafc !important;
+                }
+
+                &.highlight,
+                &:hover {
+                    background-color: #334155 !important;
+                }
+            }
+        }
+    }
+}

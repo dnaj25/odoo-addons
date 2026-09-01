@@ -23,7 +23,6 @@
                                             '/web_responsive_pro/static/src/components/command_palette/*',
                                             '/web_responsive_pro/static/src/views/form/*'],
                   'web.assets_clickbot': ['/web_responsive_pro/static/src/clickbot/clickbot.esm.js'],
-                  'web.assets_web_dark': ['web_responsive_pro/static/src/**/*.dark.scss'],
                   'web.qunit_suite_tests': [   '/web_responsive_pro/static/tests/apps_menu_tests.esm.js',
                                                '/web_responsive_pro/static/tests/apps_menu_search_tests.esm.js']},
     'author': 'Dana Alajmi',
