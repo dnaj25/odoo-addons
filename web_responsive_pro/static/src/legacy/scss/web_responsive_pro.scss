@@ -318,93 +318,13 @@ html[data-color-scheme="dark"] {
     .o_setting_right_pane,
     .o_setting_left_pane,
     .o_settings_page {
-        background-color: #151521 !important;
+        background-color: #1e1e2d !important;
         color: #ffffff !important;
-
-        .settings,
-        .settings_tab,
-        .o_settings_sidebar,
-        .app_settings_menu {
-            background-color: #151521 !important;
-            border-right: 1px solid #2b2b40 !important;
-
-            .tab,
-            .app_name,
-            .o_settings_tab {
-                background-color: transparent !important;
-                color: #a1a5b7 !important;
-
-                &:hover {
-                    background-color: rgba(255, 255, 255, 0.05) !important;
-                    color: #ffffff !important;
-                }
-
-                &.selected,
-                &.active,
-                &.tab_selected {
-                    background-color: rgba(114, 57, 234, 0.18) !important;
-                    color: #ffffff !important;
-                    border-left: 3px solid #7239ea !important;
-                    font-weight: 600 !important;
-                }
-            }
-        }
-
-        h2, h3, .h2, .h3, .app_settings_block > h2, .o_horizontal_separator {
-            background-color: transparent !important;
-            color: #ffffff !important;
-            border-bottom: 1px solid #2b2b40 !important;
-            padding: 12px 4px 8px 4px !important;
-            margin-top: 16px !important;
-            margin-bottom: 12px !important;
-        }
-
-        .app_settings_block,
-        .app_settings_block > div,
-        .o_settings_container {
-            background-color: #151521 !important;
-            border: none !important;
-            box-shadow: none !important;
-        }
-
-        .o_setting_box {
-            background-color: #1e1e2d !important;
-            border: 1px solid #2b2b40 !important;
-            border-radius: 12px !important;
-            padding: 16px 20px !important;
-            margin-bottom: 16px !important;
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25) !important;
-
-            // Remove inner nested dark rectangles and vertical border lines
-            .o_setting_right_pane,
-            .o_setting_left_pane,
-            > div,
-            div {
-                background: transparent !important;
-                background-color: transparent !important;
-                border: none !important;
-                border-left: none !important;
-                box-shadow: none !important;
-            }
-
-            input:not([type="checkbox"]):not([type="radio"]),
-            select,
-            textarea,
-            .o_input {
-                background-color: #151521 !important;
-                color: #ffffff !important;
-                border: 1px solid #2b2b40 !important;
-                border-radius: 6px !important;
-                padding: 6px 12px !important;
-            }
-        }
 
         .o_form_sheet_bg,
         .o_form_sheet {
-            background-color: #151521 !important;
+            background-color: #1e1e2d !important;
             color: #ffffff !important;
-            border: none !important;
-            box-shadow: none !important;
         }
 
         .o_setting_search,
@@ -412,12 +332,6 @@ html[data-color-scheme="dark"] {
             background-color: #151521 !important;
             color: #ffffff !important;
             border-color: #2b2b40 !important;
-
-            .search-input input {
-                background-color: #1e1e2d !important;
-                color: #ffffff !important;
-                border: 1px solid #2b2b40 !important;
-            }
         }
 
         .text-muted,
