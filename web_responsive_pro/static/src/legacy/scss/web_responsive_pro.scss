@@ -273,10 +273,9 @@ body.o_is_superuser .o_menu_systray {
 [data-color-scheme="dark"],
 body.o_dark_theme,
 html[data-bs-theme="dark"],
-html[data-color-scheme="dark"],
-.o_dark_theme {
+html[data-color-scheme="dark"] {
     color-scheme: dark !important;
-    background-color: #1e1e2d !important;
+    background-color: #151521 !important;
     color: #ffffff !important;
 
     // 0. Universal Bootstrap 5 & Odoo Root Variables
@@ -294,19 +293,7 @@ html[data-color-scheme="dark"],
     --bs-table-bg: #1e1e2d !important;
     --bs-table-color: #ffffff !important;
 
-    // Universal Background & Text Utility Classes across ALL modules
-    .bg-white,
-    .bg-light,
-    .bg-view,
-    .bg-body,
-    .bg-100,
-    .bg-200,
-    .bg-300,
-    .bg-400 {
-        background-color: #1e1e2d !important;
-        color: #ffffff !important;
-    }
-
+    // Universal Text Contrast Overrides
     .text-dark,
     .text-body,
     .text-black,
