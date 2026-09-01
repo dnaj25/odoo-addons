@@ -9,6 +9,15 @@ export class ThemeToggle extends Component {
     static props = {};
     setup() {
         this.isDark = cookie.get("color_scheme") === "dark";
+        if (this.isDark) {
+            document.documentElement.setAttribute("data-bs-theme", "dark");
+            document.documentElement.setAttribute("data-color-scheme", "dark");
+            document.body?.classList.add("o_dark_theme");
+        } else {
+            document.documentElement.setAttribute("data-bs-theme", "light");
+            document.documentElement.setAttribute("data-color-scheme", "light");
+            document.body?.classList.remove("o_dark_theme");
+        }
     }
 
     toggle() {

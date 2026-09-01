@@ -5,31 +5,6 @@
  * Copyright 2023 Taras Shabaranskyi
  * License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). */
 
-// Universal Dark Theme Auto-Initializer
-function initUniversalDarkMode() {
-    const cookies = document.cookie.split(";").map(c => c.trim());
-    const colorSchemeCookie = cookies.find(c => c.startsWith("color_scheme="));
-    const isDark = colorSchemeCookie ? colorSchemeCookie.split("=")[1] === "dark" : false;
-
-    if (isDark) {
-        document.documentElement.setAttribute("data-bs-theme", "dark");
-        document.documentElement.setAttribute("data-color-scheme", "dark");
-        if (document.body) {
-            document.body.classList.add("o_dark_theme");
-        }
-    } else {
-        document.documentElement.setAttribute("data-bs-theme", "light");
-        document.documentElement.setAttribute("data-color-scheme", "light");
-        if (document.body) {
-            document.body.classList.remove("o_dark_theme");
-        }
-    }
-}
-initUniversalDarkMode();
-if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initUniversalDarkMode);
-}
-
 // Fix for iOS Safari to set correct viewport height
 // https://github.com/Faisal-Manzer/postcss-viewport-height-correction
 export function setViewportProperty(doc) {
