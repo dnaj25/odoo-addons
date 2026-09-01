@@ -321,6 +321,48 @@ html[data-color-scheme="dark"] {
         background-color: #1e1e2d !important;
         color: #ffffff !important;
 
+        // Left Sidebar (General Settings, Gemini AI, Accounting, Project, etc.)
+        .settings,
+        .settings_tab,
+        .o_settings_sidebar,
+        .app_settings_menu {
+            background-color: #151521 !important;
+            border-right: 1px solid #2b2b40 !important;
+
+            .tab,
+            .app_name,
+            .o_settings_tab,
+            > div,
+            > a {
+                background-color: transparent !important;
+                color: #a1a5b7 !important;
+
+                &:hover {
+                    background-color: rgba(255, 255, 255, 0.05) !important;
+                    color: #ffffff !important;
+                }
+
+                &.selected,
+                &.active,
+                &.tab_selected {
+                    background-color: rgba(114, 57, 234, 0.25) !important;
+                    color: #ffffff !important;
+                    border-left: 3px solid #7239ea !important;
+                    font-weight: 600 !important;
+                }
+            }
+        }
+
+        // Section Headers ("Users", "Languages", "Companies", etc.)
+        h2, h3, .h2, .h3, .app_settings_block > h2, .app_settings_block h2, .o_horizontal_separator {
+            background-color: #151521 !important;
+            color: #ffffff !important;
+            border-bottom: 1px solid #2b2b40 !important;
+            padding: 10px 16px !important;
+            margin-top: 12px !important;
+            margin-bottom: 12px !important;
+        }
+
         .o_form_sheet_bg,
         .o_form_sheet {
             background-color: #1e1e2d !important;
@@ -332,6 +374,12 @@ html[data-color-scheme="dark"] {
             background-color: #151521 !important;
             color: #ffffff !important;
             border-color: #2b2b40 !important;
+
+            input {
+                background-color: #1e1e2d !important;
+                color: #ffffff !important;
+                border: 1px solid #2b2b40 !important;
+            }
         }
 
         .text-muted,
