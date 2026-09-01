@@ -727,15 +727,9 @@ html[data-color-scheme="dark"],
 
     // 10. App Drawer Glassmorphism & App Icons
     .app-menu-container {
-        background: rgba(21, 21, 33, 0.95) !important;
+        background: rgba(15, 23, 42, 0.88) !important;
         backdrop-filter: blur(25px) saturate(180%) !important;
         -webkit-backdrop-filter: blur(25px) saturate(180%) !important;
-    }
-
-    .o_grid_apps_menu,
-    .app-menu-container {
-        background: #1e1e2d !important;
-        background-image: none !important;
 
         .o-app-menu-item__icon {
             background-color: rgba(30, 41, 59, 0.85) !important;

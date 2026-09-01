@@ -7,12 +7,21 @@
 
 // Universal Dark Theme Auto-Initializer
 function initUniversalDarkMode() {
-    const isDark = document.cookie.includes("color_scheme=dark");
+    const cookies = document.cookie.split(";").map(c => c.trim());
+    const colorSchemeCookie = cookies.find(c => c.startsWith("color_scheme="));
+    const isDark = colorSchemeCookie ? colorSchemeCookie.split("=")[1] === "dark" : false;
+
     if (isDark) {
         document.documentElement.setAttribute("data-bs-theme", "dark");
         document.documentElement.setAttribute("data-color-scheme", "dark");
         if (document.body) {
             document.body.classList.add("o_dark_theme");
+        }
+    } else {
+        document.documentElement.setAttribute("data-bs-theme", "light");
+        document.documentElement.setAttribute("data-color-scheme", "light");
+        if (document.body) {
+            document.body.classList.remove("o_dark_theme");
         }
     }
 }
