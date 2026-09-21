@@ -30,12 +30,17 @@
             --font-en: 'Outfit', sans-serif;
         }
 
+        /* STRICT RTL / LTR DIRECTION RULES */
         html[dir="rtl"] {
+            direction: rtl;
             font-family: var(--font-ar);
+            text-align: right;
         }
 
         html[dir="ltr"] {
+            direction: ltr;
             font-family: var(--font-en);
+            text-align: left;
         }
 
         /* STRICT LANGUAGE VISIBILITY CONTROLS */
@@ -212,6 +217,14 @@
             grid-template-columns: 1.2fr 0.8fr;
             gap: 50px;
             align-items: center;
+        }
+
+        html[dir="rtl"] .hero-text {
+            text-align: right;
+        }
+
+        html[dir="ltr"] .hero-text {
+            text-align: left;
         }
 
         .hero-badge {
@@ -430,10 +443,12 @@
 
         html[dir="rtl"] .search-box input {
             padding-right: 48px;
+            text-align: right;
         }
 
         html[dir="ltr"] .search-box input {
             padding-left: 48px;
+            text-align: left;
         }
 
         .search-box input:focus {
@@ -501,6 +516,14 @@
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
+        }
+
+        html[dir="rtl"] .addon-card {
+            text-align: right;
+        }
+
+        html[dir="ltr"] .addon-card {
+            text-align: left;
         }
 
         .addon-card:hover {
@@ -664,6 +687,14 @@
             border-radius: 16px;
         }
 
+        html[dir="rtl"] .exp-item {
+            text-align: right;
+        }
+
+        html[dir="ltr"] .exp-item {
+            text-align: left;
+        }
+
         .exp-item h4 {
             color: #fff;
             font-size: 1.1rem;
@@ -698,6 +729,14 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
+        }
+
+        html[dir="rtl"] .estimator-inputs {
+            text-align: right;
+        }
+
+        html[dir="ltr"] .estimator-inputs {
+            text-align: left;
         }
 
         .form-group {
@@ -758,6 +797,14 @@
             justify-content: space-between;
         }
 
+        html[dir="rtl"] .estimate-result {
+            text-align: right;
+        }
+
+        html[dir="ltr"] .estimate-result {
+            text-align: left;
+        }
+
         .result-box {
             margin-bottom: 20px;
         }
@@ -772,50 +819,6 @@
             font-size: 1.8rem;
             font-weight: 800;
             color: var(--accent);
-        }
-
-        /* Solutions Grid */
-        .solutions-section {
-            padding: 90px 5%;
-            max-width: 1280px;
-            margin: 0 auto;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .solutions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 28px;
-        }
-
-        .solution-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            padding: 30px;
-            border-radius: 20px;
-            transition: all 0.3s;
-        }
-
-        .solution-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-5px);
-        }
-
-        .solution-icon {
-            font-size: 2.2rem;
-            color: var(--accent);
-            margin-bottom: 20px;
-        }
-
-        .solution-card h3 {
-            font-size: 1.3rem;
-            color: #fff;
-            margin-bottom: 12px;
-        }
-
-        .solution-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
         }
 
         /* Contact Section */
@@ -833,6 +836,14 @@
             padding: 40px;
         }
 
+        html[dir="rtl"] .contact-box {
+            text-align: right;
+        }
+
+        html[dir="ltr"] .contact-box {
+            text-align: left;
+        }
+
         /* Footer */
         footer {
             border-top: 1px solid var(--border-color);
@@ -845,7 +856,7 @@
         @media (max-width: 992px) {
             .hero {
                 grid-template-columns: 1fr;
-                text-align: center;
+                text-align: center !important;
             }
             .hero-subtitle {
                 margin: 0 auto 35px;
@@ -997,10 +1008,10 @@
                     </p>
 
                     <div class="skills-pills">
-                        <span class="pill">Odoo 19 Framework</span>
-                        <span class="pill">Python & OWL JS</span>
-                        <span class="pill">AI Integration</span>
-                        <span class="pill">Financial Engineering</span>
+                        <span class="pill"><span class="lang-ar">إطار عمل أودو 19</span><span class="lang-en">Odoo 19 Framework</span></span>
+                        <span class="pill"><span class="lang-ar">بايثون & OWL JS</span><span class="lang-en">Python & OWL JS</span></span>
+                        <span class="pill"><span class="lang-ar">تكامل الذكاء الاصطناعي</span><span class="lang-en">AI Integration</span></span>
+                        <span class="pill"><span class="lang-ar">الهندسة المالية</span><span class="lang-en">Financial Engineering</span></span>
                     </div>
                 </div>
             </div>
