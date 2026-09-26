@@ -116,6 +116,14 @@
             scroll-behavior: smooth;
         }
 
+        a, a:hover, a:focus, a:active, a:visited,
+        button, button:hover, button:focus, button:active,
+        input, input:focus, select, textarea {
+            text-decoration: none !important;
+            border-bottom: none !important;
+            outline: none !important;
+        }
+
         body {
             background-color: var(--bg-dark);
             color: var(--text-main);
@@ -162,7 +170,8 @@
             font-size: 1.3rem;
             font-weight: 700;
             color: #fff;
-            text-decoration: none;
+            text-decoration: none !important;
+            border-bottom: none !important;
         }
 
         .logo-icon {
@@ -186,7 +195,8 @@
 
         .nav-links a {
             color: var(--text-muted);
-            text-decoration: none;
+            text-decoration: none !important;
+            border-bottom: none !important;
             font-weight: 500;
             transition: color 0.3s;
             font-size: 0.95rem;
@@ -194,6 +204,9 @@
 
         .nav-links a:hover {
             color: var(--accent);
+            text-decoration: none !important;
+            border-bottom: none !important;
+            outline: none !important;
         }
 
         .nav-actions {
@@ -222,6 +235,9 @@
             background: rgba(0, 229, 255, 0.1);
             color: var(--accent);
             box-shadow: 0 0 12px var(--accent-glow);
+            text-decoration: none !important;
+            border-bottom: none !important;
+            outline: none !important;
         }
 
         .btn-primary {
@@ -229,7 +245,8 @@
             color: #fff;
             padding: 10px 22px;
             border-radius: 25px;
-            text-decoration: none;
+            text-decoration: none !important;
+            border-bottom: none !important;
             font-weight: 600;
             font-size: 0.95rem;
             display: inline-flex;
@@ -244,6 +261,9 @@
         .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 25px rgba(114, 57, 234, 0.6);
+            text-decoration: none !important;
+            border-bottom: none !important;
+            outline: none !important;
         }
 
         .btn-secondary {
@@ -252,7 +272,8 @@
             color: var(--text-main);
             padding: 10px 22px;
             border-radius: 25px;
-            text-decoration: none;
+            text-decoration: none !important;
+            border-bottom: none !important;
             font-weight: 600;
             font-size: 0.95rem;
             display: inline-flex;
@@ -265,6 +286,9 @@
             border-color: var(--primary);
             background: rgba(114, 57, 234, 0.1);
             color: #fff;
+            text-decoration: none !important;
+            border-bottom: none !important;
+            outline: none !important;
         }
 
         /* Hero Section - Bulletproof Flex Layout for RTL / LTR Flipping */
@@ -598,7 +622,8 @@
 
         .open-tab-btn {
             color: var(--accent);
-            text-decoration: none;
+            text-decoration: none !important;
+            border-bottom: none !important;
             font-weight: 700;
             font-size: 0.9rem;
             display: inline-flex;
@@ -610,6 +635,9 @@
         .open-tab-btn:hover {
             gap: 12px;
             text-shadow: 0 0 10px var(--accent-glow);
+            text-decoration: none !important;
+            border-bottom: none !important;
+            outline: none !important;
         }
 
         /* Expertise Section */
@@ -1931,7 +1959,6 @@
                 <span class="lang-en">Start Your Digital Transformation</span>
             </h2>
         </div>
-
         <div class="contact-box">
             <form id="contactForm">
                 <div class="form-group">
@@ -1941,7 +1968,6 @@
                     </label>
                     <input type="text" class="form-control" id="inputFullName" required placeholder="أدخل اسمك الكريم...">
                 </div>
-
                 <div class="form-group">
                     <label>
                         <span class="lang-ar">البريد الإلكتروني</span>
@@ -1949,7 +1975,6 @@
                     </label>
                     <input type="email" class="form-control" id="inputEmail" required placeholder="name@company.com">
                 </div>
-
                 <div class="form-group">
                     <label>
                         <span class="lang-ar">تفاصيل الاستشارة أو الموديول المطلوب</span>
@@ -1957,14 +1982,12 @@
                     </label>
                     <textarea class="form-control" id="inputMsg" rows="4" required placeholder="اكتب نبذة عن مشروعك أو استفسارك..."></textarea>
                 </div>
-
                 <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
                    
                     <span class="lang-ar">إرسال الرسالة</span>
                     <span class="lang-en">Send Message</span>
                 </button>
             </form>
-
             <div id="successMsg" style="display:none; text-align:center; padding: 20px;">
                 <i class="fa-solid fa-circle-check" style="font-size: 3rem; color: var(--accent); margin-bottom: 15px;"></i>
                 <h3 style="color: #fff; margin-bottom: 10px;">
@@ -1978,7 +2001,6 @@
             </div>
         </div>
     </section>
-
     <!-- FOOTER -->
     <footer>
         <p>
@@ -1986,7 +2008,6 @@
             <span class="lang-en">All Rights Reserved &copy; 2026 - Dana Alajmi | Odoo Techno-Functional Consultant</span>
         </p>
     </footer>
-
     <!-- JAVASCRIPT LOGIC -->
     <script>
         // UPDATE SELECT OPTIONS & PLACEHOLDERS FOR CURRENT LANG
@@ -1998,58 +2019,49 @@
                     opt.textContent = isAr ? opt.getAttribute('data-ar') : opt.getAttribute('data-en');
                 });
             }
-
             // Update Placeholders
             document.getElementById('addonSearchInput').placeholder = isAr ? 'ابحث باسم الموديول أو الوظيفة...' : 'Search by module title, tag, or keyword...';
             document.getElementById('inputFullName').placeholder = isAr ? 'أدخل اسمك الكريم...' : 'Enter your full name...';
             document.getElementById('inputEmail').placeholder = isAr ? 'name@company.com' : 'name@company.com';
             document.getElementById('inputMsg').placeholder = isAr ? 'اكتب نبذة عن مشروعك أو استفسارك...' : 'Briefly describe your project or inquiry...';
         }
-
         // TOGGLE LANGUAGE FUNCTION - CLEAN, FAST, & UNBREAKABLE
         function toggleLanguage() {
             const html = document.documentElement;
             const currentDir = html.getAttribute('dir');
             const isAr = currentDir !== 'rtl';
-            
             if (currentDir === 'rtl') {
                 html.setAttribute('dir', 'ltr');
                 html.setAttribute('lang', 'en');
             } else {
                 html.setAttribute('dir', 'rtl');
                 html.setAttribute('lang', 'ar');
-            }
-            
+            }   
             updateFormLanguage(isAr);
             calculateEstimate();
         }
-
         // ADDONS FILTER FUNCTION
         function setFilter(cat, btn) {
             document.querySelectorAll('.addon-filter-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             filterAddons();
         }
-
         function filterAddons() {
             const searchInput = document.getElementById('addonSearchInput');
             const searchTerm = searchInput.value.toLowerCase().trim();
             const activeFilterBtn = document.querySelector('.addon-filter-btn.active');
             const activeFilter = activeFilterBtn ? activeFilterBtn.getAttribute('data-filter') : 'all';
             const cards = document.querySelectorAll('.addon-card');
-
             cards.forEach(card => {
                 const cardCat = card.getAttribute('data-category') || '';
                 const cardKeywords = card.getAttribute('data-keywords') || '';
                 const titleText = card.querySelector('.addon-title').textContent.toLowerCase();
                 const descText = card.querySelector('.addon-desc').textContent.toLowerCase();
-
                 const matchesCat = (activeFilter === 'all') || cardCat.includes(activeFilter);
                 const matchesSearch = !searchTerm || 
                     cardKeywords.toLowerCase().includes(searchTerm) ||
                     titleText.includes(searchTerm) ||
                     descText.includes(searchTerm);
-
                 if (matchesCat && matchesSearch) {
                     card.style.display = 'flex';
                 } else {
@@ -2057,16 +2069,13 @@
                 }
             });
         }
-
         // EXPERTISE TAB SWITCHING
         function switchTab(tabId, btn) {
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-
             btn.classList.add('active');
             document.getElementById('tab-' + tabId).classList.add('active');
         }
-
         // ESTIMATOR CALCULATOR
         function calculateEstimate() {
             const isAr = document.documentElement.getAttribute('dir') === 'rtl';
@@ -2074,33 +2083,27 @@
             const checks = document.querySelectorAll('.mod-check');
             let selectedCount = 0;
             checks.forEach(c => { if(c.checked) selectedCount++; });
-
             let baseWeeks = 3;
             if (sizeVal === 'medium') baseWeeks += 2;
             if (sizeVal === 'large') baseWeeks += 4;
             if (sizeVal === 'enterprise') baseWeeks += 7;
-
             baseWeeks += Math.floor(selectedCount * 0.8);
             const minWeeks = Math.max(2, baseWeeks - 1);
             const maxWeeks = baseWeeks + 2;
-
             const unit = isAr ? 'أسابيع' : 'Weeks';
             document.getElementById('estTime').textContent = minWeeks + ' - ' + maxWeeks + ' ' + unit;
-
             if (selectedCount >= 4 || sizeVal === 'large' || sizeVal === 'enterprise') {
                 document.getElementById('estRoi').textContent = isAr ? '+55% زيادة وسرعة في أتمتة العمليات المالية' : '+55% Financial & Operational Automation Speed';
             } else {
                 document.getElementById('estRoi').textContent = isAr ? '+35% كفاءة تشغيلية وتوفير في الوقت' : '+35% Operational Efficiency & Time Savings';
             }
         }
-
         // INITIAL SETUP ON LOAD
         window.addEventListener('DOMContentLoaded', () => {
             const isAr = document.documentElement.getAttribute('dir') === 'rtl';
             updateFormLanguage(isAr);
             calculateEstimate();
         });
-
         // CONTACT FORM SUBMISSION
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
