@@ -363,85 +363,21 @@
             position: relative;
             display: flex;
             justify-content: center;
-        }
-
-        .profile-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 24px;
-            padding: 24px;
-            width: 100%;
-            max-width: 380px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .profile-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-        }
-
-        .avatar-box {
-            width: 110px;
-            height: 110px;
-            margin: 10px auto 20px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            padding: 4px;
-            box-shadow: 0 0 25px var(--primary-glow);
-        }
-
-        .avatar-inner {
-            width: 100%;
-            height: 100%;
-            background: var(--bg-dark);
-            border-radius: 50%;
-            display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 2.8rem;
-            color: var(--accent);
         }
 
-        .profile-info {
-            text-align: center;
-        }
-
-        .profile-name {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 6px;
-        }
-
-        .profile-role {
-            color: var(--accent);
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 16px;
-        }
-
-        .skills-pills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            justify-content: center;
-            margin-top: 15px;
-        }
-
-        .pill {
-            background: rgba(255, 255, 255, 0.05);
+        .hero-banner-img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 24px;
             border: 1px solid var(--border-color);
-            color: var(--text-muted);
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 0.8rem;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 30px var(--primary-glow);
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .hero-banner-img:hover {
+            transform: scale(1.02);
         }
 
         /* Section Headings */
@@ -605,19 +541,6 @@
             margin-bottom: 16px;
         }
 
-        .addon-icon {
-            width: 54px;
-            height: 54px;
-            background: rgba(114, 57, 234, 0.12);
-            border: 1px solid var(--border-highlight);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: var(--accent);
-            flex-shrink: 0;
-        }
 
         .addon-meta {
             flex-grow: 1;
@@ -997,7 +920,6 @@
             </button>
 
             <a href="#contact" class="btn-primary">
-                <i class="fa-solid fa-paper-plane"></i>
                 <span class="lang-ar">طلب استشارة</span>
                 <span class="lang-en">Request Consultation</span>
             </a>
@@ -1008,7 +930,6 @@
     <section class="hero" id="hero">
         <div class="hero-text">
             <div class="hero-badge">
-                <i class="fa-solid fa-certificate"></i>
                 <span class="lang-ar">استشاري تقني ووظيفي أودو 19 معتمد</span>
                 <span class="lang-en">Certified Odoo 19 Techno-Functional Consultant</span>
             </div>
@@ -1025,13 +946,11 @@
 
             <div class="hero-buttons">
                 <a href="#addons" class="btn-primary">
-                    <i class="fa-solid fa-store"></i>
                     <span class="lang-ar">تصفح الموديولات المخصصة (+23)</span>
                     <span class="lang-en">Browse Custom Addons (+23)</span>
                 </a>
 
                 <a href="#estimator" class="btn-secondary">
-                    <i class="fa-solid fa-calculator"></i>
                     <span class="lang-ar">احسب تكلفة مشروعك</span>
                     <span class="lang-en">Calculate Project Cost</span>
                 </a>
@@ -1063,31 +982,7 @@
         </div>
 
         <div class="hero-image-box">
-            <div class="profile-card">
-                <div class="avatar-box">
-                    <div class="avatar-inner">
-                        <i class="fa-solid fa-user-gear"></i>
-                    </div>
-                </div>
-
-                <div class="profile-info">
-                    <h3 class="profile-name">
-                        <span class="lang-ar">دانه العجمي</span>
-                        <span class="lang-en">Dana Alajmi</span>
-                    </h3>
-                    <p class="profile-role">
-                        <span class="lang-ar">استشاري ومطور أودو تقني ووظيفي</span>
-                        <span class="lang-en">Odoo Techno-Functional Consultant</span>
-                    </p>
-
-                    <div class="skills-pills">
-                        <span class="pill"><span class="lang-ar">إطار عمل أودو 19</span><span class="lang-en">Odoo 19 Framework</span></span>
-                        <span class="pill"><span class="lang-ar">بايثون ولغة الواجهات</span><span class="lang-en">Python & OWL JS</span></span>
-                        <span class="pill"><span class="lang-ar">تكامل الذكاء الاصطناعي</span><span class="lang-en">AI Integration</span></span>
-                        <span class="pill"><span class="lang-ar">الهندسة المالية</span><span class="lang-en">Financial Engineering</span></span>
-                    </div>
-                </div>
-            </div>
+            <img src="hero_banner.jpg" alt="Odoo ERP Solutions" class="hero-banner-img" />
         </div>
     </section>
 
@@ -1144,7 +1039,6 @@
             <!-- 1. vendor_auto_tax -->
             <div class="addon-card" data-category="accounting sales" data-keywords="vendor auto tax تطبيق آلي لضريبة القيمة المضافة فواتير الموردين محاسبة أودو 19 VAT automatic bill">
                 <div class="addon-header">
-                    <div class="addon-icon"><i class="fa-solid fa-receipt"></i></div>
                     <div class="addon-meta">
                         <span class="addon-version"><span class="lang-ar">أودو 19.0</span><span class="lang-en">Odoo 19.0</span></span>
                         <h3 class="addon-title">
@@ -1173,7 +1067,6 @@
             <!-- 2. odoo_gemini -->
             <div class="addon-card" data-category="ai" data-keywords="odoo gemini ai مساعد دانه الذكي ذكاء اصطناعي تحرير المحتوى تحليل الفواتير copilot smart chat">
                 <div class="addon-header">
-                    <div class="addon-icon"><i class="fa-solid fa-robot"></i></div>
                     <div class="addon-meta">
                         <span class="addon-version"><span class="lang-ar">أودو 19.0</span><span class="lang-en">Odoo 19.0</span></span>
                         <h3 class="addon-title">
@@ -1202,7 +1095,6 @@
             <!-- 3. community_enterprise_theme -->
             <div class="addon-card" data-category="ai" data-keywords="community enterprise theme ثيم واجهة المؤسسات لنسخة المجتمع الوضع الداكن تصميم فاخر dark mode frontend">
                 <div class="addon-header">
-                    <div class="addon-icon"><i class="fa-solid fa-palette"></i></div>
                     <div class="addon-meta">
                         <span class="addon-version"><span class="lang-ar">أودو 19.0</span><span class="lang-en">Odoo 19.0</span></span>
                         <h3 class="addon-title">
@@ -1231,7 +1123,6 @@
             <!-- 4. whatsapp_web_integration -->
             <div class="addon-card" data-category="hr" data-keywords="whatsapp web integration تكامل واتساب ويب المباشر إرسال الفواتير عروض الأسعار رسائل تنبيهات crm text message">
                 <div class="addon-header">
-                    <div class="addon-icon"><i class="fa-brands fa-whatsapp"></i></div>
                     <div class="addon-meta">
                         <span class="addon-version"><span class="lang-ar">أودو 19.0</span><span class="lang-en">Odoo 19.0</span></span>
                         <h3 class="addon-title">
@@ -1260,7 +1151,6 @@
             <!-- 5. employee_separation_management -->
             <div class="addon-card" data-category="hr" data-keywords="employee separation management إدارة نهاية الخدمة والاستقالات مكافأة نهاية الخدمة إبراء الذمة EOS clearance hr">
                 <div class="addon-header">
-                    <div class="addon-icon"><i class="fa-solid fa-user-slash"></i></div>
                     <div class="addon-meta">
                         <span class="addon-version"><span class="lang-ar">أودو 19.0</span><span class="lang-en">Odoo 19.0</span></span>
                         <h3 class="addon-title">
@@ -1289,7 +1179,6 @@
             <!-- 6. community_accounting_kit -->
             <div class="addon-card" data-category="accounting" data-keywords="community accounting kit حزمة المحاسبة الشاملة لنسخة المجتمع التقارير المالية ميزان المراجعة شجرة الحسابات financial reports">
                 <div class="addon-header">
-                    <div class="addon-icon"><i class="fa-solid fa-calculator"></i></div>
                     <div class="addon-meta">
                         <span class="addon-version"><span class="lang-ar">أودو 19.0</span><span class="lang-en">Odoo 19.0</span></span>
                         <h3 class="addon-title">
@@ -1318,7 +1207,6 @@
             <!-- 7. txp_contract_management -->
             <div class="addon-card" data-category="sales" data-keywords="txp contract management نظام إدارة العقود والتجديدات عقود العملاء والموردين التنبيهات الآلية الدفعات legal agreement milestone">
                 <div class="addon-header">
-                    <div class="addon-icon"><i class="fa-solid fa-file-contract"></i></div>
                     <div class="addon-meta">
                         <span class="addon-version"><span class="lang-ar">أودو 19.0</span><span class="lang-en">Odoo 19.0</span></span>
                         <h3 class="addon-title">
@@ -1347,7 +1235,6 @@
             <!-- 8. switch_ai_dashboard -->
             <div class="addon-card" data-category="ai" data-keywords="switch ai smart dashboard لوحة القيادة الذكية لتطبيقات أودو المؤشرات المالية المبيعات التحليل التنبؤي bi analytics kpi">
                 <div class="addon-header">
-                    <div class="addon-icon"><i class="fa-solid fa-chart-line"></i></div>
                     <div class="addon-meta">
                         <span class="addon-version"><span class="lang-ar">أودو 19.0</span><span class="lang-en">Odoo 19.0</span></span>
                         <h3 class="addon-title">
@@ -1376,7 +1263,6 @@
             <!-- 9. product_multi_barcode_search -->
             <div class="addon-card" data-category="sales" data-keywords="product multi barcode search البحث المتعدد بباركود المنتجات نقطة البيع POS المخزون باركود متعدد">
                 <div class="addon-header">
-                    <div class="addon-icon"><i class="fa-solid fa-barcode"></i></div>
                     <div class="addon-meta">
                         <span class="addon-version"><span class="lang-ar">أودو 19.0</span><span class="lang-en">Odoo 19.0</span></span>
                         <h3 class="addon-title">
@@ -1405,7 +1291,6 @@
             <!-- 10. bank_counterparty_report -->
             <div class="addon-card" data-category="accounting" data-keywords="bank counterparty report تقرير الأطراف المقابلة للحسابات البنكية التسويات كشف الحساب البنكي الموردين والعملاء audit reconciliation">
                 <div class="addon-header">
-                    <div class="addon-icon"><i class="fa-solid fa-building-columns"></i></div>
                     <div class="addon-meta">
                         <span class="addon-version"><span class="lang-ar">أودو 19.0</span><span class="lang-en">Odoo 19.0</span></span>
                         <h3 class="addon-title">
@@ -1434,7 +1319,6 @@
             <!-- 11. odoo_mobile_connector -->
             <div class="addon-card" data-category="hr" data-keywords="odoo mobile connector rest api الموصل البرمجي لتطبيقات الهواتف الذكية Flutter iOS Android integration">
                 <div class="addon-header">
-                    <div class="addon-icon"><i class="fa-solid fa-mobile-screen"></i></div>
                     <div class="addon-meta">
                         <span class="addon-version"><span class="lang-ar">أودو 19.0</span><span class="lang-en">Odoo 19.0</span></span>
                         <h3 class="addon-title">
@@ -1463,7 +1347,6 @@
             <!-- 12. community_accounting_asset -->
             <div class="addon-card" data-category="accounting" data-keywords="community accounting asset management نظام إدارة الأصول الإهلاك المحاسبي الأصول الثابتة جدول الإهلاك fixed assets depreciation">
                 <div class="addon-header">
-                    <div class="addon-icon"><i class="fa-solid fa-boxes-packing"></i></div>
                     <div class="addon-meta">
                         <span class="addon-version"><span class="lang-ar">أودو 19.0</span><span class="lang-en">Odoo 19.0</span></span>
                         <h3 class="addon-title">
@@ -1492,7 +1375,6 @@
             <!-- 13. community_accounting_budget -->
             <div class="addon-card" data-category="accounting" data-keywords="community accounting budget إدارة الموازنات التقديرية والميزانيات الانحراف التخطيط المالي variance forecast">
                 <div class="addon-header">
-                    <div class="addon-icon"><i class="fa-solid fa-piggy-bank"></i></div>
                     <div class="addon-meta">
                         <span class="addon-version"><span class="lang-ar">أودو 19.0</span><span class="lang-en">Odoo 19.0</span></span>
                         <h3 class="addon-title">
@@ -1521,7 +1403,6 @@
             <!-- 14. community_accounting_daily_reports -->
             <div class="addon-card" data-category="accounting" data-keywords="community accounting daily reports تقارير دفتر اليومية والصندوق اليومي حركة النقدية المقبوضات والمصروفات day book cashbook">
                 <div class="addon-header">
-                    <div class="addon-icon"><i class="fa-solid fa-book-journal-whills"></i></div>
                     <div class="addon-meta">
                         <span class="addon-version"><span class="lang-ar">أودو 19.0</span><span class="lang-en">Odoo 19.0</span></span>
                         <h3 class="addon-title">
@@ -1550,7 +1431,6 @@
             <!-- 15. community_accounting_fiscal_year -->
             <div class="addon-card" data-category="accounting" data-keywords="community accounting fiscal year إغلاق السنة المالية والفترات المحاسبية إقفال الأرباح والخسائر الرصيد الافتتاحي closing period">
                 <div class="addon-header">
-                    <div class="addon-icon"><i class="fa-solid fa-calendar-check"></i></div>
                     <div class="addon-meta">
                         <span class="addon-version"><span class="lang-ar">أودو 19.0</span><span class="lang-en">Odoo 19.0</span></span>
                         <h3 class="addon-title">
@@ -1579,7 +1459,6 @@
             <!-- 16. community_accounting_followup -->
             <div class="addon-card" data-category="accounting" data-keywords="community accounting payment followup متابعة مستحقات وديون العملاء التذكيرات الآلية ديون متأخرة collection debt reminder">
                 <div class="addon-header">
-                    <div class="addon-icon"><i class="fa-solid fa-bell"></i></div>
                     <div class="addon-meta">
                         <span class="addon-version"><span class="lang-ar">أودو 19.0</span><span class="lang-en">Odoo 19.0</span></span>
                         <h3 class="addon-title">
@@ -1608,7 +1487,6 @@
             <!-- 17. community_accounting_recurring_payments -->
             <div class="addon-card" data-category="accounting" data-keywords="community accounting recurring payments المصروفات والمدفوعات الدورية الإيجارات والاشتراكات القيود الآلية subscription automated">
                 <div class="addon-header">
-                    <div class="addon-icon"><i class="fa-solid fa-rotate"></i></div>
                     <div class="addon-meta">
                         <span class="addon-version"><span class="lang-ar">أودو 19.0</span><span class="lang-en">Odoo 19.0</span></span>
                         <h3 class="addon-title">
@@ -1637,7 +1515,6 @@
             <!-- 18. community_pdf_reports -->
             <div class="addon-card" data-category="accounting" data-keywords="community pdf reports builder مصمم تقارير PDF الرسمية ترويسة الشركة التوقيعات طباعة الفواتير styling branding">
                 <div class="addon-header">
-                    <div class="addon-icon"><i class="fa-solid fa-file-pdf"></i></div>
                     <div class="addon-meta">
                         <span class="addon-version"><span class="lang-ar">أودو 19.0</span><span class="lang-en">Odoo 19.0</span></span>
                         <h3 class="addon-title">
@@ -1666,7 +1543,6 @@
             <!-- 19. product_attribute_pricelist -->
             <div class="addon-card" data-category="sales" data-keywords="product attribute pricelist قوائم أسعار خصائص ومتغيرات المنتجات قواعد التسعير خصومات المبيعات variant pricing">
                 <div class="addon-header">
-                    <div class="addon-icon"><i class="fa-solid fa-tags"></i></div>
                     <div class="addon-meta">
                         <span class="addon-version"><span class="lang-ar">أودو 19.0</span><span class="lang-en">Odoo 19.0</span></span>
                         <h3 class="addon-title">
@@ -1695,7 +1571,6 @@
             <!-- 20. sale_product_label -->
             <div class="addon-card" data-category="sales" data-keywords="sale product label printer طباعة ملصقات وباركود المنتجات ملصقات الرفوف طباعة الأسعار sticker barcode">
                 <div class="addon-header">
-                    <div class="addon-icon"><i class="fa-solid fa-print"></i></div>
                     <div class="addon-meta">
                         <span class="addon-version"><span class="lang-ar">أودو 19.0</span><span class="lang-en">Odoo 19.0</span></span>
                         <h3 class="addon-title">
@@ -1724,7 +1599,6 @@
             <!-- 21. switch_login_theme -->
             <div class="addon-card" data-category="ai" data-keywords="switch login theme ثيم شاشة تسجيل الدخول المخصصة تخصيص الخلفية شعار الشركة brand wallpaper style">
                 <div class="addon-header">
-                    <div class="addon-icon"><i class="fa-solid fa-right-to-bracket"></i></div>
                     <div class="addon-meta">
                         <span class="addon-version"><span class="lang-ar">أودو 19.0</span><span class="lang-en">Odoo 19.0</span></span>
                         <h3 class="addon-title">
@@ -1753,7 +1627,6 @@
             <!-- 22. txp_print_journal_entries -->
             <div class="addon-card" data-category="accounting" data-keywords="txp print journal entries طباعة سندات القيد واليومية سندات الصرف والقبض توقيع المحاسب pdf voucher">
                 <div class="addon-header">
-                    <div class="addon-icon"><i class="fa-solid fa-receipt"></i></div>
                     <div class="addon-meta">
                         <span class="addon-version"><span class="lang-ar">أودو 19.0</span><span class="lang-en">Odoo 19.0</span></span>
                         <h3 class="addon-title">
@@ -1782,7 +1655,6 @@
             <!-- 23. web_responsive_pro -->
             <div class="addon-card" data-category="ai" data-keywords="web responsive pro navigation شريط التنقل المتجاوب للهواتف الذكية تجربة استخدام الشاشات الذكية owl js mobile navigation">
                 <div class="addon-header">
-                    <div class="addon-icon"><i class="fa-solid fa-desktop"></i></div>
                     <div class="addon-meta">
                         <span class="addon-version"><span class="lang-ar">أودو 19.0</span><span class="lang-en">Odoo 19.0</span></span>
                         <h3 class="addon-title">
@@ -1846,7 +1718,7 @@
         <div class="tab-content active" id="tab-func">
             <div class="expertise-grid">
                 <div class="exp-item">
-                    <h4><i class="fa-solid fa-diagram-project"></i> 
+                    <h4> 
                         <span class="lang-ar">تحليل ودراسة دورة العمل</span>
                         <span class="lang-en">Business Process Analysis</span>
                     </h4>
@@ -1857,7 +1729,7 @@
                 </div>
 
                 <div class="exp-item">
-                    <h4><i class="fa-solid fa-scale-balanced"></i> 
+                    <h4> 
                         <span class="lang-ar">إعداد الشجرة المحاسبية</span>
                         <span class="lang-en">Chart of Accounts Setup</span>
                     </h4>
@@ -1868,7 +1740,7 @@
                 </div>
 
                 <div class="exp-item">
-                    <h4><i class="fa-solid fa-graduation-cap"></i> 
+                    <h4> 
                         <span class="lang-ar">تدريب فريق العمل</span>
                         <span class="lang-en">User Training & Adoption</span>
                     </h4>
@@ -1883,7 +1755,7 @@
         <div class="tab-content" id="tab-tech">
             <div class="expertise-grid">
                 <div class="exp-item">
-                    <h4><i class="fa-solid fa-code"></i> 
+                    <h4> 
                         <span class="lang-ar">تطوير الموديولات المخصصة</span>
                         <span class="lang-en">Custom Module Architecture</span>
                     </h4>
@@ -1894,7 +1766,7 @@
                 </div>
 
                 <div class="exp-item">
-                    <h4><i class="fa-solid fa-network-wired"></i> 
+                    <h4> 
                         <span class="lang-ar">الربط الذكي للتطبيقات</span>
                         <span class="lang-en">REST API Integrations</span>
                     </h4>
@@ -1905,7 +1777,7 @@
                 </div>
 
                 <div class="exp-item">
-                    <h4><i class="fa-solid fa-wand-magic-sparkles"></i> 
+                    <h4> 
                         <span class="lang-ar">تطوير واجهات المستخدم التفاعلية</span>
                         <span class="lang-en">OWL JS Framework</span>
                     </h4>
@@ -1920,7 +1792,7 @@
         <div class="tab-content" id="tab-ai">
             <div class="expertise-grid">
                 <div class="exp-item">
-                    <h4><i class="fa-solid fa-brain"></i> 
+                    <h4> 
                         <span class="lang-ar">دمج نماذج الذكاء الاصطناعي</span>
                         <span class="lang-en">LLM & AI Engine Integration</span>
                     </h4>
@@ -1931,7 +1803,7 @@
                 </div>
 
                 <div class="exp-item">
-                    <h4><i class="fa-solid fa-microchip"></i> 
+                    <h4> 
                         <span class="lang-ar">لوحات القيادة الذكية</span>
                         <span class="lang-en">Smart AI Dashboards</span>
                     </h4>
@@ -2039,7 +1911,6 @@
                 </div>
 
                 <a href="#contact" class="btn-primary" style="text-align: center; justify-content: center;">
-                    <i class="fa-solid fa-calendar-check"></i>
                     <span class="lang-ar">احجز جلسة استشارية لبدء المشروع</span>
                     <span class="lang-en">Book Consultation Session</span>
                 </a>
@@ -2087,7 +1958,7 @@
                 </div>
 
                 <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
-                    <i class="fa-solid fa-paper-plane"></i>
+                   
                     <span class="lang-ar">إرسال الرسالة</span>
                     <span class="lang-en">Send Message</span>
                 </button>
