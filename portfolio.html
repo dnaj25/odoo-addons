@@ -1939,7 +1939,7 @@
                     <div class="result-val" id="estRoi" style="font-size: 1.3rem; color: #fff;">+55% زيادة وسرعة في أتمتة العمليات المالية</div>
                 </div>
 
-                <a href="#contact" class="btn-primary" style="text-align: center; justify-content: center;">
+                <a href="#contact" onclick="fillEstimatorIntoContact()" class="btn-primary" style="text-align: center; justify-content: center;">
                     <span class="lang-ar">احجز جلسة استشارية لبدء المشروع</span>
                     <span class="lang-en">Book Consultation Session</span>
                 </a>
@@ -1982,10 +1982,10 @@
                     </label>
                     <textarea class="form-control" id="inputMsg" rows="4" required placeholder="اكتب نبذة عن مشروعك أو استفسارك..."></textarea>
                 </div>
-                <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
-                   
-                    <span class="lang-ar">إرسال الرسالة</span>
-                    <span class="lang-en">Send Message</span>
+                <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; gap: 10px;">
+                    <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i>
+                    <span class="lang-ar">إرسال الرسالة عبر الواتساب</span>
+                    <span class="lang-en">Send Message via WhatsApp</span>
                 </button>
             </form>
             <div id="successMsg" style="display:none; text-align:center; padding: 20px;">
@@ -2098,15 +2098,64 @@
                 document.getElementById('estRoi').textContent = isAr ? '+35% كفاءة تشغيلية وتوفير في الوقت' : '+35% Operational Efficiency & Time Savings';
             }
         }
+        function fillEstimatorIntoContact() {
+            const isAr = document.documentElement.getAttribute('dir') === 'rtl';
+            const sizeSelect = document.getElementById('companySize');
+            const sizeText = sizeSelect ? sizeSelect.options[sizeSelect.selectedIndex].text : '';
+            
+            const selectedMods = [];
+            document.querySelectorAll('.mod-check:checked').forEach(c => {
+                const parentLabel = c.closest('label');
+                if (parentLabel) {
+                    const spanAr = parentLabel.querySelector('.lang-ar');
+                    const spanEn = parentLabel.querySelector('.lang-en');
+                    const text = isAr ? (spanAr ? spanAr.textContent.trim() : '') : (spanEn ? spanEn.textContent.trim() : '');
+                    if (text) selectedMods.push(text);
+                }
+            });
+            
+            const timeVal = document.getElementById('estTime') ? document.getElementById('estTime').textContent.trim() : '';
+            
+            let defaultMsg = "";
+            if (isAr) {
+                defaultMsg = `أود حجز جلسة استشارية بناءً على حاسبة المشروعات:\n- حجم المنشأة: ${sizeText}\n- الموديولات المطلوبة: ${selectedMods.join(', ')}\n- المدة التقديرية: ${timeVal}`;
+            } else {
+                defaultMsg = `I would like to book a consultation based on the project estimator:\n- Company Size: ${sizeText}\n- Required Modules: ${selectedMods.join(', ')}\n- Estimated Timeline: ${timeVal}`;
+            }
+            
+            const msgInput = document.getElementById('inputMsg');
+            if (msgInput) {
+                msgInput.value = defaultMsg;
+            }
+        }
+
         // INITIAL SETUP ON LOAD
         window.addEventListener('DOMContentLoaded', () => {
             const isAr = document.documentElement.getAttribute('dir') === 'rtl';
             updateFormLanguage(isAr);
             calculateEstimate();
         });
-        // CONTACT FORM SUBMISSION
+
+        // CONTACT FORM SUBMISSION TO WHATSAPP (+966544297579)
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            const name = document.getElementById('inputFullName').value.trim();
+            const email = document.getElementById('inputEmail').value.trim();
+            const msg = document.getElementById('inputMsg').value.trim();
+            const isAr = document.documentElement.getAttribute('dir') === 'rtl';
+
+            let text = "";
+            if (isAr) {
+                text = `مرحباً أ/ دانه العجمي،\n\nلديك طلب استشارة جديد من الموقع الشخصي:\n\n👤 *الاسم الكريم:* ${name}\n📧 *البريد الإلكتروني:* ${email}\n📝 *تفاصيل الطلب / الاستفسار:*\n${msg}`;
+            } else {
+                text = `Hello Dana Alajmi,\n\nNew consultation request from your portfolio website:\n\n👤 *Full Name:* ${name}\n📧 *Email Address:* ${email}\n📝 *Project Details / Inquiry:*\n${msg}`;
+            }
+
+            const phone = "966544297579";
+            const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+            
+            window.open(whatsappUrl, '_blank');
+
             this.style.display = 'none';
             document.getElementById('successMsg').style.display = 'block';
         });
