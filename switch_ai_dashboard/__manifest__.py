@@ -19,5 +19,5 @@
     'name': 'AI Dashboard Studio',
     'price': 79.0,
     'summary': 'Interactive Odoo Business Intelligence Dashboard powered by Google Gemini AI.',
-    'version': '19.0.1.0.0',
+    'version': '19.0.1.0.2',
     'website': 'https://github.com/dnaj25/odoo-addons'}

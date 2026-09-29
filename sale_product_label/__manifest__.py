@@ -16,5 +16,5 @@
     'name': 'Sales Product Labels',
     'price': 39.0,
     'summary': 'Print product barcode and price labels directly from Sales Orders or Quotations.',
-    'version': '19.0.1.0.0',
+    'version': '19.0.1.0.2',
     'website': 'https://github.com/dnaj25/odoo-addons'}

@@ -23,5 +23,5 @@
     'sequence': '10',
     'summary': 'Cash Book, Day Book and Bank Book Report For Odoo 19',
     'support': 'odoomates@gmail.com',
-    'version': '1.0.1',
+    'version': '1.0.2',
     'website': 'https://github.com/dnaj25/odoo-addons'}

@@ -28,5 +28,5 @@
     'price': 49.0,
     'summary': 'Manage employee resignation, end of service benefits, gratuity, leave encashment, and final '
                'settlement.',
-    'version': '19.0.1.0.0',
+    'version': '19.0.1.0.2',
     'website': 'https://github.com/dnaj25/odoo-addons'}

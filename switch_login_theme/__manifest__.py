@@ -14,5 +14,5 @@
     'name': 'Branded Login Theme',
     'price': 29.0,
     'summary': 'Premium branded login page theme for Odoo 19 Community',
-    'version': '19.0.1.0.0',
+    'version': '19.0.1.0.2',
     'website': 'https://github.com/dnaj25/odoo-addons'}

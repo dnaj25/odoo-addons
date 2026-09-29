@@ -39,5 +39,5 @@
     'sequence': '1',
     'summary': 'Accounting Reports For Odoo 19',
     'support': 'odoomates@gmail.com',
-    'version': '1.0.2',
+    'version': '1.0.3',
     'website': 'https://github.com/dnaj25/odoo-addons'}

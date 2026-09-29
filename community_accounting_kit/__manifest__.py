@@ -32,5 +32,5 @@
     'summary': 'Accounting Reports, Asset Management and Budget, Recurring Payments, Lock Dates, Fiscal Year, '
                'Accounting Dashboard, Financial Reports, Customer Follow up Management, Bank Statement Import',
     'support': 'odoomates@gmail.com',
-    'version': '1.0.3',
+    'version': '1.0.4',
     'website': 'https://github.com/dnaj25/odoo-addons'}

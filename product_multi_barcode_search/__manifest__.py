@@ -17,5 +17,5 @@
     'price': 45.0,
     'summary': 'Add unlimited extra barcodes per product variant and search by any barcode in Sales, Purchase, Stock, '
                'Invoice.',
-    'version': '1.0',
+    'version': '1.1',
     'website': 'https://github.com/dnaj25/odoo-addons'}

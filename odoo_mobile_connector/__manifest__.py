@@ -25,5 +25,5 @@
     'name': 'Odoo Mobile App Connector',
     'price': 49.0,
     'summary': 'Secure REST API connector and management tools for native Android & iOS mobile apps',
-    'version': '19.0.1.0.0',
+    'version': '19.0.1.0.2',
     'website': 'https://github.com/dnaj25/odoo-addons'}

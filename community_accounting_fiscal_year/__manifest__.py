@@ -18,5 +18,5 @@
     'sequence': '1',
     'summary': 'Odoo 19 Fiscal Year, Fiscal Year in Odoo 19, Lock Date in Odoo 19',
     'support': 'odoomates@gmail.com',
-    'version': '1.0.1',
+    'version': '1.0.2',
     'website': 'https://github.com/dnaj25/odoo-addons'}

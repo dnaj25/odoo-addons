@@ -1,6 +1,6 @@
 {
     'name': 'Contract Renewal & Expiry Management',
-    'version': '1.0',
+    'version': '1.1',
     'summary': 'Manage Employee, Vendor, Lease Contracts and Expiry Alerts',
     'category': 'Management',
     'author': 'dnaj25',

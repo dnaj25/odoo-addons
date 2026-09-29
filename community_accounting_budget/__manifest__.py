@@ -16,5 +16,5 @@
     'price': 29.0,
     'sequence': 10,
     'summary': 'Odoo 19 Budget Management',
-    'version': '1.0.1',
+    'version': '1.0.2',
     'website': 'https://github.com/dnaj25/odoo-addons'}

@@ -22,5 +22,5 @@
     'name': 'Customer Follow-Up & Reminders',
     'price': 29.0,
     'summary': 'Customer FollowUp Management',
-    'version': '1.0.2',
+    'version': '1.0.3',
     'website': 'https://github.com/dnaj25/odoo-addons'}

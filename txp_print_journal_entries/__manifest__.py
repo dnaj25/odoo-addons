@@ -1,6 +1,6 @@
 {
     'name': 'Print Journal Entries PDF Report',
-    'version': '1.0',
+    'version': '1.1',
     'summary': 'Print PDF voucher and report for Journal Entries',
     'category': 'Accounting/Accounting',
     'author': 'dnaj25',

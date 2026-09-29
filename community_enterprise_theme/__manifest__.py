@@ -27,5 +27,5 @@
     'name': 'Odoo Enterprise Theme for Community',
     'price': 49.0,
     'summary': 'Adopt the premium Odoo Enterprise style & colors on Odoo Community Edition',
-    'version': '19.0.1.0.0',
+    'version': '19.0.1.0.2',
     'website': 'https://github.com/dnaj25/odoo-addons'}

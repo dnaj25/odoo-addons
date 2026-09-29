@@ -16,5 +16,5 @@
     'name': 'Bank Counterparty Report',
     'price': 29.0,
     'summary': 'Generate reports showing the counterparty account and partner for all bank receipts and payments.',
-    'version': '1.0',
+    'version': '1.2',
     'website': 'https://github.com/dnaj25/odoo-addons'}

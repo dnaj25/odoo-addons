@@ -15,5 +15,5 @@
     'price': 29.0,
     'sequence': 11,
     'summary': 'Use recurring payments to handle periodically repeated payments',
-    'version': '1.0.0',
+    'version': '1.0.1',
     'website': 'https://github.com/dnaj25/odoo-addons'}

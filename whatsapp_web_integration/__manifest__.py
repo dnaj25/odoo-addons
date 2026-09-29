@@ -32,5 +32,5 @@
     'name': 'WhatsApp Web Integration',
     'price': 19.0,
     'summary': 'Send Sale Orders, Invoices, Purchase Orders and messages via WhatsApp Web',
-    'version': '19.0.1.0.0',
+    'version': '19.0.1.0.2',
     'website': 'https://github.com/dnaj25/odoo-addons'}

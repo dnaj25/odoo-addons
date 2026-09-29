@@ -16,5 +16,5 @@
     'name': 'Vendor Auto Tax',
     'price': 19.0,
     'summary': 'Automatically apply default purchase tax configured on vendor to Purchase Order lines.',
-    'version': '1.0',
+    'version': '1.1',
     'website': 'https://github.com/dnaj25/odoo-addons'}

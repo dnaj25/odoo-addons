@@ -43,5 +43,5 @@
     'price': 39.0,
     'sequence': 1,
     'summary': 'Responsive web client, PWA & Glassmorphism Dark Theme for Odoo 19',
-    'version': '19.0.1.1.0',
+    'version': '19.0.1.1.2',
     'website': 'https://github.com/dnaj25/odoo-addons'}

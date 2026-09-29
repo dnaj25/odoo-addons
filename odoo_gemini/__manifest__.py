@@ -18,5 +18,5 @@
     'name': 'Odoo Gemini AI Integration',
     'price': 59.0,
     'summary': 'General integration module with Google Gemini AI to assist users across all Odoo modules.',
-    'version': '1.0',
+    'version': '1.1',
     'website': 'https://github.com/dnaj25/odoo-addons'}
