@@ -878,19 +878,389 @@
             font-size: 0.9rem;
         }
 
+        /* ==========================================================================
+           COMPREHENSIVE RESPONSIVE STYLES (TABLETS & MOBILE PHONES)
+           ========================================================================== */
+
+        /* TABLETS & MEDIUM SCREENS (max-width: 992px) */
         @media (max-width: 992px) {
+            .navbar {
+                padding: 0.85rem 4%;
+            }
+            .nav-links {
+                display: none !important; /* Clean header on tablet/mobile without awkward wrapping */
+            }
+            .nav-actions {
+                gap: 10px;
+            }
+            .lang-btn {
+                padding: 7px 14px;
+                font-size: 0.85rem;
+            }
+            .nav-actions .btn-primary {
+                padding: 8px 16px;
+                font-size: 0.88rem;
+            }
             .hero {
-                grid-template-columns: 1fr;
+                flex-direction: column-reverse !important;
                 text-align: center !important;
+                padding: 45px 4% 35px !important;
+                gap: 36px !important;
+            }
+            .hero-text {
+                width: 100% !important;
+                flex: none !important;
+            }
+            .hero-image-box {
+                width: 100% !important;
+                flex: none !important;
+                justify-content: center !important;
+            }
+            .hero-title {
+                font-size: 2.2rem !important;
+                margin-bottom: 16px !important;
             }
             .hero-subtitle {
-                margin: 0 auto 35px;
+                font-size: 1.05rem !important;
+                margin: 0 auto 30px !important;
+                max-width: 680px !important;
             }
             .hero-buttons {
-                justify-content: center;
+                justify-content: center !important;
+                gap: 14px !important;
+                margin-bottom: 35px !important;
+            }
+            .hero-stats {
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 14px !important;
+                padding-top: 24px !important;
+            }
+            .hero-banner-img {
+                max-width: 440px !important;
+                width: 100% !important;
+                height: auto !important;
+            }
+            .addons-section,
+            .expertise-section,
+            .estimator-section,
+            .contact-section {
+                padding: 60px 4% !important;
+            }
+            .section-header {
+                margin-bottom: 36px !important;
+            }
+            .section-title {
+                font-size: 1.85rem !important;
+            }
+            .section-desc {
+                font-size: 0.98rem !important;
+            }
+            .addon-grid {
+                grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)) !important;
+                gap: 20px !important;
+            }
+            .tab-content {
+                padding: 28px !important;
             }
             .estimator-container {
-                grid-template-columns: 1fr;
+                flex-direction: column !important;
+                gap: 28px !important;
+                padding: 28px !important;
+            }
+            .contact-box {
+                padding: 30px !important;
+            }
+        }
+
+        /* MOBILE PHONES (max-width: 768px) */
+        @media (max-width: 768px) {
+            body {
+                font-size: 0.95rem;
+            }
+            .navbar {
+                padding: 0.75rem 3.5% !important;
+            }
+            .logo {
+                font-size: 1.1rem !important;
+                gap: 8px !important;
+            }
+            .logo img {
+                width: 36px !important;
+                height: 36px !important;
+            }
+            .nav-actions {
+                gap: 8px !important;
+            }
+            .lang-btn {
+                padding: 6px 10px !important;
+                font-size: 0.8rem !important;
+                border-radius: 16px !important;
+            }
+            .nav-actions .btn-primary {
+                padding: 7px 12px !important;
+                font-size: 0.82rem !important;
+                border-radius: 18px !important;
+            }
+            .hero {
+                padding: 24px 3.5% 20px !important;
+                gap: 24px !important;
+            }
+            .hero-badge {
+                font-size: 0.78rem !important;
+                padding: 5px 12px !important;
+                margin-bottom: 14px !important;
+            }
+            .hero-title {
+                font-size: 1.75rem !important;
+                line-height: 1.3 !important;
+                margin-bottom: 12px !important;
+            }
+            .hero-subtitle {
+                font-size: 0.92rem !important;
+                line-height: 1.55 !important;
+                margin-bottom: 22px !important;
+            }
+            .hero-buttons {
+                flex-direction: column !important;
+                gap: 10px !important;
+                width: 100% !important;
+                margin-bottom: 26px !important;
+            }
+            .hero-buttons .btn-primary,
+            .hero-buttons .btn-secondary {
+                width: 100% !important;
+                justify-content: center !important;
+                text-align: center !important;
+                padding: 12px 18px !important;
+                font-size: 0.92rem !important;
+                border-radius: 20px !important;
+            }
+            .hero-stats {
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 8px !important;
+                padding-top: 18px !important;
+            }
+            .stat-card {
+                padding: 10px 6px !important;
+                border-radius: 10px !important;
+            }
+            .stat-num {
+                font-size: 1.35rem !important;
+            }
+            .stat-label {
+                font-size: 0.72rem !important;
+                line-height: 1.25 !important;
+            }
+            .hero-banner-img {
+                max-width: 100% !important;
+                border-radius: 16px !important;
+            }
+            .addons-section,
+            .expertise-section,
+            .estimator-section,
+            .contact-section {
+                padding: 45px 3.5% !important;
+            }
+            .section-header {
+                margin-bottom: 28px !important;
+            }
+            .section-tag {
+                font-size: 0.82rem !important;
+                margin-bottom: 6px !important;
+            }
+            .section-title {
+                font-size: 1.5rem !important;
+                margin-bottom: 10px !important;
+            }
+            .section-desc {
+                font-size: 0.9rem !important;
+                line-height: 1.5 !important;
+            }
+            .addons-controls {
+                gap: 14px !important;
+                margin-bottom: 28px !important;
+            }
+            .search-box input {
+                font-size: 16px !important; /* Prevents auto-zoom on iOS */
+                padding: 11px 16px !important;
+            }
+            html[dir="rtl"] .search-box input {
+                padding-right: 42px !important;
+            }
+            html[dir="ltr"] .search-box input {
+                padding-left: 42px !important;
+            }
+            html[dir="rtl"] .search-icon {
+                right: 14px !important;
+            }
+            html[dir="ltr"] .search-icon {
+                left: 14px !important;
+            }
+            .filter-tabs {
+                gap: 6px !important;
+            }
+            .addon-filter-btn {
+                padding: 6px 12px !important;
+                font-size: 0.8rem !important;
+                border-radius: 16px !important;
+            }
+            .addon-grid {
+                grid-template-columns: 1fr !important;
+                gap: 16px !important;
+            }
+            .addon-card {
+                padding: 18px !important;
+                border-radius: 16px !important;
+            }
+            .addon-card:hover {
+                transform: none !important; /* Clean touch behavior */
+            }
+            .addon-header {
+                gap: 12px !important;
+                margin-bottom: 12px !important;
+            }
+            .addon-header img {
+                width: 46px !important;
+                height: 46px !important;
+                border-radius: 10px !important;
+            }
+            .addon-title {
+                font-size: 1.05rem !important;
+            }
+            .addon-desc {
+                font-size: 0.86rem !important;
+                margin-bottom: 14px !important;
+                line-height: 1.45 !important;
+            }
+            .addon-tags {
+                gap: 4px !important;
+                margin-bottom: 14px !important;
+            }
+            .addon-tag {
+                padding: 2px 8px !important;
+                font-size: 0.74rem !important;
+            }
+            .open-tab-btn {
+                font-size: 0.86rem !important;
+            }
+            .expertise-tabs {
+                flex-direction: column !important;
+                gap: 8px !important;
+                margin-bottom: 24px !important;
+            }
+            .tab-btn {
+                width: 100% !important;
+                padding: 10px 16px !important;
+                font-size: 0.9rem !important;
+                text-align: center !important;
+                border-radius: 20px !important;
+            }
+            .tab-content {
+                padding: 18px !important;
+                border-radius: 16px !important;
+            }
+            .expertise-grid {
+                grid-template-columns: 1fr !important;
+                gap: 12px !important;
+            }
+            .exp-item {
+                padding: 16px !important;
+                border-radius: 12px !important;
+            }
+            .exp-item h4 {
+                font-size: 1rem !important;
+                gap: 8px !important;
+            }
+            .exp-item p {
+                font-size: 0.86rem !important;
+            }
+            .estimator-container {
+                padding: 18px !important;
+                border-radius: 16px !important;
+                gap: 20px !important;
+            }
+            .form-group {
+                margin-bottom: 16px !important;
+            }
+            .form-group label {
+                font-size: 0.88rem !important;
+                margin-bottom: 6px !important;
+            }
+            .form-control {
+                font-size: 16px !important; /* Prevents auto-zoom on iOS */
+                padding: 10px 14px !important;
+                border-radius: 10px !important;
+            }
+            .checkbox-group {
+                grid-template-columns: 1fr !important;
+                gap: 8px !important;
+            }
+            .checkbox-label {
+                padding: 9px 12px !important;
+                font-size: 0.84rem !important;
+                border-radius: 8px !important;
+            }
+            .estimate-result {
+                padding: 18px !important;
+                border-radius: 14px !important;
+            }
+            .result-title {
+                font-size: 0.82rem !important;
+            }
+            .result-val {
+                font-size: 1.45rem !important;
+            }
+            .contact-box {
+                padding: 20px 16px !important;
+                border-radius: 18px !important;
+            }
+            footer {
+                padding: 26px 4% !important;
+                font-size: 0.82rem !important;
+            }
+        }
+
+        /* EXTRA SMALL SCREENS (max-width: 420px) */
+        @media (max-width: 420px) {
+            .navbar {
+                padding: 0.65rem 3% !important;
+            }
+            .logo div {
+                font-size: 0.92rem !important;
+            }
+            .logo img {
+                width: 32px !important;
+                height: 32px !important;
+            }
+            .nav-actions {
+                gap: 5px !important;
+            }
+            .lang-btn {
+                padding: 5px 8px !important;
+                font-size: 0.75rem !important;
+            }
+            .nav-actions .btn-primary {
+                padding: 6px 10px !important;
+                font-size: 0.76rem !important;
+            }
+            .hero-title {
+                font-size: 1.55rem !important;
+            }
+            .hero-stats {
+                grid-template-columns: 1fr !important;
+                gap: 8px !important;
+            }
+            .stat-card {
+                padding: 10px 12px !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+            }
+            .stat-num {
+                font-size: 1.3rem !important;
+            }
+            .stat-label {
+                font-size: 0.8rem !important;
             }
         }
     </style>
