@@ -153,37 +153,49 @@
             z-index: 1000;
             background: rgba(11, 11, 20, 0.95);
             backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: none !important;
-            box-shadow: none !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
             outline: none !important;
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            padding: 0.9rem 5%;
+            display: flex !important;
+            flex-direction: row !important;
+            flex-wrap: nowrap !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
             transition: all 0.3s ease;
         }
 
         .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 1.3rem;
+            display: inline-flex !important;
+            flex-direction: row !important;
+            flex-wrap: nowrap !important;
+            align-items: center !important;
+            gap: 10px;
+            font-size: 1.2rem;
             font-weight: 700;
             color: #fff;
             text-decoration: none !important;
             border-bottom: none !important;
+            flex-shrink: 0 !important;
+            white-space: nowrap !important;
         }
 
-        .logo-icon {
-            width: 42px;
-            height: 42px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            box-shadow: 0 0 15px var(--primary-glow);
+        .logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 1.5px solid rgba(192, 132, 252, 0.6);
+            box-shadow: 0 0 12px rgba(124, 58, 237, 0.6);
+            flex-shrink: 0 !important;
+        }
+
+        .logo div {
+            white-space: nowrap !important;
+            flex-shrink: 0 !important;
         }
 
         .nav-links {
@@ -210,23 +222,28 @@
         }
 
         .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 16px;
+            display: inline-flex !important;
+            flex-direction: row !important;
+            flex-wrap: nowrap !important;
+            align-items: center !important;
+            gap: 12px;
+            flex-shrink: 0 !important;
         }
 
         .lang-btn {
             background: rgba(255, 255, 255, 0.06);
             border: 1px solid var(--border-color);
             color: #fff;
-            padding: 8px 16px;
+            padding: 8px 14px;
             border-radius: 20px;
             cursor: pointer;
             font-weight: 600;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            font-size: 0.88rem;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 6px;
+            white-space: nowrap !important;
+            flex-shrink: 0 !important;
             transition: all 0.3s ease;
         }
 
@@ -243,18 +260,20 @@
         .btn-primary {
             background: linear-gradient(135deg, var(--primary), #5218cc);
             color: #fff;
-            padding: 10px 22px;
+            padding: 9px 20px;
             border-radius: 25px;
             text-decoration: none !important;
             border-bottom: none !important;
             font-weight: 600;
-            font-size: 0.95rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+            font-size: 0.92rem;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 6px;
             border: none;
             cursor: pointer;
             box-shadow: 0 4px 20px var(--primary-glow);
+            white-space: nowrap !important;
+            flex-shrink: 0 !important;
             transition: all 0.3s ease;
         }
 
@@ -885,27 +904,46 @@
         /* TABLETS & MEDIUM SCREENS (max-width: 992px) */
         @media (max-width: 992px) {
             .navbar {
-                padding: 0.85rem 4%;
+                padding: 0.75rem 4% !important;
+                display: flex !important;
+                flex-direction: row !important;
+                flex-wrap: nowrap !important;
+                justify-content: space-between !important;
+                align-items: center !important;
             }
             .nav-links {
-                display: none !important; /* Clean header on tablet/mobile without awkward wrapping */
+                display: none !important; /* Hide long link list on tablet/mobile so header stays strictly in 1 single row */
+            }
+            .logo {
+                font-size: 1.12rem !important;
+                gap: 8px !important;
+            }
+            .logo img {
+                width: 36px !important;
+                height: 36px !important;
             }
             .nav-actions {
-                gap: 10px;
+                display: inline-flex !important;
+                flex-direction: row !important;
+                flex-wrap: nowrap !important;
+                align-items: center !important;
+                gap: 8px !important;
             }
             .lang-btn {
-                padding: 7px 14px;
-                font-size: 0.85rem;
+                padding: 6px 12px !important;
+                font-size: 0.82rem !important;
+                border-radius: 16px !important;
             }
             .nav-actions .btn-primary {
-                padding: 8px 16px;
-                font-size: 0.88rem;
+                padding: 7px 14px !important;
+                font-size: 0.84rem !important;
+                border-radius: 18px !important;
             }
             .hero {
                 flex-direction: column-reverse !important;
                 text-align: center !important;
-                padding: 45px 4% 35px !important;
-                gap: 36px !important;
+                padding: 40px 4% 30px !important;
+                gap: 32px !important;
             }
             .hero-text {
                 width: 100% !important;
@@ -917,22 +955,22 @@
                 justify-content: center !important;
             }
             .hero-title {
-                font-size: 2.2rem !important;
+                font-size: 2.1rem !important;
                 margin-bottom: 16px !important;
             }
             .hero-subtitle {
-                font-size: 1.05rem !important;
-                margin: 0 auto 30px !important;
+                font-size: 1.02rem !important;
+                margin: 0 auto 28px !important;
                 max-width: 680px !important;
             }
             .hero-buttons {
                 justify-content: center !important;
-                gap: 14px !important;
-                margin-bottom: 35px !important;
+                gap: 12px !important;
+                margin-bottom: 32px !important;
             }
             .hero-stats {
                 grid-template-columns: repeat(3, 1fr) !important;
-                gap: 14px !important;
+                gap: 12px !important;
                 padding-top: 24px !important;
             }
             .hero-banner-img {
@@ -974,293 +1012,291 @@
 
         /* MOBILE PHONES (max-width: 768px) */
         @media (max-width: 768px) {
-            body {
-                font-size: 0.95rem;
-            }
             .navbar {
-                padding: 0.75rem 3.5% !important;
+                padding: 0.65rem 3% !important;
+                display: flex !important;
+                flex-direction: row !important;
+                flex-wrap: nowrap !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                gap: 6px !important;
+            }
+            .nav-links {
+                display: none !important;
             }
             .logo {
-                font-size: 1.1rem !important;
-                gap: 8px !important;
+                font-size: 1.02rem !important;
+                gap: 7px !important;
+                flex-shrink: 0 !important;
             }
             .logo img {
-                width: 36px !important;
-                height: 36px !important;
+                width: 32px !important;
+                height: 32px !important;
+                border-radius: 8px !important;
             }
             .nav-actions {
-                gap: 8px !important;
+                display: inline-flex !important;
+                flex-direction: row !important;
+                flex-wrap: nowrap !important;
+                align-items: center !important;
+                gap: 6px !important;
+                flex-shrink: 0 !important;
             }
             .lang-btn {
-                padding: 6px 10px !important;
-                font-size: 0.8rem !important;
-                border-radius: 16px !important;
+                padding: 5px 9px !important;
+                font-size: 0.76rem !important;
+                border-radius: 14px !important;
+                gap: 4px !important;
             }
             .nav-actions .btn-primary {
-                padding: 7px 12px !important;
-                font-size: 0.82rem !important;
-                border-radius: 18px !important;
+                padding: 6px 11px !important;
+                font-size: 0.78rem !important;
+                border-radius: 16px !important;
+                gap: 4px !important;
             }
             .hero {
-                padding: 24px 3.5% 20px !important;
-                gap: 24px !important;
+                padding: 20px 3% 18px !important;
+                gap: 22px !important;
             }
             .hero-badge {
-                font-size: 0.78rem !important;
-                padding: 5px 12px !important;
-                margin-bottom: 14px !important;
+                font-size: 0.76rem !important;
+                padding: 4px 10px !important;
+                margin-bottom: 12px !important;
             }
             .hero-title {
-                font-size: 1.75rem !important;
+                font-size: 1.7rem !important;
                 line-height: 1.3 !important;
                 margin-bottom: 12px !important;
             }
             .hero-subtitle {
-                font-size: 0.92rem !important;
+                font-size: 0.9rem !important;
                 line-height: 1.55 !important;
-                margin-bottom: 22px !important;
+                margin-bottom: 20px !important;
             }
             .hero-buttons {
                 flex-direction: column !important;
                 gap: 10px !important;
                 width: 100% !important;
-                margin-bottom: 26px !important;
+                margin-bottom: 24px !important;
             }
             .hero-buttons .btn-primary,
             .hero-buttons .btn-secondary {
                 width: 100% !important;
                 justify-content: center !important;
                 text-align: center !important;
-                padding: 12px 18px !important;
-                font-size: 0.92rem !important;
+                padding: 11px 16px !important;
+                font-size: 0.9rem !important;
                 border-radius: 20px !important;
             }
             .hero-stats {
                 grid-template-columns: repeat(3, 1fr) !important;
-                gap: 8px !important;
-                padding-top: 18px !important;
+                gap: 6px !important;
+                padding-top: 16px !important;
             }
             .stat-card {
-                padding: 10px 6px !important;
+                padding: 8px 4px !important;
                 border-radius: 10px !important;
             }
             .stat-num {
-                font-size: 1.35rem !important;
+                font-size: 1.25rem !important;
             }
             .stat-label {
-                font-size: 0.72rem !important;
-                line-height: 1.25 !important;
+                font-size: 0.70rem !important;
+                line-height: 1.2 !important;
             }
             .hero-banner-img {
                 max-width: 100% !important;
-                border-radius: 16px !important;
+                border-radius: 14px !important;
             }
             .addons-section,
             .expertise-section,
             .estimator-section,
             .contact-section {
-                padding: 45px 3.5% !important;
+                padding: 40px 3% !important;
             }
             .section-header {
-                margin-bottom: 28px !important;
+                margin-bottom: 24px !important;
             }
             .section-tag {
-                font-size: 0.82rem !important;
+                font-size: 0.8rem !important;
                 margin-bottom: 6px !important;
             }
             .section-title {
-                font-size: 1.5rem !important;
+                font-size: 1.45rem !important;
                 margin-bottom: 10px !important;
             }
             .section-desc {
-                font-size: 0.9rem !important;
+                font-size: 0.88rem !important;
                 line-height: 1.5 !important;
             }
             .addons-controls {
-                gap: 14px !important;
-                margin-bottom: 28px !important;
+                gap: 12px !important;
+                margin-bottom: 24px !important;
             }
             .search-box input {
                 font-size: 16px !important; /* Prevents auto-zoom on iOS */
-                padding: 11px 16px !important;
+                padding: 10px 14px !important;
             }
             html[dir="rtl"] .search-box input {
-                padding-right: 42px !important;
+                padding-right: 40px !important;
             }
             html[dir="ltr"] .search-box input {
-                padding-left: 42px !important;
+                padding-left: 40px !important;
             }
             html[dir="rtl"] .search-icon {
-                right: 14px !important;
+                right: 12px !important;
             }
             html[dir="ltr"] .search-icon {
-                left: 14px !important;
+                left: 12px !important;
             }
             .filter-tabs {
-                gap: 6px !important;
+                gap: 5px !important;
             }
             .addon-filter-btn {
-                padding: 6px 12px !important;
-                font-size: 0.8rem !important;
-                border-radius: 16px !important;
+                padding: 5px 10px !important;
+                font-size: 0.78rem !important;
+                border-radius: 14px !important;
             }
             .addon-grid {
                 grid-template-columns: 1fr !important;
-                gap: 16px !important;
+                gap: 14px !important;
             }
             .addon-card {
-                padding: 18px !important;
-                border-radius: 16px !important;
+                padding: 16px !important;
+                border-radius: 14px !important;
             }
             .addon-card:hover {
-                transform: none !important; /* Clean touch behavior */
+                transform: none !important;
             }
             .addon-header {
-                gap: 12px !important;
-                margin-bottom: 12px !important;
+                gap: 10px !important;
+                margin-bottom: 10px !important;
             }
             .addon-header img {
-                width: 46px !important;
-                height: 46px !important;
-                border-radius: 10px !important;
+                width: 44px !important;
+                height: 44px !important;
+                border-radius: 8px !important;
             }
             .addon-title {
-                font-size: 1.05rem !important;
+                font-size: 1.02rem !important;
             }
             .addon-desc {
-                font-size: 0.86rem !important;
-                margin-bottom: 14px !important;
+                font-size: 0.85rem !important;
+                margin-bottom: 12px !important;
                 line-height: 1.45 !important;
             }
             .addon-tags {
                 gap: 4px !important;
-                margin-bottom: 14px !important;
+                margin-bottom: 12px !important;
             }
             .addon-tag {
-                padding: 2px 8px !important;
-                font-size: 0.74rem !important;
+                padding: 2px 7px !important;
+                font-size: 0.72rem !important;
             }
             .open-tab-btn {
-                font-size: 0.86rem !important;
+                font-size: 0.84rem !important;
             }
             .expertise-tabs {
                 flex-direction: column !important;
-                gap: 8px !important;
-                margin-bottom: 24px !important;
+                gap: 6px !important;
+                margin-bottom: 20px !important;
             }
             .tab-btn {
                 width: 100% !important;
-                padding: 10px 16px !important;
-                font-size: 0.9rem !important;
+                padding: 9px 14px !important;
+                font-size: 0.88rem !important;
                 text-align: center !important;
-                border-radius: 20px !important;
+                border-radius: 18px !important;
             }
             .tab-content {
-                padding: 18px !important;
-                border-radius: 16px !important;
+                padding: 16px !important;
+                border-radius: 14px !important;
             }
             .expertise-grid {
                 grid-template-columns: 1fr !important;
-                gap: 12px !important;
+                gap: 10px !important;
             }
             .exp-item {
-                padding: 16px !important;
-                border-radius: 12px !important;
+                padding: 14px !important;
+                border-radius: 10px !important;
             }
             .exp-item h4 {
-                font-size: 1rem !important;
-                gap: 8px !important;
+                font-size: 0.96rem !important;
+                gap: 6px !important;
             }
             .exp-item p {
-                font-size: 0.86rem !important;
+                font-size: 0.84rem !important;
             }
             .estimator-container {
-                padding: 18px !important;
-                border-radius: 16px !important;
-                gap: 20px !important;
+                padding: 16px !important;
+                border-radius: 14px !important;
+                gap: 18px !important;
             }
             .form-group {
-                margin-bottom: 16px !important;
+                margin-bottom: 14px !important;
             }
             .form-group label {
-                font-size: 0.88rem !important;
-                margin-bottom: 6px !important;
+                font-size: 0.86rem !important;
+                margin-bottom: 5px !important;
             }
             .form-control {
                 font-size: 16px !important; /* Prevents auto-zoom on iOS */
-                padding: 10px 14px !important;
+                padding: 9px 12px !important;
                 border-radius: 10px !important;
             }
             .checkbox-group {
                 grid-template-columns: 1fr !important;
-                gap: 8px !important;
+                gap: 6px !important;
             }
             .checkbox-label {
-                padding: 9px 12px !important;
-                font-size: 0.84rem !important;
+                padding: 8px 10px !important;
+                font-size: 0.82rem !important;
                 border-radius: 8px !important;
             }
             .estimate-result {
-                padding: 18px !important;
-                border-radius: 14px !important;
+                padding: 16px !important;
+                border-radius: 12px !important;
             }
             .result-title {
-                font-size: 0.82rem !important;
+                font-size: 0.80rem !important;
             }
             .result-val {
-                font-size: 1.45rem !important;
+                font-size: 1.35rem !important;
             }
             .contact-box {
-                padding: 20px 16px !important;
-                border-radius: 18px !important;
+                padding: 18px 14px !important;
+                border-radius: 16px !important;
             }
             footer {
-                padding: 26px 4% !important;
-                font-size: 0.82rem !important;
+                padding: 22px 3% !important;
+                font-size: 0.80rem !important;
             }
         }
 
-        /* EXTRA SMALL SCREENS (max-width: 420px) */
-        @media (max-width: 420px) {
+        /* EXTRA NARROW MOBILE SCREENS (max-width: 390px) */
+        @media (max-width: 390px) {
             .navbar {
-                padding: 0.65rem 3% !important;
+                padding: 0.55rem 2.5% !important;
+                gap: 4px !important;
             }
-            .logo div {
+            .logo {
                 font-size: 0.92rem !important;
-            }
-            .logo img {
-                width: 32px !important;
-                height: 32px !important;
-            }
-            .nav-actions {
                 gap: 5px !important;
             }
+            .logo img {
+                width: 28px !important;
+                height: 28px !important;
+            }
+            .nav-actions {
+                gap: 4px !important;
+            }
             .lang-btn {
-                padding: 5px 8px !important;
-                font-size: 0.75rem !important;
+                padding: 4px 7px !important;
+                font-size: 0.72rem !important;
             }
             .nav-actions .btn-primary {
-                padding: 6px 10px !important;
-                font-size: 0.76rem !important;
-            }
-            .hero-title {
-                font-size: 1.55rem !important;
-            }
-            .hero-stats {
-                grid-template-columns: 1fr !important;
-                gap: 8px !important;
-            }
-            .stat-card {
-                padding: 10px 12px !important;
-                display: flex !important;
-                align-items: center !important;
-                justify-content: space-between !important;
-            }
-            .stat-num {
-                font-size: 1.3rem !important;
-            }
-            .stat-label {
-                font-size: 0.8rem !important;
+                padding: 5px 8px !important;
+                font-size: 0.74rem !important;
             }
         }
     </style>
