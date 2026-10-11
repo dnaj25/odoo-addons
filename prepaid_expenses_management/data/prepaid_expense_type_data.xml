@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="type_rent_property" model="prepaid.expense.type">
+            <field name="name">Property &amp; Office Rent</field>
+            <field name="code">RENT</field>
+            <field name="sequence">1</field>
+            <field name="default_periodicity">monthly</field>
+            <field name="reminder_days_before">30</field>
+            <field name="description">Office, warehouse, retail store leases and property rental contracts.</field>
+        </record>
+
+        <record id="type_insurance" model="prepaid.expense.type">
+            <field name="name">Insurance Policies</field>
+            <field name="code">INSUR</field>
+            <field name="sequence">2</field>
+            <field name="default_periodicity">monthly</field>
+            <field name="reminder_days_before">30</field>
+            <field name="description">Health, vehicle, property, and liability insurance policies.</field>
+        </record>
+
+        <record id="type_software" model="prepaid.expense.type">
+            <field name="name">Software &amp; Cloud Subscriptions</field>
+            <field name="code">SAAS</field>
+            <field name="sequence">3</field>
+            <field name="default_periodicity">monthly</field>
+            <field name="reminder_days_before">30</field>
+            <field name="description">ERP, hosting, domain, cloud tools, and software user licenses.</field>
+        </record>
+
+        <record id="type_maintenance" model="prepaid.expense.type">
+            <field name="name">Annual Maintenance Contracts (AMC)</field>
+            <field name="code">AMC</field>
+            <field name="sequence">4</field>
+            <field name="default_periodicity">quarterly</field>
+            <field name="reminder_days_before">30</field>
+            <field name="description">Periodic equipment, IT hardware, and facility maintenance agreements.</field>
+        </record>
+
+        <record id="type_gov_fees" model="prepaid.expense.type">
+            <field name="name">Government Licenses &amp; Permits</field>
+            <field name="code">GOV</field>
+            <field name="sequence">5</field>
+            <field name="default_periodicity">annually</field>
+            <field name="reminder_days_before">45</field>
+            <field name="description">Commercial registration, municipal licenses, permits, and governmental fees.</field>
+        </record>
+    </data>
+</odoo>

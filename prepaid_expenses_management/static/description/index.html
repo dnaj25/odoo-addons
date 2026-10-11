@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Prepaid Expenses & Rent Management - Odoo 19</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Tajawal:wght@500;700;800&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <style>
+        :root {
+            --primary: #7c3aed;
+            --primary-dark: #5b21b6;
+            --primary-light: #f3e8ff;
+            --accent: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', 'Tajawal', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .hero-banner {
+            background: linear-gradient(135deg, #1e1b4b 0%, #311042 50%, #4c1d95 100%);
+            border-radius: 24px;
+            padding: 50px 40px;
+            color: #ffffff;
+            box-shadow: 0 20px 40px -15px rgba(124, 58, 237, 0.35);
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-banner::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(167, 139, 250, 0.25) 0%, rgba(0,0,0,0) 70%);
+            pointer-events: none;
+        }
+
+        .badge-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(167, 139, 250, 0.2);
+            border: 1px solid rgba(192, 132, 252, 0.4);
+            color: #c084fc;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .hero-title {
+            font-size: 32px;
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 16px;
+        }
+
+        .hero-subtitle {
+            font-size: 16px;
+            color: #cbd5e1;
+            max-width: 780px;
+            margin-bottom: 28px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(124, 58, 237, 0.12);
+            border-color: #c084fc;
+        }
+
+        .feature-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 14px;
+            background: var(--primary-light);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        .workflow-box {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 36px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        }
+
+        .workflow-step {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 24px;
+            align-items: flex-start;
+        }
+
+        .workflow-step:last-child {
+            margin-bottom: 0;
+        }
+
+        .step-num {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin: 0 0 6px;
+        }
+
+        .step-content p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, #1e1b4b 0%, #2e1065 100%);
+            border-radius: 24px;
+            padding: 40px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .contact-info h3 {
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .contact-info p {
+            color: #cbd5e1;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .qr-wrapper {
+            background: #ffffff;
+            padding: 12px;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .qr-wrapper img {
+            width: 140px;
+            height: 140px;
+            display: block;
+        }
+
+        .qr-wrapper span {
+            display: block;
+            margin-top: 8px;
+            color: #475569;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .btn-wa {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #25D366;
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 16px;
+            font-size: 15px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s;
+        }
+
+        .btn-wa:hover {
+            background: #20bd5a;
+            transform: translateY(-2px);
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Hero Banner -->
+    <div class="hero-banner">
+        <div class="badge-tag">
+            <i class="fa-solid fa-bolt"></i> Odoo 19 Community &amp; Enterprise Ready
+        </div>
+        <h1 class="hero-title">
+            Prepaid Expenses &amp; Rent Management<br/>
+            <span style="color: #c084fc; font-family: 'Tajawal', sans-serif;">إدارة المصروفات المدفوعة مقدماً والإيجارات مع الخصم الآلي وتنبيه التجديد</span>
+        </h1>
+        <p class="hero-subtitle">
+            A comprehensive, automated financial solution to manage prepaid expenses (Rent, Insurance, Software Subscriptions, Maintenance, and Permits) with scheduled accounting deductions, auto-posted journal entries, and last-month renewal alerts.
+        </p>
+    </div>
+
+    <!-- Features Grid -->
+    <div class="feature-grid">
+        <!-- Feature 1 -->
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-building"></i></div>
+            <h3>Rent &amp; Lease Contracts / عقود الإيجار</h3>
+            <p>Define multi-month or annual rental agreements for offices, retail stores, or warehouses with clear start/end dates and responsible partners.</p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-card">
+            <div class="feature-icon" style="background: #ecfdf5; color: #10b981;"><i class="fa-solid fa-clock-rotate-left"></i></div>
+            <h3>Automated Periodic Deductions / الاستقطاع الآلي</h3>
+            <p>Automatically generate and post monthly, quarterly, semi-annual, or annual journal entries (Dr. Expense / Cr. Prepaid Asset) via Cron Job.</p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-card">
+            <div class="feature-icon" style="background: #fffbeb; color: #f59e0b;"><i class="fa-solid fa-bell"></i></div>
+            <h3>Last-Month Renewal Alert / تنبيه آخر شهر</h3>
+            <p>Automatic reminder when entering the final month (or custom notice days). Sets scheduled activity and alert ribbons so you never miss a contract renewal.</p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="feature-card">
+            <div class="feature-icon" style="background: #fdf2f8; color: #db2777;"><i class="fa-solid fa-arrows-rotate"></i></div>
+            <h3>One-Click Renewal / تجديد فوري بضغطة زر</h3>
+            <p>Seamlessly renew expiring leases or subscriptions for a new period with pre-filled terms, updated start dates, and auto-generated schedules.</p>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="feature-card">
+            <div class="feature-icon" style="background: #eff6ff; color: #3b82f6;"><i class="fa-solid fa-calculator"></i></div>
+            <h3>Live Balances &amp; Analytics / الأرصدة ومراكز التكلفة</h3>
+            <p>Instant tracking of Total Amount, Recognized Amount, and Remaining Balance with full Analytic Distribution (Cost Center) support.</p>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="feature-card">
+            <div class="feature-icon" style="background: #f5f3ff; color: #7c3aed;"><i class="fa-solid fa-chart-pie"></i></div>
+            <h3>Reports, Pivot &amp; Kanban / لوحة تحكم وتقارير</h3>
+            <p>Filter easily by "Expiring Soon", "Active", or "Expired". Analyze future expense commitments with interactive Graph and Pivot views.</p>
+        </div>
+    </div>
+
+    <!-- Workflow Section -->
+    <div class="workflow-box">
+        <h2 style="font-size: 22px; font-weight: 800; margin-bottom: 24px;">
+            How It Works / آلية العمل
+        </h2>
+        <div class="workflow-step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+                <h4>Create Contract &amp; Choose Category / إنشاء العقد واختيار التصنيف</h4>
+                <p>Enter the prepaid amount, period (e.g. 1 Year), vendor/landlord, and select the category (Rent, Insurance, Software, Maintenance).</p>
+            </div>
+        </div>
+        <div class="workflow-step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+                <h4>Auto-Generate Schedule / حساب جدول الأقساط آلياً</h4>
+                <p>Click "Generate Schedule" to compute equal periodic installments with exact dates and rounding adjustments.</p>
+            </div>
+        </div>
+        <div class="workflow-step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+                <h4>Automated Monthly Recognition / الخصم وقيد اليومية التلقائي</h4>
+                <p>The daily cron job detects due installments and posts the accounting entries automatically: Debit Expense / Credit Prepaid Asset.</p>
+            </div>
+        </div>
+        <div class="workflow-step">
+            <div class="step-num">4</div>
+            <div class="step-content">
+                <h4>Final Month Alert &amp; Quick Renewal / تنبيه آخر شهر والتجديد الفوري</h4>
+                <p>When the final 30 days arrive, the contract turns into ⚠️ Expiring Soon, generates a renewal reminder activity, and enables one-click renewal.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact & Support Footer Card -->
+    <div class="contact-card">
+        <div class="contact-info">
+            <h3>Custom Module Development by Dana Alajmi</h3>
+            <p style="font-family: 'Tajawal', sans-serif;">
+                تطوير وتخصيص حلول وموديولات أودو 19 الاحترافية لتلبية كافة متطلبات أعمالك بدقة وجودة عالية.
+            </p>
+            <a href="https://wa.me/966544297579" target="_blank" class="btn-wa">
+                <i class="fa-brands fa-whatsapp" style="font-size: 20px;"></i>
+                Chat on WhatsApp (+966544297579)
+            </a>
+        </div>
+        <div class="qr-wrapper">
+            <img src="qr.png" alt="Dana Alajmi WhatsApp QR Code"/>
+            <span><i class="fa-solid fa-qrcode"></i> Scan to Connect</span>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

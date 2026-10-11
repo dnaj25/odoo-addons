@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_prepaid_expense_type_user,prepaid.expense.type.user,model_prepaid_expense_type,group_prepaid_expense_user,1,0,0,0
+access_prepaid_expense_type_manager,prepaid.expense.type.manager,model_prepaid_expense_type,group_prepaid_expense_manager,1,1,1,1
+access_prepaid_expense_user,prepaid.expense.user,model_prepaid_expense,group_prepaid_expense_user,1,1,1,0
+access_prepaid_expense_manager,prepaid.expense.manager,model_prepaid_expense,group_prepaid_expense_manager,1,1,1,1
+access_prepaid_expense_line_user,prepaid.expense.line.user,model_prepaid_expense_line,group_prepaid_expense_user,1,1,1,0
+access_prepaid_expense_line_manager,prepaid.expense.line.manager,model_prepaid_expense_line,group_prepaid_expense_manager,1,1,1,1

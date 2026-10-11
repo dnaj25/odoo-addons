@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Root Top Menu -->
+    <menuitem id="menu_prepaid_expense_root"
+              name="Prepaid Expenses &amp; Rents"
+              web_icon="prepaid_expenses_management,static/description/icon.png"
+              sequence="45"/>
+
+    <!-- Main Operations Menu -->
+    <menuitem id="menu_prepaid_expense_main"
+              name="Prepaid Contracts"
+              parent="menu_prepaid_expense_root"
+              sequence="10"/>
+
+    <menuitem id="menu_prepaid_expense_all"
+              name="All Prepaid Contracts"
+              parent="menu_prepaid_expense_main"
+              action="action_prepaid_expense"
+              sequence="1"/>
+
+    <!-- Urgent Alerts Submenu (Expiring Soon) -->
+    <menuitem id="menu_prepaid_expense_expiring_alerts"
+              name="⚠️ Expiring (Last Month Alerts)"
+              parent="menu_prepaid_expense_main"
+              action="action_prepaid_expense_expiring"
+              sequence="2"/>
+
+    <!-- Configuration Menu -->
+    <menuitem id="menu_prepaid_expense_config"
+              name="Configuration"
+              parent="menu_prepaid_expense_root"
+              groups="group_prepaid_expense_manager"
+              sequence="90"/>
+
+    <menuitem id="menu_prepaid_expense_categories"
+              name="Expense Categories"
+              parent="menu_prepaid_expense_config"
+              action="action_prepaid_expense_type"
+              sequence="1"/>
+
+    <!-- Also link inside Accounting Menu if Accounting is installed -->
+    <menuitem id="menu_accounting_prepaid_expenses"
+              name="Prepaid Expenses &amp; Rent"
+              parent="account.menu_finance_entries"
+              action="action_prepaid_expense"
+              sequence="35"/>
+</odoo>

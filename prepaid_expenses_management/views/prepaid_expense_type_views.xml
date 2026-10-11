@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_prepaid_expense_type_tree" model="ir.ui.view">
+        <field name="name">prepaid.expense.type.tree</field>
+        <field name="model">prepaid.expense.type</field>
+        <field name="arch" type="xml">
+            <tree string="Expense Categories">
+                <field name="sequence" widget="handle"/>
+                <field name="name" font_bold="1"/>
+                <field name="code"/>
+                <field name="prepaid_account_id"/>
+                <field name="expense_account_id"/>
+                <field name="journal_id"/>
+                <field name="default_periodicity"/>
+                <field name="reminder_days_before" string="Notice (Days)"/>
+                <field name="expense_count" string="Contracts"/>
+                <field name="active" widget="boolean_toggle"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_prepaid_expense_type_form" model="ir.ui.view">
+        <field name="name">prepaid.expense.type.form</field>
+        <field name="model">prepaid.expense.type</field>
+        <field name="arch" type="xml">
+            <form string="Expense Category">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_expenses" type="object" class="oe_stat_button" icon="fa-list-alt">
+                            <field name="expense_count" widget="statinfo" string="Contracts"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <span class="o_form_label">Category Name</span>
+                        <h1>
+                            <field name="name" placeholder="e.g., Office Rent, Insurance, Software..."/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Configuration &amp; Defaults">
+                            <field name="code"/>
+                            <field name="sequence"/>
+                            <field name="default_periodicity"/>
+                            <field name="reminder_days_before"/>
+                            <field name="active" widget="boolean_toggle"/>
+                        </group>
+                        <group string="Default Accounting Accounts">
+                            <field name="prepaid_account_id"/>
+                            <field name="expense_account_id"/>
+                            <field name="journal_id"/>
+                        </group>
+                    </group>
+                    <group string="Notes &amp; Description">
+                        <field name="description" placeholder="Description of this prepaid expense type..."/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_prepaid_expense_type" model="ir.actions.act_window">
+        <field name="name">Expense Categories</field>
+        <field name="res_model">prepaid.expense.type</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a Prepaid Expense Category!
+            </p>
+            <p>
+                Configure categories such as Property Rent, Vehicle Insurance, Software Subscriptions, etc., 
+                with default accounting accounts and frequencies.
+            </p>
+        </field>
+    </record>
+</odoo>
