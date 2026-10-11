@@ -21,8 +21,7 @@ class PrepaidExpense(models.Model):
     title = fields.Char(
         string='Contract / Expense Title',
         required=True,
-        tracking=True,
-        placeholder='e.g., Head Office Rent 2026, Cloud Server Subscription'
+        tracking=True
     )
     category_id = fields.Many2one(
         'prepaid.expense.type',
@@ -65,14 +64,12 @@ class PrepaidExpense(models.Model):
         'account.account',
         string='Prepaid Asset Account',
         required=True,
-        domain="[('deprecated', '=', False)]",
         help='Account holding the prepaid balance (Debit on initial bill, Credit on periodic recognition)'
     )
     expense_account_id = fields.Many2one(
         'account.account',
         string='Expense Account (P&L)',
         required=True,
-        domain="[('deprecated', '=', False)]",
         help='P&L account recognized each period (Debit Expense)'
     )
     journal_id = fields.Many2one(

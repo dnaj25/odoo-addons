@@ -1,26 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data noupdate="0">
-        <!-- Module Category -->
-        <record id="module_category_prepaid_expenses" model="ir.module.category">
-            <field name="name">Prepaid Expenses</field>
-            <field name="description">Manage prepaid expenses, deferred costs, periodic deductions, and renewal alerts</field>
-            <field name="sequence">25</field>
-        </record>
-
         <!-- User Group -->
         <record id="group_prepaid_expense_user" model="res.groups">
-            <field name="name">User / Accountant</field>
-            <field name="category_id" ref="module_category_prepaid_expenses"/>
+            <field name="name">Prepaid Expenses: User / Accountant</field>
             <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
         </record>
 
         <!-- Manager Group -->
         <record id="group_prepaid_expense_manager" model="res.groups">
-            <field name="name">Manager / Financial Controller</field>
-            <field name="category_id" ref="module_category_prepaid_expenses"/>
+            <field name="name">Prepaid Expenses: Manager / Financial Controller</field>
             <field name="implied_ids" eval="[(4, ref('group_prepaid_expense_user')), (4, ref('account.group_account_manager'))]"/>
-            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+            <field name="user_ids" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
         </record>
     </data>
 

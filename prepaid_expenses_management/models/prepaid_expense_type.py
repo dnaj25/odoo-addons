@@ -14,13 +14,11 @@ class PrepaidExpenseType(models.Model):
     prepaid_account_id = fields.Many2one(
         'account.account',
         string='Default Prepaid Asset Account',
-        domain="[('deprecated', '=', False)]",
         help='Default asset balance sheet account (e.g., Prepaid Rent / Prepaid Expenses)'
     )
     expense_account_id = fields.Many2one(
         'account.account',
         string='Default Expense Account',
-        domain="[('deprecated', '=', False)]",
         help='Default P&L expense account (e.g., Rent Expense, Insurance Expense)'
     )
     journal_id = fields.Many2one(
