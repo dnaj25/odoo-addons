@@ -57,7 +57,7 @@ class PrepaidExpenseType(models.Model):
             'name': _('Prepaid Expenses: %s') % self.name,
             'type': 'ir.actions.act_window',
             'res_model': 'prepaid.expense',
-            'view_mode': 'tree,kanban,form,graph,pivot',
+            'view_mode': 'list,kanban,form,graph,pivot',
             'domain': [('category_id', '=', self.id)],
             'context': {'default_category_id': self.id},
         }

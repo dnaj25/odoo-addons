@@ -428,7 +428,7 @@ class PrepaidExpense(models.Model):
             'name': _('Recognition Journal Entries: %s') % self.name,
             'type': 'ir.actions.act_window',
             'res_model': 'account.move',
-            'view_mode': 'tree,form',
+            'view_mode': 'list,form',
             'domain': [('id', 'in', move_ids)],
         }
 

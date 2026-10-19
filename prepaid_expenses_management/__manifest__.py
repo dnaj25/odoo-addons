@@ -28,7 +28,7 @@ Key Features:
     'author': 'dnaj25',
     'website': 'https://github.com/dnaj25/odoo-addons',
     'license': 'LGPL-3',
-    'depends': ['base', 'account', 'mail'],
+    'depends': ['base', 'account', 'mail', 'analytic'],
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',
