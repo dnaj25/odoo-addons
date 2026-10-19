@@ -42,11 +42,11 @@
         <field name="arch" type="xml">
             <form string="Prepaid Expense Contract">
                 <header>
-                    <button name="action_compute_schedule" string="Generate / Recalculate Schedule" type="object" 
+                    <button name="action_compute_schedule" string="⚡ Generate Schedule" type="object" 
                             class="oe_highlight" invisible="state != 'draft'"/>
-                    <button name="action_confirm" string="Confirm &amp; Activate Contract" type="object" 
+                    <button name="action_confirm" string="✅ Confirm &amp; Activate" type="object" 
                             class="oe_highlight" invisible="state != 'draft'"/>
-                    <button name="action_post_due_entries" string="Post Due Recognition Entries" type="object" 
+                    <button name="action_post_due_entries" string="📘 Post Due Entries" type="object" 
                             class="btn-success" invisible="state != 'confirmed'"/>
                     <button name="action_renew" string="🔄 Renew Contract" type="object" 
                             class="btn-primary" invisible="state not in ['confirmed', 'done']"/>
@@ -59,7 +59,7 @@
                 </header>
                 <sheet>
                     <!-- Visual Alert Ribbons -->
-                    <widget name="web_ribbon" title="⚠️ Expiring Soon - Renew Now" bg_color="text-bg-warning" 
+                    <widget name="web_ribbon" title="⚠️ Expiring Soon" bg_color="text-bg-warning" 
                             invisible="renewal_state != 'expiring_soon'"/>
                     <widget name="web_ribbon" title="Expired" bg_color="text-bg-danger" 
                             invisible="renewal_state != 'expired'"/>
@@ -71,62 +71,41 @@
                     <!-- Smart Buttons -->
                     <div class="oe_button_box" name="button_box">
                         <button name="action_view_journal_entries" type="object" class="oe_stat_button" icon="fa-book">
-                            <field name="move_count" widget="statinfo" string="Entries"/>
-                        </button>
-                        <button type="object" class="oe_stat_button" icon="fa-calendar-check-o" disabled="1">
-                            <div class="o_stat_info">
-                                <span class="o_stat_value">
-                                    <field name="posted_lines_count"/> / <field name="lines_count"/>
-                                </span>
-                                <span class="o_stat_text">Installments</span>
-                            </div>
-                        </button>
-                        <button type="object" class="oe_stat_button" icon="fa-hourglass-half" disabled="1">
-                            <div class="o_stat_info">
-                                <span class="o_stat_value"><field name="days_to_expire"/> Days</span>
-                                <span class="o_stat_text">Remaining</span>
-                            </div>
+                            <field name="move_count" widget="statinfo" string="Journal Entries"/>
                         </button>
                     </div>
 
                     <div class="oe_title">
-                        <span class="o_form_label">Prepaid Contract Reference</span>
+                        <label for="title" string="Contract / Prepaid Expense Title"/>
                         <h1>
-                            <field name="name" readonly="1"/>
+                            <field name="title" placeholder="e.g., Head Office Annual Rent 2026..."/>
                         </h1>
-                        <h2>
-                            <field name="title" placeholder="e.g., Office Rent, Annual Software License, Health Insurance..."/>
-                        </h2>
+                        <div class="text-muted">
+                            <span>Reference: </span>
+                            <field name="name" readonly="1" class="fw-bold"/>
+                        </div>
                     </div>
 
                     <group>
-                        <group string="Basic &amp; Partner Details">
+                        <group string="Contract &amp; Partner Info">
                             <field name="category_id" options="{'no_create': False}"/>
-                            <field name="partner_id" widget="res_partner_many2one"/>
+                            <field name="partner_id"/>
                             <field name="user_id" widget="many2one_avatar_user"/>
                             <field name="company_id" groups="base.group_multi_company"/>
                             <field name="currency_id" invisible="1"/>
                         </group>
-                        <group string="Duration &amp; Periodicity">
-                            <label for="start_date" string="Contract Period"/>
-                            <div class="o_row">
-                                <field name="start_date"/>
-                                <i class="fa fa-arrow-right mx-2" title="To"/>
-                                <field name="end_date"/>
-                            </div>
+                        <group string="Duration &amp; Deduction Schedule">
+                            <field name="start_date"/>
+                            <field name="end_date"/>
                             <field name="periodicity"/>
                             <field name="number_of_periods"/>
+                            <field name="reminder_days_before" string="Last-Month Alert (Days)"/>
                             <field name="auto_post"/>
-                            <label for="reminder_days_before" string="Renewal Notice Alert"/>
-                            <div class="o_row">
-                                <field name="reminder_days_before"/>
-                                <span>Days Before End (triggers last-month alert)</span>
-                            </div>
                         </group>
                     </group>
 
                     <group>
-                        <group string="Accounting &amp; Recognition Setup">
+                        <group string="Accounting &amp; Financial Setup">
                             <field name="total_amount" widget="monetary" options="{'currency_field': 'currency_id'}"/>
                             <field name="prepaid_account_id"/>
                             <field name="expense_account_id"/>
@@ -136,6 +115,9 @@
                         <group string="Live Balances &amp; Renewal Status">
                             <field name="posted_amount" widget="monetary" options="{'currency_field': 'currency_id'}"/>
                             <field name="remaining_amount" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="posted_lines_count" string="Recognized Installments"/>
+                            <field name="lines_count" string="Total Installments"/>
+                            <field name="days_to_expire" string="Days Remaining to Expire"/>
                             <field name="renewal_state" widget="badge" 
                                    decoration-warning="renewal_state == 'expiring_soon'"
                                    decoration-danger="renewal_state == 'expired'"
@@ -146,7 +128,7 @@
                     </group>
 
                     <notebook>
-                        <page string="Recognition Schedule (Installments)" name="schedule_lines">
+                        <page string="📅 Recognition Schedule (Monthly Installments)" name="schedule_lines">
                             <field name="line_ids">
                                 <list string="Installments" editable="bottom" 
                                       decoration-success="state == 'posted'" 
@@ -170,17 +152,12 @@
                                 </list>
                             </field>
                         </page>
-                        <page string="Contract Notes &amp; Terms" name="notes">
+                        <page string="📝 Contract Notes &amp; Terms" name="notes">
                             <field name="notes" placeholder="Specify landlord terms, renewal conditions, policy numbers, or contract clauses..."/>
                         </page>
                     </notebook>
                 </sheet>
-                <!-- Chatter for Activity & Renewal Alerts -->
-                <div class="oe_chatter">
-                    <field name="message_follower_ids"/>
-                    <field name="activity_ids"/>
-                    <field name="message_ids"/>
-                </div>
+                <chatter/>
             </form>
         </field>
     </record>
@@ -203,8 +180,8 @@
                 <field name="renewal_state"/>
                 <field name="state"/>
                 <templates>
-                    <t t-name="kanban-box">
-                        <div t-attf-class="oe_kanban_global_click p-3 mb-2 rounded border #{record.renewal_state.raw_value == 'expiring_soon' ? 'border-warning' : (record.renewal_state.raw_value == 'expired' ? 'border-danger' : 'border-secondary')}">
+                    <t t-name="card">
+                        <div class="oe_kanban_global_click p-3 rounded shadow-sm bg-white">
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <strong class="o_kanban_record_title text-primary"><field name="name"/></strong>
                                 <field name="state" widget="badge" 
@@ -213,24 +190,26 @@
                                        decoration-primary="state == 'done'"/>
                             </div>
                             <div class="mb-2">
-                                <h5 class="fw-bold mb-1"><field name="title"/></h5>
-                                <div class="text-muted"><i class="fa fa-tag me-1" title="Category"/> <field name="category_id"/></div>
-                                <div class="text-muted" t-if="record.partner_id.value"><i class="fa fa-user me-1" title="Partner"/> <field name="partner_id"/></div>
+                                <div class="fw-bold mb-1"><field name="title"/></div>
+                                <div class="text-muted small"><field name="category_id"/></div>
+                                <div class="text-muted small"><field name="partner_id"/></div>
                             </div>
-                            <div class="d-flex justify-content-between align-items-center border-top pt-2">
+                            <div class="d-flex justify-content-between align-items-center border-top pt-2 mt-2">
                                 <div>
-                                    <small class="text-muted d-block">Remaining Balance</small>
+                                    <small class="text-muted d-block">Remaining</small>
                                     <strong class="text-success"><field name="remaining_amount" widget="monetary"/></strong>
                                 </div>
                                 <div class="text-end">
                                     <small class="text-muted d-block">Expires On</small>
-                                    <span t-attf-class="badge #{record.renewal_state.raw_value == 'expiring_soon' ? 'text-bg-warning' : (record.renewal_state.raw_value == 'expired' ? 'text-bg-danger' : 'text-bg-light')}">
-                                        <field name="end_date"/>
-                                    </span>
+                                    <field name="end_date"/>
                                 </div>
                             </div>
-                            <div t-if="record.renewal_state.raw_value == 'expiring_soon'" class="alert alert-warning py-1 px-2 mt-2 mb-0 text-center small fw-bold" role="status">
-                                ⚠️ Final Month - Renewal Needed
+                            <div class="mt-2">
+                                <field name="renewal_state" widget="badge"
+                                       decoration-warning="renewal_state == 'expiring_soon'"
+                                       decoration-danger="renewal_state == 'expired'"
+                                       decoration-success="renewal_state == 'normal'"
+                                       decoration-info="renewal_state == 'renewed'"/>
                             </div>
                         </div>
                     </t>
@@ -311,7 +290,7 @@
         <field name="res_model">prepaid.expense</field>
         <field name="view_mode">list,kanban,form,graph,pivot</field>
         <field name="search_view_id" ref="view_prepaid_expense_search"/>
-        <field name="context">{'search_default_filter_confirmed': 1}</field>
+        <field name="context">{}</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Register a new Prepaid Expense or Lease Contract!
