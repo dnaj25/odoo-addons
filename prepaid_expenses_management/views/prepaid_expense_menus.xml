@@ -20,7 +20,7 @@
 
     <!-- Urgent Alerts Submenu (Expiring Soon) -->
     <menuitem id="menu_prepaid_expense_expiring_alerts"
-              name="⚠️ Expiring (Last Month Alerts)"
+              name="Expiring Contracts (Last Month Alerts)"
               parent="menu_prepaid_expense_main"
               action="action_prepaid_expense_expiring"
               sequence="2"/>

@@ -42,13 +42,13 @@
         <field name="arch" type="xml">
             <form string="Prepaid Expense Contract">
                 <header>
-                    <button name="action_compute_schedule" string="⚡ Generate Schedule" type="object" 
+                    <button name="action_compute_schedule" string="Generate Schedule" type="object" 
                             class="oe_highlight" invisible="state != 'draft'"/>
-                    <button name="action_confirm" string="✅ Confirm &amp; Activate" type="object" 
+                    <button name="action_confirm" string="Confirm &amp; Activate" type="object" 
                             class="oe_highlight" invisible="state != 'draft'"/>
-                    <button name="action_post_due_entries" string="📘 Post Due Entries" type="object" 
+                    <button name="action_post_due_entries" string="Post Due Entries" type="object" 
                             class="btn-success" invisible="state != 'confirmed'"/>
-                    <button name="action_renew" string="🔄 Renew Contract" type="object" 
+                    <button name="action_renew" string="Renew Contract" type="object" 
                             class="btn-primary" invisible="state not in ['confirmed', 'done']"/>
                     <button name="action_reset_to_draft" string="Reset to Draft" type="object" 
                             invisible="state not in ['cancelled']"/>
@@ -59,7 +59,7 @@
                 </header>
                 <sheet>
                     <!-- Visual Alert Ribbons -->
-                    <widget name="web_ribbon" title="⚠️ Expiring Soon" bg_color="text-bg-warning" 
+                    <widget name="web_ribbon" title="Expiring Soon" bg_color="text-bg-warning" 
                             invisible="renewal_state != 'expiring_soon'"/>
                     <widget name="web_ribbon" title="Expired" bg_color="text-bg-danger" 
                             invisible="renewal_state != 'expired'"/>
@@ -128,7 +128,7 @@
                     </group>
 
                     <notebook>
-                        <page string="📅 Recognition Schedule (Monthly Installments)" name="schedule_lines">
+                        <page string="Recognition Schedule (Monthly Installments)" name="schedule_lines">
                             <field name="line_ids">
                                 <list string="Installments" editable="bottom" 
                                       decoration-success="state == 'posted'" 
@@ -152,7 +152,7 @@
                                 </list>
                             </field>
                         </page>
-                        <page string="📝 Contract Notes &amp; Terms" name="notes">
+                        <page string="Contract Notes &amp; Terms" name="notes">
                             <field name="notes" placeholder="Specify landlord terms, renewal conditions, policy numbers, or contract clauses..."/>
                         </page>
                     </notebook>
@@ -230,7 +230,7 @@
                 <field name="partner_id"/>
                 
                 <separator/>
-                <filter name="filter_expiring_soon" string="⚠️ Expiring Soon (Final Month Alert)" 
+                <filter name="filter_expiring_soon" string="Expiring Soon (Final Month Alert)" 
                         domain="[('renewal_state', '=', 'expiring_soon')]"/>
                 <filter name="filter_confirmed" string="Active &amp; Confirmed" 
                         domain="[('state', '=', 'confirmed')]"/>
@@ -304,7 +304,7 @@
 
     <!-- Window Action: Expiring Soon Only -->
     <record id="action_prepaid_expense_expiring" model="ir.actions.act_window">
-        <field name="name">⚠️ Expiring Contracts (Last Month Renewal Alerts)</field>
+        <field name="name">Expiring Contracts (Last Month Renewal Alerts)</field>
         <field name="res_model">prepaid.expense</field>
         <field name="view_mode">list,kanban,form</field>
         <field name="search_view_id" ref="view_prepaid_expense_search"/>

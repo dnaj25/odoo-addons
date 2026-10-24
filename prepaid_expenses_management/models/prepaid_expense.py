@@ -141,7 +141,7 @@ class PrepaidExpense(models.Model):
     )
     renewal_state = fields.Selection([
         ('normal', 'Active & In Good Standing'),
-        ('expiring_soon', '⚠️ Expiring Soon (Final Month / Action Required)'),
+        ('expiring_soon', 'Expiring Soon (Final Month / Action Required)'),
         ('expired', 'Expired'),
         ('renewed', 'Renewed'),
     ], string='Renewal Status', compute='_compute_renewal_status', store=True, tracking=True)
