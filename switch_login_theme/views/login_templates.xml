@@ -2,31 +2,46 @@
 <odoo>
     <template id="login_layout" inherit_id="web.login_layout" name="Branded Login Theme Layout">
         <xpath expr="//div[hasclass('container')]" position="replace">
-            <div class="switch-login-wrapper">
-                <!-- Left side background visual panel -->
-                <div class="switch-login-hero">
+            <t t-set="company" t-value="request.env.company.sudo()"/>
+            <t t-set="bg_url" t-value="('data:image/png;base64,' + company.login_bg_image.decode('utf-8')) if company.login_bg_image else '/switch_login_theme/static/src/img/login_bg.jpg'"/>
+            <div t-attf-class="switch-login-wrapper layout-#{company.login_layout_style or 'split_left'} card-theme-#{company.login_card_theme or 'light'} bg-type-#{company.login_bg_type or 'image'}"
+                 t-attf-style="--login-primary: #{company.login_primary_color or '#7239ea'}; --login-bg-1: #{company.login_bg_color_1 or '#2e1a47'}; --login-bg-2: #{company.login_bg_color_2 or '#7239ea'}; --login-overlay-opacity: #{company.login_overlay_opacity or '0.6'}; --login-bg-url: url('#{bg_url}');">
+                
+                <!-- Hero visual panel (shown in split_left and split_right) -->
+                <div class="switch-login-hero" t-if="(company.login_layout_style or 'split_left') != 'centered'">
                     <div class="switch-hero-content">
-                        <h2>Welcome to</h2>
-                        <h1 t-esc="request.env.company.name or 'Your Company'"/>
-                        <p>Sign in to access your business platform.</p>
+                        <h2 t-if="company.login_welcome_subtitle" t-esc="company.login_welcome_subtitle"/>
+                        <h1 t-esc="company.login_hero_title or company.name or 'Your Company'"/>
+                        <p t-if="company.login_hero_tagline" t-esc="company.login_hero_tagline"/>
                     </div>
                 </div>
 
-                <!-- Right side login form panel -->
+                <!-- Login form panel -->
                 <div class="switch-login-form-container">
                     <div class="switch-login-card">
-                        <div class="text-center mb-4">
-                            <img t-attf-src="/web/image/res.company/#{request.env.company.id}/logo"
+                        <div class="text-center mb-4" t-if="company.login_show_logo">
+                            <img t-if="company.login_custom_logo"
+                                 t-attf-src="data:image/png;base64,#{company.login_custom_logo.decode('utf-8')}"
+                                 alt="Login Logo" class="switch-login-logo"/>
+                            <img t-else=""
+                                 t-attf-src="/web/image/res.company/#{company.id}/logo"
                                  alt="Company Logo" class="switch-login-logo"/>
+                        </div>
+
+                        <!-- In Centered layout, show optional welcome title inside card -->
+                        <div class="text-center mb-3 switch-centered-header" t-if="company.login_layout_style == 'centered'">
+                            <div class="small text-uppercase fw-semibold opacity-75" t-if="company.login_welcome_subtitle" t-esc="company.login_welcome_subtitle"/>
+                            <h3 class="fw-bold mb-1" t-esc="company.login_hero_title or company.name"/>
+                            <p class="small opacity-75 mb-0" t-if="company.login_hero_tagline" t-esc="company.login_hero_tagline"/>
                         </div>
 
                         <t t-out="0"/>
 
-                        <div class="switch-login-footer mt-5 text-center" t-if="not disable_footer">
-                            <t t-if="not disable_database_manager">
+                        <div class="switch-login-footer mt-4 text-center" t-if="not disable_footer and company.login_show_footer">
+                            <t t-if="not disable_database_manager and company.login_show_db_manager">
                                 <a class="manage-db-link" href="/web/database/manager">Manage Databases</a>
                             </t>
-                            <span class="powered-by">Powered by <strong>Odoo 19</strong></span>
+                            <span class="powered-by" t-if="company.login_footer_text" t-esc="company.login_footer_text"/>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- 1. Inherit standard Company Form to add a tab -->
+    <record id="view_company_form_login_theme_inherit" model="ir.ui.view">
+        <field name="name">res.company.form.login.theme.inherit</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="🎨 Login Theme Customizer" name="login_theme_customizer">
+                    <div class="mb-3 d-flex gap-2">
+                        <button name="action_preview_login_page" string="👁️ Preview Login Screen" type="object" class="btn-primary"/>
+                        <button name="action_reset_login_theme_defaults" string="↺ Reset to Default Theme" type="object" class="btn-secondary"
+                                confirm="Are you sure you want to reset all login theme settings to default?"/>
+                    </div>
+                    <group>
+                        <group string="1. Layout &amp; Card Style">
+                            <field name="login_layout_style" widget="radio"/>
+                            <field name="login_card_theme" widget="radio"/>
+                            <field name="login_primary_color" widget="color"/>
+                        </group>
+                        <group string="2. Logo Customization">
+                            <field name="login_show_logo" widget="boolean_toggle"/>
+                            <field name="login_custom_logo" widget="image" class="oe_avatar"
+                                   invisible="not login_show_logo"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="3. Background &amp; Colors">
+                            <field name="login_bg_type" widget="radio"/>
+                            <field name="login_bg_image" widget="image" class="oe_avatar"
+                                   invisible="login_bg_type != 'image'"/>
+                            <field name="login_bg_color_1" widget="color"/>
+                            <field name="login_bg_color_2" widget="color"
+                                   invisible="login_bg_type == 'solid'"/>
+                            <field name="login_overlay_opacity"/>
+                        </group>
+                        <group string="4. Welcome Texts &amp; Footer">
+                            <field name="login_welcome_subtitle" placeholder="e.g., Welcome to / مرحباً بك في"/>
+                            <field name="login_hero_title" placeholder="Leave empty to use Company Name"/>
+                            <field name="login_hero_tagline" placeholder="e.g., Sign in to access your business platform."/>
+                            <field name="login_show_footer" widget="boolean_toggle"/>
+                            <field name="login_show_db_manager" widget="boolean_toggle"
+                                   invisible="not login_show_footer"/>
+                            <field name="login_footer_text" placeholder="e.g., Powered by Odoo 19"
+                                   invisible="not login_show_footer"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- 2. Dedicated Standalone Customizer Form View -->
+    <record id="view_company_login_theme_customizer_form" model="ir.ui.view">
+        <field name="name">res.company.login.theme.customizer.form</field>
+        <field name="model">res.company</field>
+        <field name="priority">99</field>
+        <field name="arch" type="xml">
+            <form string="Branded Login Theme Studio" create="0" delete="0">
+                <header>
+                    <button name="action_preview_login_page" string="👁️ Live Preview Login Page" type="object" class="oe_highlight"/>
+                    <button name="action_reset_login_theme_defaults" string="↺ Reset Defaults" type="object" class="btn-secondary"
+                            confirm="Reset all login theme customizations back to defaults?"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <span class="o_form_label">🎨 Branded Login Theme Studio</span>
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <div class="alert alert-info mb-4" role="status">
+                        <strong>💡 Tip:</strong> Customize every aspect of your Odoo login screen below (Logo, Background Image, Gradient Colors, Button Color, Layout, and Texts). Click <strong>Save</strong> then <strong>👁️ Live Preview Login Page</strong> to see your changes immediately!
+                    </div>
+                    <group>
+                        <group string="📐 Layout &amp; Card Design">
+                            <field name="login_layout_style" widget="radio"/>
+                            <field name="login_card_theme" widget="radio"/>
+                            <field name="login_primary_color" widget="color"/>
+                        </group>
+                        <group string="🖼️ Login Card Logo">
+                            <field name="login_show_logo" widget="boolean_toggle"/>
+                            <field name="login_custom_logo" widget="image" class="oe_avatar"
+                                   invisible="not login_show_logo"/>
+                            <field name="logo" string="Default Company Logo" widget="image" class="oe_avatar" readonly="1"
+                                   invisible="not login_show_logo"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="🎨 Background Image &amp; Colors">
+                            <field name="login_bg_type" widget="radio"/>
+                            <field name="login_bg_image" widget="image" class="oe_avatar"
+                                   invisible="login_bg_type != 'image'"/>
+                            <field name="login_bg_color_1" widget="color"/>
+                            <field name="login_bg_color_2" widget="color"
+                                   invisible="login_bg_type == 'solid'"/>
+                            <field name="login_overlay_opacity"/>
+                        </group>
+                        <group string="✍️ Custom Texts &amp; Footer">
+                            <field name="login_welcome_subtitle" placeholder="e.g., Welcome to / مرحباً بك في"/>
+                            <field name="login_hero_title" placeholder="Leave blank to use Company Name"/>
+                            <field name="login_hero_tagline" placeholder="e.g., Sign in to access your business platform."/>
+                            <field name="login_show_footer" widget="boolean_toggle"/>
+                            <field name="login_show_db_manager" widget="boolean_toggle"
+                                   invisible="not login_show_footer"/>
+                            <field name="login_footer_text" placeholder="e.g., Powered by Odoo 19"
+                                   invisible="not login_show_footer"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action to open Customizer directly for Main Company -->
+    <record id="action_login_theme_customizer" model="ir.actions.act_window">
+        <field name="name">🎨 Login Theme Studio</field>
+        <field name="res_model">res.company</field>
+        <field name="res_id" ref="base.main_company"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_company_login_theme_customizer_form"/>
+        <field name="target">current</field>
+    </record>
+
+    <!-- Top-level App Menu & Settings Menu -->
+    <menuitem id="menu_login_theme_studio_root"
+              name="Login Theme Studio"
+              action="action_login_theme_customizer"
+              web_icon="switch_login_theme,static/description/icon.png"
+              groups="base.group_system"
+              sequence="95"/>
+
+    <menuitem id="menu_login_theme_studio_settings"
+              name="🎨 Login Theme Studio"
+              parent="base.menu_administration"
+              action="action_login_theme_customizer"
+              groups="base.group_system"
+              sequence="15"/>
+</odoo>
