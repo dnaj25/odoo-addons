@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Branded Login Theme & Customizer Studio',
-    'version': '19.0.2.0.0',
+    'version': '19.0.3.0.0',
     'category': 'Theme/Corporate',
-    'summary': '100% Customizable Login Screen: Change Logo, Background Image, Gradient Colors, Card Style (Light/Dark/Glass), Layout & Texts from Settings',
+    'summary': '100% Customizable Login Screen: One-Click Presets, Logo, Background, Gradient Colors, Card Style, Announcement Banner & Interactive Controls',
     'description': '''
 Branded Login Theme & Customizer Studio for Odoo 19
 ===================================================
@@ -11,11 +11,14 @@ Transform the default Odoo 19 login page into a fully customizable, modern corpo
 
 Key Features:
 -------------
+* **5 One-Click Ready Theme Presets**: Corporate Royal Purple, Midnight Cyber Dark, Emerald Finance, Minimalist Glass, and Sunset Warm.
 * **3 Layout Modes**: Split Screen (Left/Right), Split Screen Reversed, or Centered Card over Fullscreen Background.
 * **3 Card Styles**: Clean Light Card, Modern Dark Mode Card, or Frosted Glassmorphism Card.
 * **Custom Logo & Background Image**: Upload any custom login logo and any background image directly from Settings.
 * **Color & Gradient Pickers**: Customize Primary Button Color, Background Gradient Colors, and Overlay Darkness.
-* **Editable Texts & Footer**: Customize Welcome Subtitle, Hero Title, Tagline, Footer Text, and Database Manager link visibility.
+* **Announcement / Maintenance Banner**: Display important notices or maintenance alerts at the top of the login card (Info, Warning, or Success styles).
+* **Interactive Login Controls**: Show/Hide Password toggle button, Remember My Email option, and Animated Floating Background Shapes.
+* **Quick Support & Website Links**: Add direct links to IT Helpdesk / WhatsApp Support and your official website on the login card.
 * **One-Click Live Preview**: Preview your customized login page anytime directly from the studio.
     ''',
     'author': 'dnaj25',
@@ -23,6 +26,7 @@ Key Features:
     'license': 'LGPL-3',
     'depends': ['base', 'web'],
     'data': [
+        'data/login_studio_data.xml',
         'views/res_company_views.xml',
         'views/login_templates.xml',
     ],

@@ -5,10 +5,24 @@
             <t t-set="company" t-value="request.env.company.sudo()"/>
             <t t-set="bg_url" t-value="('data:image/png;base64,' + company.login_bg_image.decode('utf-8')) if company.login_bg_image else '/switch_login_theme/static/src/img/login_bg.jpg'"/>
             <div t-attf-class="switch-login-wrapper layout-#{company.login_layout_style or 'split_left'} card-theme-#{company.login_card_theme or 'light'} bg-type-#{company.login_bg_type or 'image'}"
-                 t-attf-style="--login-primary: #{company.login_primary_color or '#7239ea'}; --login-bg-1: #{company.login_bg_color_1 or '#2e1a47'}; --login-bg-2: #{company.login_bg_color_2 or '#7239ea'}; --login-overlay-opacity: #{company.login_overlay_opacity or '0.6'}; --login-bg-url: url('#{bg_url}');">
-                
+                 t-attf-style="--login-primary: #{company.login_primary_color or '#7239ea'}; --login-bg-1: #{company.login_bg_color_1 or '#2e1a47'}; --login-bg-2: #{company.login_bg_color_2 or '#7239ea'}; --login-overlay-opacity: #{company.login_overlay_opacity or '0.6'}; --login-bg-url: url('#{bg_url}');"
+                 t-att-data-pwd-toggle="'1' if company.x_login_password_toggle else '0'"
+                 t-att-data-remember-email="'1' if company.x_login_remember_email else '0'">
+
+                <!-- Animated Floating Shapes for Centered Layout -->
+                <div class="switch-bg-shapes" t-if="company.x_login_animated_bg and company.login_layout_style == 'centered'">
+                    <span class="shape shape-1"/>
+                    <span class="shape shape-2"/>
+                    <span class="shape shape-3"/>
+                </div>
+
                 <!-- Hero visual panel (shown in split_left and split_right) -->
                 <div class="switch-login-hero" t-if="(company.login_layout_style or 'split_left') != 'centered'">
+                    <div class="switch-bg-shapes" t-if="company.x_login_animated_bg">
+                        <span class="shape shape-1"/>
+                        <span class="shape shape-2"/>
+                        <span class="shape shape-3"/>
+                    </div>
                     <div class="switch-hero-content">
                         <h2 t-if="company.login_welcome_subtitle" t-esc="company.login_welcome_subtitle"/>
                         <h1 t-esc="company.login_hero_title or company.name or 'Your Company'"/>
@@ -19,6 +33,12 @@
                 <!-- Login form panel -->
                 <div class="switch-login-form-container">
                     <div class="switch-login-card">
+                        <!-- Announcement / Maintenance Banner -->
+                        <div t-if="company.x_login_show_announcement and company.x_login_announcement_text"
+                             t-attf-class="switch-announcement-banner banner-#{company.x_login_announcement_style or 'info'} mb-3">
+                            <span t-esc="company.x_login_announcement_text"/>
+                        </div>
+
                         <div class="text-center mb-4" t-if="company.login_show_logo">
                             <img t-if="company.login_custom_logo"
                                  t-attf-src="data:image/png;base64,#{company.login_custom_logo.decode('utf-8')}"
@@ -37,7 +57,25 @@
 
                         <t t-out="0"/>
 
-                        <div class="switch-login-footer mt-4 text-center" t-if="not disable_footer and company.login_show_footer">
+                        <!-- Quick Support & Website Links -->
+                        <div class="switch-support-links mt-3 text-center"
+                             t-if="company.x_login_support_url or company.x_login_website_url">
+                            <a t-if="company.x_login_support_url"
+                               t-att-href="company.x_login_support_url"
+                               target="_blank" rel="noopener"
+                               class="switch-quick-link">
+                                <t t-esc="company.x_login_support_label or 'Support'"/>
+                            </a>
+                            <span class="link-divider" t-if="company.x_login_support_url and company.x_login_website_url">|</span>
+                            <a t-if="company.x_login_website_url"
+                               t-att-href="company.x_login_website_url"
+                               target="_blank" rel="noopener"
+                               class="switch-quick-link">
+                                <t t-esc="company.x_login_website_label or 'Website'"/>
+                            </a>
+                        </div>
+
+                        <div class="switch-login-footer mt-3 text-center" t-if="not disable_footer and company.login_show_footer">
                             <t t-if="not disable_database_manager and company.login_show_db_manager">
                                 <a class="manage-db-link" href="/web/database/manager">Manage Databases</a>
                             </t>
@@ -45,6 +83,81 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Interactive Enhancements Script (Password Toggle + Remember Email) -->
+                <script type="text/javascript">
+                    document.addEventListener('DOMContentLoaded', function () {
+                        var wrapper = document.querySelector('.switch-login-wrapper');
+                        if (!wrapper) return;
+
+                        // 1. Show / Hide Password Toggle
+                        if (wrapper.getAttribute('data-pwd-toggle') === '1') {
+                            var pwdInput = document.querySelector('input#password, input[name="password"]');
+                            if (pwdInput &amp;&amp; !pwdInput.parentElement.querySelector('.switch-pwd-toggle-btn')) {
+                                var parent = pwdInput.parentElement;
+                                parent.style.position = 'relative';
+                                pwdInput.style.paddingRight = '44px';
+
+                                var btn = document.createElement('button');
+                                btn.type = 'button';
+                                btn.className = 'switch-pwd-toggle-btn';
+                                btn.setAttribute('aria-label', 'Show or Hide Password');
+                                btn.textContent = 'Show';
+
+                                btn.addEventListener('click', function () {
+                                    var isPwd = pwdInput.getAttribute('type') === 'password';
+                                    pwdInput.setAttribute('type', isPwd ? 'text' : 'password');
+                                    btn.textContent = isPwd ? 'Hide' : 'Show';
+                                });
+                                parent.appendChild(btn);
+                            }
+                        }
+
+                        // 2. Remember My Email Checkbox
+                        if (wrapper.getAttribute('data-remember-email') === '1') {
+                            var loginInput = document.querySelector('input#login, input[name="login"]');
+                            var form = document.querySelector('form.oe_login_form');
+                            if (loginInput &amp;&amp; form &amp;&amp; !form.querySelector('.switch-remember-row')) {
+                                var savedEmail = localStorage.getItem('odoo_saved_login_email');
+                                if (savedEmail &amp;&amp; !loginInput.value) {
+                                    loginInput.value = savedEmail;
+                                }
+
+                                var rememberDiv = document.createElement('div');
+                                rememberDiv.className = 'switch-remember-row form-check mb-3 mt-1';
+
+                                var checkbox = document.createElement('input');
+                                checkbox.type = 'checkbox';
+                                checkbox.id = 'switch_remember_email';
+                                checkbox.className = 'form-check-input';
+                                checkbox.checked = Boolean(savedEmail);
+
+                                var label = document.createElement('label');
+                                label.htmlFor = 'switch_remember_email';
+                                label.className = 'form-check-label switch-remember-label';
+                                label.textContent = 'Remember my email';
+
+                                rememberDiv.appendChild(checkbox);
+                                rememberDiv.appendChild(label);
+
+                                var pwdFieldGroup = form.querySelector('.field-password') || (document.querySelector('input#password') &amp;&amp; document.querySelector('input#password').closest('.mb-3'));
+                                if (pwdFieldGroup &amp;&amp; pwdFieldGroup.parentNode) {
+                                    pwdFieldGroup.parentNode.insertBefore(rememberDiv, pwdFieldGroup.nextSibling);
+                                } else {
+                                    form.appendChild(rememberDiv);
+                                }
+
+                                form.addEventListener('submit', function () {
+                                    if (checkbox.checked &amp;&amp; loginInput.value) {
+                                        localStorage.setItem('odoo_saved_login_email', loginInput.value.trim());
+                                    } else {
+                                        localStorage.removeItem('odoo_saved_login_email');
+                                    }
+                                });
+                            }
+                        }
+                    });
+                </script>
             </div>
         </xpath>
     </template>

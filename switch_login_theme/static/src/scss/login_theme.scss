@@ -10,7 +10,8 @@
     display: flex;
     min-height: 100vh;
     width: 100vw;
-    overflow-x: hidden;
+    overflow: hidden;
+    position: relative;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
     // Layout Variations
@@ -107,6 +108,10 @@
             border-color: #2e2e4d !important;
             color: #f8fafc !important;
         }
+        .switch-pwd-toggle-btn {
+            background-color: rgba(255, 255, 255, 0.08);
+            color: #e2e8f0;
+        }
         .switch-login-footer {
             border-top-color: rgba(255, 255, 255, 0.1);
         }
@@ -117,15 +122,58 @@
             background-color: #f3f4f8;
         }
         .switch-login-card {
-            background: rgba(255, 255, 255, 0.82);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
+            background: rgba(255, 255, 255, 0.84);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             color: #0f172a;
             padding: 38px;
             border-radius: 22px;
             border: 1px solid rgba(255, 255, 255, 0.65);
             box-shadow: 0 20px 45px rgba(15, 23, 42, 0.15);
         }
+    }
+}
+
+// Animated Floating Background Shapes
+.switch-bg-shapes {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+
+    .shape {
+        position: absolute;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.02) 70%);
+        filter: blur(8px);
+        animation: floatOrb 14s ease-in-out infinite alternate;
+    }
+
+    .shape-1 {
+        width: 340px;
+        height: 340px;
+        top: -80px;
+        left: -60px;
+        animation-duration: 13s;
+    }
+
+    .shape-2 {
+        width: 260px;
+        height: 260px;
+        bottom: 8%;
+        right: 10%;
+        animation-duration: 16s;
+        animation-delay: -4s;
+    }
+
+    .shape-3 {
+        width: 180px;
+        height: 180px;
+        top: 42%;
+        left: 55%;
+        animation-duration: 11s;
+        animation-delay: -7s;
     }
 }
 
@@ -139,6 +187,7 @@
     justify-content: center;
     padding: 60px;
     position: relative;
+    overflow: hidden;
 
     &::before {
         content: '';
@@ -204,8 +253,36 @@
     flex-direction: column;
     animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 
+    // Announcement Banner
+    .switch-announcement-banner {
+        padding: 11px 15px;
+        border-radius: 10px;
+        font-size: 0.84rem;
+        font-weight: 600;
+        line-height: 1.45;
+        text-align: center;
+
+        &.banner-info {
+            background-color: rgba(14, 165, 233, 0.12);
+            border: 1px solid rgba(14, 165, 233, 0.3);
+            color: #0369a1;
+        }
+
+        &.banner-warning {
+            background-color: rgba(245, 158, 11, 0.14);
+            border: 1px solid rgba(245, 158, 11, 0.35);
+            color: #b45309;
+        }
+
+        &.banner-success {
+            background-color: rgba(16, 185, 129, 0.12);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #047857;
+        }
+    }
+
     // Labels
-    .form-label, label {
+    .form-label, label:not(.switch-remember-label) {
         font-weight: 600 !important;
         color: #4b5563;
         font-size: 0.82rem !important;
@@ -226,6 +303,58 @@
             border-color: var(--login-primary) !important;
             box-shadow: 0 0 0 3px rgba(114, 57, 234, 0.18) !important;
             outline: none !important;
+        }
+    }
+
+    // Show / Hide Password Button
+    .switch-pwd-toggle-btn {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        border: none;
+        background: rgba(107, 114, 128, 0.1);
+        color: #4b5563;
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+        padding: 4px 9px;
+        border-radius: 6px;
+        cursor: pointer;
+        z-index: 5;
+        transition: background-color 0.15s, color 0.15s;
+
+        &:hover {
+            background: var(--login-primary);
+            color: #ffffff;
+        }
+    }
+
+    // Remember My Email Checkbox
+    .switch-remember-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding-left: 1.5em;
+
+        .form-check-input {
+            cursor: pointer;
+            border-radius: 4px;
+            &:checked {
+                background-color: var(--login-primary);
+                border-color: var(--login-primary);
+            }
+        }
+
+        .switch-remember-label {
+            font-size: 0.85rem !important;
+            font-weight: 500 !important;
+            text-transform: none !important;
+            letter-spacing: 0 !important;
+            margin-bottom: 0 !important;
+            cursor: pointer;
+            opacity: 0.85;
         }
     }
 
@@ -266,10 +395,29 @@
     margin-bottom: 8px;
 }
 
+// Quick Support & Website Links
+.switch-support-links {
+    font-size: 0.82rem;
+    font-weight: 600;
+
+    .switch-quick-link {
+        color: var(--login-primary) !important;
+        text-decoration: none;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .link-divider {
+        margin: 0 10px;
+        color: #cbd5e1;
+    }
+}
+
 // Footer
 .switch-login-footer {
     border-top: 1px solid #e5e7eb;
-    padding-top: 20px;
+    padding-top: 16px;
     font-size: 0.82rem;
 
     .manage-db-link {
@@ -296,6 +444,12 @@
 @keyframes slideUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatOrb {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(28px, -22px) scale(1.08); }
+    100% { transform: translate(-18px, 24px) scale(0.95); }
 }
 
 // Mobile & Tablet Responsive

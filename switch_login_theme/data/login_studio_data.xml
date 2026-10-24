@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ===================================================================
+         1. Dynamic Custom Fields on res.company (Loaded immediately in live registry)
+         =================================================================== -->
+    <record id="field_res_company_x_login_show_announcement" model="ir.model.fields">
+        <field name="name">x_login_show_announcement</field>
+        <field name="field_description">Show Announcement Banner</field>
+        <field name="model_id" ref="base.model_res_company"/>
+        <field name="ttype">boolean</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_res_company_x_login_announcement_text" model="ir.model.fields">
+        <field name="name">x_login_announcement_text</field>
+        <field name="field_description">Announcement Message</field>
+        <field name="model_id" ref="base.model_res_company"/>
+        <field name="ttype">char</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_res_company_x_login_announcement_style" model="ir.model.fields">
+        <field name="name">x_login_announcement_style</field>
+        <field name="field_description">Announcement Style</field>
+        <field name="model_id" ref="base.model_res_company"/>
+        <field name="ttype">selection</field>
+        <field name="state">manual</field>
+        <field name="selection_ids" eval="[
+            (5, 0, 0),
+            (0, 0, {'value': 'info', 'name': 'Information (Blue)', 'sequence': 1}),
+            (0, 0, {'value': 'warning', 'name': 'Maintenance / Warning (Amber)', 'sequence': 2}),
+            (0, 0, {'value': 'success', 'name': 'System Online / Update (Green)', 'sequence': 3}),
+        ]"/>
+    </record>
+
+    <record id="field_res_company_x_login_password_toggle" model="ir.model.fields">
+        <field name="name">x_login_password_toggle</field>
+        <field name="field_description">Enable Show/Hide Password Button</field>
+        <field name="model_id" ref="base.model_res_company"/>
+        <field name="ttype">boolean</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_res_company_x_login_remember_email" model="ir.model.fields">
+        <field name="name">x_login_remember_email</field>
+        <field name="field_description">Enable Remember Email Checkbox</field>
+        <field name="model_id" ref="base.model_res_company"/>
+        <field name="ttype">boolean</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_res_company_x_login_animated_bg" model="ir.model.fields">
+        <field name="name">x_login_animated_bg</field>
+        <field name="field_description">Enable Animated Background Shapes</field>
+        <field name="model_id" ref="base.model_res_company"/>
+        <field name="ttype">boolean</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_res_company_x_login_support_label" model="ir.model.fields">
+        <field name="name">x_login_support_label</field>
+        <field name="field_description">Support Link Text</field>
+        <field name="model_id" ref="base.model_res_company"/>
+        <field name="ttype">char</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_res_company_x_login_support_url" model="ir.model.fields">
+        <field name="name">x_login_support_url</field>
+        <field name="field_description">Support Link URL</field>
+        <field name="model_id" ref="base.model_res_company"/>
+        <field name="ttype">char</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_res_company_x_login_website_label" model="ir.model.fields">
+        <field name="name">x_login_website_label</field>
+        <field name="field_description">Website Link Text</field>
+        <field name="model_id" ref="base.model_res_company"/>
+        <field name="ttype">char</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_res_company_x_login_website_url" model="ir.model.fields">
+        <field name="name">x_login_website_url</field>
+        <field name="field_description">Website Link URL</field>
+        <field name="model_id" ref="base.model_res_company"/>
+        <field name="ttype">char</field>
+        <field name="state">manual</field>
+    </record>
+
+    <!-- ===================================================================
+         2. One-Click Ready Theme Presets (Server Actions)
+         =================================================================== -->
+    <record id="action_preset_royal_purple" model="ir.actions.server">
+        <field name="name">Apply Preset: Corporate Royal Purple</field>
+        <field name="model_id" ref="base.model_res_company"/>
+        <field name="state">code</field>
+        <field name="code">
+if records:
+    records.write({
+        'login_layout_style': 'split_left',
+        'login_card_theme': 'light',
+        'login_bg_type': 'image',
+        'login_bg_color_1': '#2e1a47',
+        'login_bg_color_2': '#7239ea',
+        'login_overlay_opacity': '0.6',
+        'login_primary_color': '#7239ea',
+        'x_login_animated_bg': True,
+    })
+        </field>
+    </record>
+
+    <record id="action_preset_cyber_dark" model="ir.actions.server">
+        <field name="name">Apply Preset: Midnight Cyber Dark</field>
+        <field name="model_id" ref="base.model_res_company"/>
+        <field name="state">code</field>
+        <field name="code">
+if records:
+    records.write({
+        'login_layout_style': 'centered',
+        'login_card_theme': 'dark',
+        'login_bg_type': 'gradient',
+        'login_bg_color_1': '#090d16',
+        'login_bg_color_2': '#1e293b',
+        'login_overlay_opacity': '0.8',
+        'login_primary_color': '#0ea5e9',
+        'x_login_animated_bg': True,
+    })
+        </field>
+    </record>
+
+    <record id="action_preset_emerald_finance" model="ir.actions.server">
+        <field name="name">Apply Preset: Emerald Finance</field>
+        <field name="model_id" ref="base.model_res_company"/>
+        <field name="state">code</field>
+        <field name="code">
+if records:
+    records.write({
+        'login_layout_style': 'split_left',
+        'login_card_theme': 'light',
+        'login_bg_type': 'gradient',
+        'login_bg_color_1': '#064e3b',
+        'login_bg_color_2': '#10b981',
+        'login_overlay_opacity': '0.6',
+        'login_primary_color': '#059669',
+        'x_login_animated_bg': True,
+    })
+        </field>
+    </record>
+
+    <record id="action_preset_minimal_glass" model="ir.actions.server">
+        <field name="name">Apply Preset: Minimalist Glass</field>
+        <field name="model_id" ref="base.model_res_company"/>
+        <field name="state">code</field>
+        <field name="code">
+if records:
+    records.write({
+        'login_layout_style': 'centered',
+        'login_card_theme': 'glass',
+        'login_bg_type': 'image',
+        'login_bg_color_1': '#1e1b4b',
+        'login_bg_color_2': '#4f46e5',
+        'login_overlay_opacity': '0.3',
+        'login_primary_color': '#4f46e5',
+        'x_login_animated_bg': True,
+    })
+        </field>
+    </record>
+
+    <record id="action_preset_sunset_warm" model="ir.actions.server">
+        <field name="name">Apply Preset: Sunset Warm</field>
+        <field name="model_id" ref="base.model_res_company"/>
+        <field name="state">code</field>
+        <field name="code">
+if records:
+    records.write({
+        'login_layout_style': 'split_right',
+        'login_card_theme': 'light',
+        'login_bg_type': 'gradient',
+        'login_bg_color_1': '#7c2d12',
+        'login_bg_color_2': '#ea580c',
+        'login_overlay_opacity': '0.6',
+        'login_primary_color': '#ea580c',
+        'x_login_animated_bg': True,
+    })
+        </field>
+    </record>
+
+    <record id="action_reset_studio_defaults" model="ir.actions.server">
+        <field name="name">Reset Login Studio Defaults</field>
+        <field name="model_id" ref="base.model_res_company"/>
+        <field name="state">code</field>
+        <field name="code">
+if records:
+    records.write({
+        'login_layout_style': 'split_left',
+        'login_card_theme': 'light',
+        'login_show_logo': True,
+        'login_custom_logo': False,
+        'login_bg_type': 'image',
+        'login_bg_image': False,
+        'login_bg_color_1': '#2e1a47',
+        'login_bg_color_2': '#7239ea',
+        'login_overlay_opacity': '0.6',
+        'login_primary_color': '#7239ea',
+        'login_welcome_subtitle': 'Welcome to',
+        'login_hero_title': False,
+        'login_hero_tagline': 'Sign in to access your business platform.',
+        'login_show_footer': True,
+        'login_show_db_manager': True,
+        'login_footer_text': 'Powered by Odoo 19',
+        'x_login_show_announcement': False,
+        'x_login_announcement_style': 'info',
+        'x_login_announcement_text': 'Welcome to our corporate portal. Contact IT support if you need assistance.',
+        'x_login_password_toggle': True,
+        'x_login_remember_email': True,
+        'x_login_animated_bg': True,
+        'x_login_support_label': 'IT Support',
+        'x_login_support_url': 'mailto:support@yourcompany.com',
+        'x_login_website_label': 'Official Website',
+        'x_login_website_url': 'https://www.odoo.com',
+    })
+        </field>
+    </record>
+
+    <!-- ===================================================================
+         3. Initialize Default Values on Main Company if not yet set
+         =================================================================== -->
+    <function model="res.company" name="write">
+        <value eval="[ref('base.main_company')]"/>
+        <value eval="{
+            'x_login_announcement_style': 'info',
+            'x_login_announcement_text': 'Welcome to our corporate portal. Contact IT support if you need assistance.',
+            'x_login_password_toggle': True,
+            'x_login_remember_email': True,
+            'x_login_animated_bg': True,
+            'x_login_support_label': 'IT Support',
+            'x_login_support_url': 'mailto:support@yourcompany.com',
+            'x_login_website_label': 'Official Website',
+            'x_login_website_url': 'https://www.odoo.com',
+        }"/>
+    </function>
+</odoo>
