@@ -84,32 +84,20 @@
                     </div>
                 </div>
 
-                <!-- Interactive Enhancements Script (Password Toggle + Remember Email) -->
+                <!-- Interactive Enhancements Script (Remember Email & Eye Toggle Visibility) -->
                 <script type="text/javascript">
                     document.addEventListener('DOMContentLoaded', function () {
                         var wrapper = document.querySelector('.switch-login-wrapper');
                         if (!wrapper) return;
 
-                        // 1. Show / Hide Password Toggle
-                        if (wrapper.getAttribute('data-pwd-toggle') === '1') {
-                            var pwdInput = document.querySelector('input#password, input[name="password"]');
-                            if (pwdInput &amp;&amp; !pwdInput.parentElement.querySelector('.switch-pwd-toggle-btn')) {
-                                var parent = pwdInput.parentElement;
-                                parent.style.position = 'relative';
-                                pwdInput.style.paddingRight = '44px';
-
-                                var btn = document.createElement('button');
-                                btn.type = 'button';
-                                btn.className = 'switch-pwd-toggle-btn';
-                                btn.setAttribute('aria-label', 'Show or Hide Password');
-                                btn.textContent = 'Show';
-
-                                btn.addEventListener('click', function () {
-                                    var isPwd = pwdInput.getAttribute('type') === 'password';
-                                    pwdInput.setAttribute('type', isPwd ? 'text' : 'password');
-                                    btn.textContent = isPwd ? 'Hide' : 'Show';
-                                });
-                                parent.appendChild(btn);
+                        // 1. Clean Eye Icon inside Password Field (no extra SHOW button)
+                        var eyeBtn = document.querySelector('.o_show_password');
+                        if (eyeBtn) {
+                            if (wrapper.getAttribute('data-pwd-toggle') === '0') {
+                                eyeBtn.style.display = 'none';
+                            } else {
+                                var eyeSvg = '&lt;svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/&gt;&lt;circle cx="12" cy="12" r="3"/&gt;&lt;/svg&gt;';
+                                eyeBtn.innerHTML = eyeSvg;
                             }
                         }
 
@@ -124,7 +112,7 @@
                                 }
 
                                 var rememberDiv = document.createElement('div');
-                                rememberDiv.className = 'switch-remember-row form-check mb-3 mt-1';
+                                rememberDiv.className = 'switch-remember-row form-check mb-3 mt-2';
 
                                 var checkbox = document.createElement('input');
                                 checkbox.type = 'checkbox';
@@ -140,7 +128,7 @@
                                 rememberDiv.appendChild(checkbox);
                                 rememberDiv.appendChild(label);
 
-                                var pwdFieldGroup = form.querySelector('.field-password') || (document.querySelector('input#password') &amp;&amp; document.querySelector('input#password').closest('.mb-3'));
+                                var pwdFieldGroup = form.querySelector('.o_caps_lock_warning') || form.querySelector('.field-password') || (document.querySelector('input#password') &amp;&amp; document.querySelector('input#password').closest('.mb-3'));
                                 if (pwdFieldGroup &amp;&amp; pwdFieldGroup.parentNode) {
                                     pwdFieldGroup.parentNode.insertBefore(rememberDiv, pwdFieldGroup.nextSibling);
                                 } else {

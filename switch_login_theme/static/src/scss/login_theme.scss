@@ -108,9 +108,8 @@
             border-color: #2e2e4d !important;
             color: #f8fafc !important;
         }
-        .switch-pwd-toggle-btn {
-            background-color: rgba(255, 255, 255, 0.08);
-            color: #e2e8f0;
+        .o_show_password {
+            color: #cbd5e1 !important;
         }
         .switch-login-footer {
             border-top-color: rgba(255, 255, 255, 0.1);
@@ -306,29 +305,40 @@
         }
     }
 
-    // Show / Hide Password Button
-    .switch-pwd-toggle-btn {
-        position: absolute;
-        right: 8px;
-        top: 50%;
-        transform: translateY(-50%);
-        border: none;
-        background: rgba(107, 114, 128, 0.1);
-        color: #4b5563;
-        font-size: 0.72rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.4px;
-        padding: 4px 9px;
-        border-radius: 6px;
-        cursor: pointer;
-        z-index: 5;
-        transition: background-color 0.15s, color 0.15s;
+    // Clean Password Input & Single Eye Icon (No outer box sticking out)
+    .o_caps_lock_warning .input-group {
+        position: relative;
 
-        &:hover {
-            background: var(--login-primary);
-            color: #ffffff;
+        input#password {
+            padding-right: 42px !important;
+            border-radius: 10px !important;
+            width: 100%;
         }
+
+        // Hide extra box on .o_show_password and keep only the clean Eye icon inside input
+        .o_show_password {
+            position: absolute;
+            right: 6px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: none !important;
+            background: transparent !important;
+            box-shadow: none !important;
+            color: #6b7280;
+            z-index: 5;
+            padding: 6px 10px;
+            border-radius: 8px;
+
+            &:hover {
+                color: var(--login-primary);
+            }
+        }
+    }
+
+    // Prevent browser duplicate native eye when Odoo's eye button is active
+    input[type="password"]::-ms-reveal,
+    input[type="password"]::-ms-clear {
+        display: none;
     }
 
     // Remember My Email Checkbox
