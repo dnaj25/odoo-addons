@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <!-- ===================================================================
-         1. Dynamic Custom Fields on res.company (Loaded immediately in live registry)
+         1. Dynamic Custom Fields on res.company (Login + Inside Backend Studio)
          =================================================================== -->
     <record id="field_res_company_x_login_show_announcement" model="ir.model.fields">
         <field name="name">x_login_show_announcement</field>
@@ -35,7 +35,7 @@
 
     <record id="field_res_company_x_login_password_toggle" model="ir.model.fields">
         <field name="name">x_login_password_toggle</field>
-        <field name="field_description">Enable Show/Hide Password Button</field>
+        <field name="field_description">Show Password Eye Icon</field>
         <field name="model_id" ref="base.model_res_company"/>
         <field name="ttype">boolean</field>
         <field name="state">manual</field>
@@ -89,8 +89,68 @@
         <field name="state">manual</field>
     </record>
 
+    <!-- Inside Backend Customizer Fields -->
+    <record id="field_res_company_x_backend_enable_theme" model="ir.model.fields">
+        <field name="name">x_backend_enable_theme</field>
+        <field name="field_description">Customize Inside Backend &amp; App Menu</field>
+        <field name="model_id" ref="base.model_res_company"/>
+        <field name="ttype">boolean</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_res_company_x_backend_navbar_style" model="ir.model.fields">
+        <field name="name">x_backend_navbar_style</field>
+        <field name="field_description">Top Navbar Style</field>
+        <field name="model_id" ref="base.model_res_company"/>
+        <field name="ttype">selection</field>
+        <field name="state">manual</field>
+        <field name="selection_ids" eval="[
+            (5, 0, 0),
+            (0, 0, {'value': 'gradient', 'name': 'Two-Color Brand Gradient (Matches Theme)', 'sequence': 1}),
+            (0, 0, {'value': 'solid', 'name': 'Solid Custom Navbar Color', 'sequence': 2}),
+            (0, 0, {'value': 'dark', 'name': 'Midnight Dark Navbar (#0f172a)', 'sequence': 3}),
+        ]"/>
+    </record>
+
+    <record id="field_res_company_x_backend_navbar_color" model="ir.model.fields">
+        <field name="name">x_backend_navbar_color</field>
+        <field name="field_description">Navbar Solid Color</field>
+        <field name="model_id" ref="base.model_res_company"/>
+        <field name="ttype">char</field>
+        <field name="state">manual</field>
+    </record>
+
+    <record id="field_res_company_x_backend_app_menu_style" model="ir.model.fields">
+        <field name="name">x_backend_app_menu_style</field>
+        <field name="field_description">Home App Menu Background</field>
+        <field name="model_id" ref="base.model_res_company"/>
+        <field name="ttype">selection</field>
+        <field name="state">manual</field>
+        <field name="selection_ids" eval="[
+            (5, 0, 0),
+            (0, 0, {'value': 'same_as_login', 'name': 'Match Login Screen Background &amp; Overlay', 'sequence': 1}),
+            (0, 0, {'value': 'gradient', 'name': 'Brand Two-Color Gradient', 'sequence': 2}),
+            (0, 0, {'value': 'clean_light', 'name': 'Clean Light Minimalist (#f8fafc)', 'sequence': 3}),
+            (0, 0, {'value': 'cyber_dark', 'name': 'Midnight Cyber Dark (#0f172a)', 'sequence': 4}),
+        ]"/>
+    </record>
+
+    <record id="field_res_company_x_backend_app_icon_style" model="ir.model.fields">
+        <field name="name">x_backend_app_icon_style</field>
+        <field name="field_description">App Icon Card Style</field>
+        <field name="model_id" ref="base.model_res_company"/>
+        <field name="ttype">selection</field>
+        <field name="state">manual</field>
+        <field name="selection_ids" eval="[
+            (5, 0, 0),
+            (0, 0, {'value': 'elevated', 'name': 'Elevated White Card with Hover Lift', 'sequence': 1}),
+            (0, 0, {'value': 'glass', 'name': 'Frosted Glassmorphism Tile', 'sequence': 2}),
+            (0, 0, {'value': 'dark_card', 'name': 'Dark Slate Card (#1e293b)', 'sequence': 3}),
+        ]"/>
+    </record>
+
     <!-- ===================================================================
-         2. One-Click Ready Theme Presets (Server Actions)
+         2. One-Click Ready Theme Presets (Login + Inside Backend Unified)
          =================================================================== -->
     <record id="action_preset_royal_purple" model="ir.actions.server">
         <field name="name">Apply Preset: Corporate Royal Purple</field>
@@ -107,7 +167,13 @@ if records:
         'login_overlay_opacity': '0.6',
         'login_primary_color': '#7239ea',
         'x_login_animated_bg': True,
+        'x_backend_enable_theme': True,
+        'x_backend_navbar_style': 'gradient',
+        'x_backend_navbar_color': '#2e1a47',
+        'x_backend_app_menu_style': 'same_as_login',
+        'x_backend_app_icon_style': 'glass',
     })
+action = {'type': 'ir.actions.client', 'tag': 'reload'}
         </field>
     </record>
 
@@ -126,7 +192,13 @@ if records:
         'login_overlay_opacity': '0.8',
         'login_primary_color': '#0ea5e9',
         'x_login_animated_bg': True,
+        'x_backend_enable_theme': True,
+        'x_backend_navbar_style': 'dark',
+        'x_backend_navbar_color': '#090d16',
+        'x_backend_app_menu_style': 'cyber_dark',
+        'x_backend_app_icon_style': 'dark_card',
     })
+action = {'type': 'ir.actions.client', 'tag': 'reload'}
         </field>
     </record>
 
@@ -145,7 +217,13 @@ if records:
         'login_overlay_opacity': '0.6',
         'login_primary_color': '#059669',
         'x_login_animated_bg': True,
+        'x_backend_enable_theme': True,
+        'x_backend_navbar_style': 'gradient',
+        'x_backend_navbar_color': '#064e3b',
+        'x_backend_app_menu_style': 'gradient',
+        'x_backend_app_icon_style': 'glass',
     })
+action = {'type': 'ir.actions.client', 'tag': 'reload'}
         </field>
     </record>
 
@@ -164,7 +242,13 @@ if records:
         'login_overlay_opacity': '0.3',
         'login_primary_color': '#4f46e5',
         'x_login_animated_bg': True,
+        'x_backend_enable_theme': True,
+        'x_backend_navbar_style': 'solid',
+        'x_backend_navbar_color': '#312e81',
+        'x_backend_app_menu_style': 'clean_light',
+        'x_backend_app_icon_style': 'elevated',
     })
+action = {'type': 'ir.actions.client', 'tag': 'reload'}
         </field>
     </record>
 
@@ -183,12 +267,27 @@ if records:
         'login_overlay_opacity': '0.6',
         'login_primary_color': '#ea580c',
         'x_login_animated_bg': True,
+        'x_backend_enable_theme': True,
+        'x_backend_navbar_style': 'gradient',
+        'x_backend_navbar_color': '#7c2d12',
+        'x_backend_app_menu_style': 'gradient',
+        'x_backend_app_icon_style': 'glass',
     })
+action = {'type': 'ir.actions.client', 'tag': 'reload'}
+        </field>
+    </record>
+
+    <record id="action_reload_backend_theme" model="ir.actions.server">
+        <field name="name">Apply &amp; Reload Backend Theme</field>
+        <field name="model_id" ref="base.model_res_company"/>
+        <field name="state">code</field>
+        <field name="code">
+action = {'type': 'ir.actions.client', 'tag': 'reload'}
         </field>
     </record>
 
     <record id="action_reset_studio_defaults" model="ir.actions.server">
-        <field name="name">Reset Login Studio Defaults</field>
+        <field name="name">Reset Login &amp; Backend Studio Defaults</field>
         <field name="model_id" ref="base.model_res_company"/>
         <field name="state">code</field>
         <field name="code">
@@ -220,12 +319,18 @@ if records:
         'x_login_support_url': 'mailto:support@yourcompany.com',
         'x_login_website_label': 'Official Website',
         'x_login_website_url': 'https://www.odoo.com',
+        'x_backend_enable_theme': True,
+        'x_backend_navbar_style': 'gradient',
+        'x_backend_navbar_color': '#2e1a47',
+        'x_backend_app_menu_style': 'same_as_login',
+        'x_backend_app_icon_style': 'glass',
     })
+action = {'type': 'ir.actions.client', 'tag': 'reload'}
         </field>
     </record>
 
     <!-- ===================================================================
-         3. Initialize Default Values on Main Company if not yet set
+         3. Initialize Default Values on Main Company
          =================================================================== -->
     <function model="res.company" name="write">
         <value eval="[ref('base.main_company')]"/>
@@ -239,6 +344,11 @@ if records:
             'x_login_support_url': 'mailto:support@yourcompany.com',
             'x_login_website_label': 'Official Website',
             'x_login_website_url': 'https://www.odoo.com',
+            'x_backend_enable_theme': True,
+            'x_backend_navbar_style': 'gradient',
+            'x_backend_navbar_color': '#2e1a47',
+            'x_backend_app_menu_style': 'same_as_login',
+            'x_backend_app_icon_style': 'glass',
         }"/>
     </function>
 </odoo>

@@ -1,25 +1,27 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'Branded Login Theme & Customizer Studio',
-    'version': '19.0.3.0.0',
+    'name': 'Unified Login & Backend Theme Studio',
+    'version': '19.0.4.0.0',
     'category': 'Theme/Corporate',
-    'summary': '100% Customizable Login Screen: One-Click Presets, Logo, Background, Gradient Colors, Card Style, Announcement Banner & Interactive Controls',
+    'summary': 'All-in-One Login Screen & Inside Backend Customizer: Presets, Top Navbar, Home App Menu, Logo, Background, Gradient Colors & Interactive Controls',
     'description': '''
-Branded Login Theme & Customizer Studio for Odoo 19
-===================================================
-Transform the default Odoo 19 login page into a fully customizable, modern corporate login experience — configured directly from Odoo UI with zero coding!
+Unified Login & Backend Theme Studio for Odoo 19
+================================================
+Transform both the Odoo 19 Login Page AND the Inside Backend (Top Navbar, Home App Menu, App Icon Cards, and Primary Buttons/Tabs) from a single, easy-to-use Theme Studio with zero coding!
 
 Key Features:
 -------------
-* **5 One-Click Ready Theme Presets**: Corporate Royal Purple, Midnight Cyber Dark, Emerald Finance, Minimalist Glass, and Sunset Warm.
-* **3 Layout Modes**: Split Screen (Left/Right), Split Screen Reversed, or Centered Card over Fullscreen Background.
-* **3 Card Styles**: Clean Light Card, Modern Dark Mode Card, or Frosted Glassmorphism Card.
+* **5 One-Click Unified Theme Presets**: Corporate Royal Purple, Midnight Cyber Dark, Emerald Finance, Minimalist Glass, and Sunset Warm — updates both Login & Inside Backend simultaneously!
+* **Inside Backend & Home App Menu Customizer**:
+  - Top Navbar Style (Brand Gradient, Solid Custom Color, or Midnight Dark).
+  - Home App Menu Background (Match Login Screen Background, Brand Gradient, Clean Light Minimalist, or Midnight Cyber Dark).
+  - App Icon Card Styles (Frosted Glassmorphism Tile, Elevated White Card, or Dark Slate Card with smooth hover lift).
+  - Unified Primary Accent Color across all internal buttons, active tabs, badges, and Kanban cards.
+* **3 Login Layout Modes**: Split Screen (Left/Right), Split Screen Reversed, or Centered Card over Fullscreen Background.
+* **3 Login Card Styles**: Clean Light Card, Modern Dark Mode Card, or Frosted Glassmorphism Card.
 * **Custom Logo & Background Image**: Upload any custom login logo and any background image directly from Settings.
-* **Color & Gradient Pickers**: Customize Primary Button Color, Background Gradient Colors, and Overlay Darkness.
-* **Announcement / Maintenance Banner**: Display important notices or maintenance alerts at the top of the login card (Info, Warning, or Success styles).
-* **Interactive Login Controls**: Show/Hide Password toggle button, Remember My Email option, and Animated Floating Background Shapes.
-* **Quick Support & Website Links**: Add direct links to IT Helpdesk / WhatsApp Support and your official website on the login card.
-* **One-Click Live Preview**: Preview your customized login page anytime directly from the studio.
+* **Announcement / Maintenance Banner**: Display important notices or maintenance alerts at the top of the login card.
+* **Interactive Login Controls**: Clean Password Eye icon, Remember My Email option, Quick Support/Website links, and Animated Floating Background Shapes.
     ''',
     'author': 'dnaj25',
     'website': 'https://github.com/dnaj25/odoo-addons',
@@ -39,6 +41,6 @@ Key Features:
     'installable': True,
     'application': True,
     'auto_install': False,
-    'price': 29.0,
+    'price': 39.0,
     'currency': 'EUR',
 }

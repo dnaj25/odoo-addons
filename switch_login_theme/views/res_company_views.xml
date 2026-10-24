@@ -7,14 +7,15 @@
         <field name="inherit_id" ref="base.view_company_form"/>
         <field name="arch" type="xml">
             <xpath expr="//notebook" position="inside">
-                <page string="Login Theme Customizer" name="login_theme_customizer">
+                <page string="Login &amp; Backend Theme Studio" name="login_theme_customizer">
                     <div class="mb-3 d-flex flex-wrap gap-2 align-items-center">
-                        <button name="action_preview_login_page" string="Preview Login Screen" type="object" class="btn-primary"/>
+                        <button name="%(switch_login_theme.action_reload_backend_theme)d" string="Apply &amp; Reload Backend" type="action" class="btn-primary"/>
+                        <button name="action_preview_login_page" string="Preview Login Screen" type="object" class="btn-outline-primary"/>
                         <button name="%(switch_login_theme.action_reset_studio_defaults)d" string="Reset to Default Theme" type="action" class="btn-secondary"
-                                confirm="Are you sure you want to reset all login theme settings to default?"/>
+                                confirm="Are you sure you want to reset all login and backend theme settings to default?"/>
                     </div>
                     <div class="p-3 mb-3 rounded border bg-light">
-                        <div class="fw-bold mb-2 text-uppercase small text-muted">One-Click Ready Theme Presets</div>
+                        <div class="fw-bold mb-2 text-uppercase small text-muted">One-Click Ready Theme Presets (Applies to Login + Inside Backend)</div>
                         <div class="d-flex flex-wrap gap-2">
                             <button name="%(switch_login_theme.action_preset_royal_purple)d" string="Corporate Royal Purple" type="action" class="btn-outline-primary btn-sm"/>
                             <button name="%(switch_login_theme.action_preset_cyber_dark)d" string="Midnight Cyber Dark" type="action" class="btn-outline-dark btn-sm"/>
@@ -24,10 +25,32 @@
                         </div>
                     </div>
                     <group>
-                        <group string="Layout &amp; Card Style">
+                        <group string="Inside System &amp; Home App Menu">
+                            <field name="x_backend_enable_theme" widget="boolean_toggle"/>
+                            <field name="x_backend_navbar_style" widget="radio"
+                                   invisible="not x_backend_enable_theme"/>
+                            <field name="x_backend_navbar_color" widget="color"
+                                   invisible="not x_backend_enable_theme or x_backend_navbar_style != 'solid'"/>
+                            <field name="x_backend_app_menu_style" widget="radio"
+                                   invisible="not x_backend_enable_theme"/>
+                            <field name="x_backend_app_icon_style" widget="radio"
+                                   invisible="not x_backend_enable_theme"/>
+                        </group>
+                        <group string="Login Screen Layout &amp; Card Style">
                             <field name="login_layout_style" widget="radio"/>
                             <field name="login_card_theme" widget="radio"/>
                             <field name="login_primary_color" widget="color"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Background &amp; Brand Colors">
+                            <field name="login_bg_type" widget="radio"/>
+                            <field name="login_bg_image" widget="image" class="oe_avatar"
+                                   invisible="login_bg_type != 'image'"/>
+                            <field name="login_bg_color_1" widget="color"/>
+                            <field name="login_bg_color_2" widget="color"
+                                   invisible="login_bg_type == 'solid'"/>
+                            <field name="login_overlay_opacity"/>
                         </group>
                         <group string="Logo &amp; Interactive Features">
                             <field name="login_show_logo" widget="boolean_toggle"/>
@@ -39,15 +62,6 @@
                         </group>
                     </group>
                     <group>
-                        <group string="Background &amp; Colors">
-                            <field name="login_bg_type" widget="radio"/>
-                            <field name="login_bg_image" widget="image" class="oe_avatar"
-                                   invisible="login_bg_type != 'image'"/>
-                            <field name="login_bg_color_1" widget="color"/>
-                            <field name="login_bg_color_2" widget="color"
-                                   invisible="login_bg_type == 'solid'"/>
-                            <field name="login_overlay_opacity"/>
-                        </group>
                         <group string="Welcome Texts &amp; Footer">
                             <field name="login_welcome_subtitle" placeholder="e.g., Welcome to"/>
                             <field name="login_hero_title" placeholder="Leave empty to use Company Name"/>
@@ -58,16 +72,12 @@
                             <field name="login_footer_text" placeholder="e.g., Powered by Odoo 19"
                                    invisible="not login_show_footer"/>
                         </group>
-                    </group>
-                    <group>
-                        <group string="Announcement / Maintenance Banner">
+                        <group string="Announcement &amp; Support Links">
                             <field name="x_login_show_announcement" widget="boolean_toggle"/>
                             <field name="x_login_announcement_style"
                                    invisible="not x_login_show_announcement"/>
                             <field name="x_login_announcement_text" placeholder="e.g., System maintenance on Friday at 10 PM"
                                    invisible="not x_login_show_announcement"/>
-                        </group>
-                        <group string="Quick Support &amp; Website Links">
                             <field name="x_login_support_label" placeholder="e.g., IT Helpdesk"/>
                             <field name="x_login_support_url" placeholder="e.g., https://wa.me/... or mailto:support@company.com"/>
                             <field name="x_login_website_label" placeholder="e.g., Official Website"/>
@@ -85,25 +95,26 @@
         <field name="model">res.company</field>
         <field name="priority">99</field>
         <field name="arch" type="xml">
-            <form string="Branded Login Theme Studio" create="0" delete="0">
+            <form string="Login &amp; Backend Theme Studio" create="0" delete="0">
                 <header>
-                    <button name="action_preview_login_page" string="Live Preview Login Page" type="object" class="oe_highlight"/>
+                    <button name="%(switch_login_theme.action_reload_backend_theme)d" string="Apply &amp; Reload Backend" type="action" class="oe_highlight"/>
+                    <button name="action_preview_login_page" string="Live Preview Login Page" type="object" class="btn-secondary"/>
                     <button name="%(switch_login_theme.action_reset_studio_defaults)d" string="Reset Defaults" type="action" class="btn-secondary"
-                            confirm="Reset all login theme customizations back to defaults?"/>
+                            confirm="Reset all login and backend theme customizations back to defaults?"/>
                 </header>
                 <sheet>
                     <div class="oe_title">
-                        <span class="o_form_label">Branded Login Theme Studio</span>
+                        <span class="o_form_label">Unified Login &amp; Backend Theme Studio</span>
                         <h1>
                             <field name="name" readonly="1"/>
                         </h1>
                     </div>
                     <div class="alert alert-info mb-3" role="status">
-                        <strong>Note:</strong> Choose a ready preset with one click or customize your own Logo, Background Image, Gradient Colors, Button Color, Announcement Banner, and Interactive Controls below. Click <strong>Live Preview Login Page</strong> to see your changes immediately.
+                        <strong>Note:</strong> Choose a ready preset with one click to update both the <strong>Login Screen</strong> and the <strong>Inside System (Top Navbar, Home App Menu, and Buttons)</strong>, or customize each option below and click <strong>Apply &amp; Reload Backend</strong>.
                     </div>
 
                     <div class="p-3 mb-4 rounded border bg-light">
-                        <div class="fw-bold mb-2 text-uppercase small text-muted">One-Click Ready Theme Presets</div>
+                        <div class="fw-bold mb-2 text-uppercase small text-muted">One-Click Ready Theme Presets (Login + Inside Backend)</div>
                         <div class="d-flex flex-wrap gap-2">
                             <button name="%(switch_login_theme.action_preset_royal_purple)d" string="Corporate Royal Purple" type="action" class="btn-outline-primary"/>
                             <button name="%(switch_login_theme.action_preset_cyber_dark)d" string="Midnight Cyber Dark" type="action" class="btn-outline-dark"/>
@@ -114,10 +125,33 @@
                     </div>
 
                     <group>
-                        <group string="Layout &amp; Card Design">
+                        <group string="Inside System &amp; Home App Menu Design">
+                            <field name="x_backend_enable_theme" widget="boolean_toggle"/>
+                            <field name="x_backend_navbar_style" widget="radio"
+                                   invisible="not x_backend_enable_theme"/>
+                            <field name="x_backend_navbar_color" widget="color"
+                                   invisible="not x_backend_enable_theme or x_backend_navbar_style != 'solid'"/>
+                            <field name="x_backend_app_menu_style" widget="radio"
+                                   invisible="not x_backend_enable_theme"/>
+                            <field name="x_backend_app_icon_style" widget="radio"
+                                   invisible="not x_backend_enable_theme"/>
+                        </group>
+                        <group string="Login Screen Layout &amp; Card Design">
                             <field name="login_layout_style" widget="radio"/>
                             <field name="login_card_theme" widget="radio"/>
                             <field name="login_primary_color" widget="color"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <group string="Background Image &amp; Brand Colors">
+                            <field name="login_bg_type" widget="radio"/>
+                            <field name="login_bg_image" widget="image" class="oe_avatar"
+                                   invisible="login_bg_type != 'image'"/>
+                            <field name="login_bg_color_1" widget="color"/>
+                            <field name="login_bg_color_2" widget="color"
+                                   invisible="login_bg_type == 'solid'"/>
+                            <field name="login_overlay_opacity"/>
                         </group>
                         <group string="Login Card Logo &amp; Interactive Controls">
                             <field name="login_show_logo" widget="boolean_toggle"/>
@@ -130,16 +164,8 @@
                             <field name="x_login_animated_bg" widget="boolean_toggle"/>
                         </group>
                     </group>
+
                     <group>
-                        <group string="Background Image &amp; Colors">
-                            <field name="login_bg_type" widget="radio"/>
-                            <field name="login_bg_image" widget="image" class="oe_avatar"
-                                   invisible="login_bg_type != 'image'"/>
-                            <field name="login_bg_color_1" widget="color"/>
-                            <field name="login_bg_color_2" widget="color"
-                                   invisible="login_bg_type == 'solid'"/>
-                            <field name="login_overlay_opacity"/>
-                        </group>
                         <group string="Custom Texts &amp; Footer">
                             <field name="login_welcome_subtitle" placeholder="e.g., Welcome to"/>
                             <field name="login_hero_title" placeholder="Leave blank to use Company Name"/>
@@ -150,16 +176,12 @@
                             <field name="login_footer_text" placeholder="e.g., Powered by Odoo 19"
                                    invisible="not login_show_footer"/>
                         </group>
-                    </group>
-                    <group>
-                        <group string="Announcement / Maintenance Banner">
+                        <group string="Announcement Banner &amp; Support Links">
                             <field name="x_login_show_announcement" widget="boolean_toggle"/>
                             <field name="x_login_announcement_style"
                                    invisible="not x_login_show_announcement"/>
                             <field name="x_login_announcement_text" placeholder="e.g., System maintenance on Friday at 10 PM"
                                    invisible="not x_login_show_announcement"/>
-                        </group>
-                        <group string="Quick Support &amp; Website Links">
                             <field name="x_login_support_label" placeholder="e.g., IT Helpdesk"/>
                             <field name="x_login_support_url" placeholder="e.g., https://wa.me/... or mailto:support@company.com"/>
                             <field name="x_login_website_label" placeholder="e.g., Official Website"/>
@@ -173,7 +195,7 @@
 
     <!-- Action to open Customizer directly for Main Company -->
     <record id="action_login_theme_customizer" model="ir.actions.act_window">
-        <field name="name">Login Theme Studio</field>
+        <field name="name">Theme Studio</field>
         <field name="res_model">res.company</field>
         <field name="res_id" ref="base.main_company"/>
         <field name="view_mode">form</field>
@@ -183,14 +205,14 @@
 
     <!-- Top-level App Menu & Settings Menu -->
     <menuitem id="menu_login_theme_studio_root"
-              name="Login Theme Studio"
+              name="Theme Studio"
               action="action_login_theme_customizer"
               web_icon="switch_login_theme,static/description/icon.png"
               groups="base.group_system"
               sequence="95"/>
 
     <menuitem id="menu_login_theme_studio_settings"
-              name="Login Theme Studio"
+              name="Theme Studio"
               parent="base.menu_administration"
               action="action_login_theme_customizer"
               groups="base.group_system"

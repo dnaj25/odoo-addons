@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <!-- ===================================================================
+         1. Login Page Layout Customization
+         =================================================================== -->
     <template id="login_layout" inherit_id="web.login_layout" name="Branded Login Theme Layout">
         <xpath expr="//div[hasclass('container')]" position="replace">
             <t t-set="company" t-value="request.env.company.sudo()"/>
@@ -84,7 +87,7 @@
                     </div>
                 </div>
 
-                <!-- Interactive Enhancements Script (Remember Email & Eye Toggle Visibility) -->
+                <!-- Interactive Enhancements Script (Remember Email & Clean Eye Toggle) -->
                 <script type="text/javascript">
                     document.addEventListener('DOMContentLoaded', function () {
                         var wrapper = document.querySelector('.switch-login-wrapper');
@@ -147,6 +150,225 @@
                     });
                 </script>
             </div>
+        </xpath>
+    </template>
+
+    <!-- ===================================================================
+         2. Inside System (Backend Navbar, Home App Menu & Primary Colors)
+         =================================================================== -->
+    <template id="webclient_bootstrap_theme_studio" inherit_id="web.webclient_bootstrap" name="Unified Backend Theme Studio">
+        <xpath expr="//t[@t-set='head_web']" position="inside">
+            <t t-set="company" t-value="request.env.company.sudo()"/>
+            <t t-if="company.x_backend_enable_theme">
+                <t t-set="bg_url" t-value="('data:image/png;base64,' + company.login_bg_image.decode('utf-8')) if company.login_bg_image else '/switch_login_theme/static/src/img/login_bg.jpg'"/>
+                <t t-set="primary_col" t-value="company.login_primary_color or '#7239ea'"/>
+                <t t-set="bg_col_1" t-value="company.login_bg_color_1 or '#2e1a47'"/>
+                <t t-set="bg_col_2" t-value="company.login_bg_color_2 or '#7239ea'"/>
+                <t t-set="nav_style" t-value="company.x_backend_navbar_style or 'gradient'"/>
+                <t t-set="nav_solid" t-value="company.x_backend_navbar_color or '#2e1a47'"/>
+                <t t-set="menu_style" t-value="company.x_backend_app_menu_style or 'same_as_login'"/>
+                <t t-set="icon_style" t-value="company.x_backend_app_icon_style or 'glass'"/>
+
+                <style id="studio-backend-theme-vars" type="text/css">
+                    :root {
+                        --studio-primary: <t t-out="primary_col"/>;
+                        --studio-bg-1: <t t-out="bg_col_1"/>;
+                        --studio-bg-2: <t t-out="bg_col_2"/>;
+                        --studio-nav-solid: <t t-out="nav_solid"/>;
+                        --studio-bg-url: url('<t t-out="bg_url"/>');
+                    }
+
+                    /* 1. Top Navbar Customization */
+                    .o_main_navbar {
+                        <t t-if="nav_style == 'gradient'">
+                        background: linear-gradient(135deg, var(--studio-bg-1) 0%, var(--studio-bg-2) 100%) !important;
+                        </t>
+                        <t t-elif="nav_style == 'dark'">
+                        background: #0f172a !important;
+                        </t>
+                        <t t-else="">
+                        background: var(--studio-nav-solid) !important;
+                        </t>
+                        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+                        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1) !important;
+                    }
+
+                    /* 2. Primary Buttons, Badges, Links &amp; Kanban Accents Inside Odoo */
+                    .btn-primary {
+                        background-color: var(--studio-primary) !important;
+                        border-color: var(--studio-primary) !important;
+                        color: #ffffff !important;
+                        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12) !important;
+                        transition: filter 0.15s, transform 0.15s !important;
+                    }
+                    .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+                        background-color: var(--studio-primary) !important;
+                        border-color: var(--studio-primary) !important;
+                        filter: brightness(1.1);
+                    }
+                    .btn-outline-primary {
+                        color: var(--studio-primary) !important;
+                        border-color: var(--studio-primary) !important;
+                    }
+                    .btn-outline-primary:hover, .btn-outline-primary:focus, .btn-outline-primary:active {
+                        background-color: var(--studio-primary) !important;
+                        border-color: var(--studio-primary) !important;
+                        color: #ffffff !important;
+                    }
+                    .badge.bg-primary, .badge.text-bg-primary, .page-item.active .page-link {
+                        background-color: var(--studio-primary) !important;
+                        border-color: var(--studio-primary) !important;
+                        color: #ffffff !important;
+                    }
+                    .nav-tabs .nav-link.active {
+                        color: var(--studio-primary) !important;
+                        border-bottom: 2px solid var(--studio-primary) !important;
+                    }
+                    .breadcrumb-item.active,
+                    .o_content a:not(.btn),
+                    .o_kanban_record_title,
+                    .o_account_kanban .o_kanban_record a:not(.btn) {
+                        color: var(--studio-primary) !important;
+                    }
+                    .o_kanban_record,
+                    .o_kanban_view .o_kanban_record,
+                    .o_account_kanban .o_kanban_record {
+                        border-left: 4px solid var(--studio-primary) !important;
+                    }
+
+                    /* 3. Home App Menu Background (.app-menu-container &amp; .o_home_menu) */
+                    <t t-if="menu_style == 'same_as_login'">
+                        <t t-if="(company.login_bg_type or 'image') == 'image'">
+                    .app-menu-container, .o_home_menu {
+                        background: linear-gradient(135deg, rgba(15, 23, 42, 0.68), rgba(30, 27, 75, 0.72)), var(--studio-bg-url) no-repeat center center !important;
+                        background-size: cover !important;
+                    }
+                        </t>
+                        <t t-elif="company.login_bg_type == 'solid'">
+                    .app-menu-container, .o_home_menu {
+                        background: var(--studio-bg-1) !important;
+                    }
+                        </t>
+                        <t t-else="">
+                    .app-menu-container, .o_home_menu {
+                        background: linear-gradient(135deg, var(--studio-bg-1) 0%, var(--studio-bg-2) 100%) !important;
+                    }
+                        </t>
+                    .app-menu-container .o-app-menu-item__name,
+                    .o_home_menu .o_caption {
+                        color: #ffffff !important;
+                        font-weight: 600 !important;
+                        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45) !important;
+                    }
+                    .app-menu-container .search-container .search-input {
+                        background: rgba(255, 255, 255, 0.16) !important;
+                        backdrop-filter: blur(16px) !important;
+                        border: 1px solid rgba(255, 255, 255, 0.28) !important;
+                        border-radius: 14px !important;
+                        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.2) !important;
+                    }
+                    .app-menu-container .search-container .search-input .form-control,
+                    .app-menu-container .search-container .search-input .search-icon {
+                        color: #ffffff !important;
+                    }
+                    .app-menu-container .search-container .search-input .form-control::placeholder {
+                        color: rgba(255, 255, 255, 0.75) !important;
+                    }
+                    </t>
+
+                    <t t-elif="menu_style == 'gradient'">
+                    .app-menu-container, .o_home_menu {
+                        background: linear-gradient(135deg, var(--studio-bg-1) 0%, var(--studio-bg-2) 100%) !important;
+                    }
+                    .app-menu-container .o-app-menu-item__name,
+                    .o_home_menu .o_caption {
+                        color: #ffffff !important;
+                        font-weight: 600 !important;
+                        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4) !important;
+                    }
+                    .app-menu-container .search-container .search-input {
+                        background: rgba(255, 255, 255, 0.16) !important;
+                        backdrop-filter: blur(16px) !important;
+                        border: 1px solid rgba(255, 255, 255, 0.28) !important;
+                        border-radius: 14px !important;
+                    }
+                    .app-menu-container .search-container .search-input .form-control,
+                    .app-menu-container .search-container .search-input .search-icon {
+                        color: #ffffff !important;
+                    }
+                    .app-menu-container .search-container .search-input .form-control::placeholder {
+                        color: rgba(255, 255, 255, 0.75) !important;
+                    }
+                    </t>
+
+                    <t t-elif="menu_style == 'cyber_dark'">
+                    .app-menu-container, .o_home_menu {
+                        background: radial-gradient(circle at top, #1e293b 0%, #090d16 100%) !important;
+                    }
+                    .app-menu-container .o-app-menu-item__name,
+                    .o_home_menu .o_caption {
+                        color: #f8fafc !important;
+                        font-weight: 600 !important;
+                    }
+                    .app-menu-container .search-container .search-input {
+                        background: rgba(30, 41, 59, 0.85) !important;
+                        border: 1px solid rgba(255, 255, 255, 0.14) !important;
+                        border-radius: 14px !important;
+                    }
+                    .app-menu-container .search-container .search-input .form-control,
+                    .app-menu-container .search-container .search-input .search-icon {
+                        color: #f8fafc !important;
+                    }
+                    </t>
+
+                    <t t-else="">
+                    .app-menu-container, .o_home_menu {
+                        background: linear-gradient(180deg, #f8fafc 0%, #eef2f6 100%) !important;
+                    }
+                    .app-menu-container .o-app-menu-item__name,
+                    .o_home_menu .o_caption {
+                        color: #1e293b !important;
+                        font-weight: 600 !important;
+                        text-shadow: none !important;
+                    }
+                    .app-menu-container .search-container .search-input {
+                        background: #ffffff !important;
+                        border: 1px solid #e2e8f0 !important;
+                        border-radius: 14px !important;
+                        box-shadow: 0 6px 20px rgba(15, 23, 42, 0.06) !important;
+                    }
+                    </t>
+
+                    /* 4. App Icon Card Styles (.o-app-menu-item__icon) */
+                    .app-menu-container .o-app-menu-item__icon {
+                        border-radius: 18px !important;
+                        transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease !important;
+                        <t t-if="icon_style == 'glass'">
+                        background: rgba(255, 255, 255, 0.18) !important;
+                        backdrop-filter: blur(14px) !important;
+                        -webkit-backdrop-filter: blur(14px) !important;
+                        border: 1px solid rgba(255, 255, 255, 0.32) !important;
+                        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18) !important;
+                        </t>
+                        <t t-elif="icon_style == 'dark_card'">
+                        background: rgba(30, 41, 59, 0.9) !important;
+                        border: 1px solid rgba(255, 255, 255, 0.14) !important;
+                        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35) !important;
+                        </t>
+                        <t t-else="">
+                        background: #ffffff !important;
+                        border: 1px solid rgba(226, 232, 240, 0.9) !important;
+                        box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08) !important;
+                        </t>
+                    }
+
+                    .app-menu-container .o-app-menu-item:hover .o-app-menu-item__icon,
+                    .app-menu-container .o-app-menu-item:focus .o-app-menu-item__icon {
+                        transform: translateY(-5px) scale(1.05) !important;
+                        box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25) !important;
+                    }
+                </style>
+            </t>
         </xpath>
     </template>
 </odoo>
