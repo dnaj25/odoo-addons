@@ -166,8 +166,9 @@
                 <t t-set="bg_col_2" t-value="company.login_bg_color_2 or '#7239ea'"/>
                 <t t-set="nav_style" t-value="company.x_backend_navbar_style or 'gradient'"/>
                 <t t-set="nav_solid" t-value="company.x_backend_navbar_color or '#2e1a47'"/>
-                <t t-set="menu_style" t-value="company.x_backend_app_menu_style or 'same_as_login'"/>
-                <t t-set="icon_style" t-value="company.x_backend_app_icon_style or 'glass'"/>
+                <t t-set="menu_style" t-value="company.x_backend_app_menu_style or 'clean_light'"/>
+                <t t-set="icon_style" t-value="company.x_backend_app_icon_style or 'elevated'"/>
+                <t t-set="app_text_col" t-value="company.x_backend_app_text_color or '#111827'"/>
 
                 <style id="studio-backend-theme-vars" type="text/css">
                     :root {
@@ -175,6 +176,7 @@
                         --studio-bg-1: <t t-out="bg_col_1"/>;
                         --studio-bg-2: <t t-out="bg_col_2"/>;
                         --studio-nav-solid: <t t-out="nav_solid"/>;
+                        --studio-app-text: <t t-out="app_text_col"/>;
                         --studio-bg-url: url('<t t-out="bg_url"/>');
                     }
 
@@ -236,119 +238,139 @@
                         border-left: 4px solid var(--studio-primary) !important;
                     }
 
-                    /* 3. Home App Menu Background (.app-menu-container &amp; .o_home_menu) */
+                    /* 3. Home App Menu Background &amp; Clear Text Contrast */
                     <t t-if="menu_style == 'same_as_login'">
                         <t t-if="(company.login_bg_type or 'image') == 'image'">
-                    .app-menu-container, .o_home_menu {
-                        background: linear-gradient(135deg, rgba(15, 23, 42, 0.68), rgba(30, 27, 75, 0.72)), var(--studio-bg-url) no-repeat center center !important;
+                    body .o_grid_apps_menu .app-menu-container, body .o_home_menu {
+                        background: linear-gradient(135deg, rgba(15, 23, 42, 0.72), rgba(30, 27, 75, 0.76)), var(--studio-bg-url) no-repeat center center !important;
                         background-size: cover !important;
                     }
                         </t>
                         <t t-elif="company.login_bg_type == 'solid'">
-                    .app-menu-container, .o_home_menu {
+                    body .o_grid_apps_menu .app-menu-container, body .o_home_menu {
                         background: var(--studio-bg-1) !important;
                     }
                         </t>
                         <t t-else="">
-                    .app-menu-container, .o_home_menu {
+                    body .o_grid_apps_menu .app-menu-container, body .o_home_menu {
                         background: linear-gradient(135deg, var(--studio-bg-1) 0%, var(--studio-bg-2) 100%) !important;
                     }
                         </t>
-                    .app-menu-container .o-app-menu-item__name,
-                    .o_home_menu .o_caption {
+                    body .o_grid_apps_menu .app-menu-container .o-app-menu-item__name,
+                    body .o_home_menu .o_caption {
                         color: #ffffff !important;
-                        font-weight: 600 !important;
-                        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45) !important;
+                        font-weight: 700 !important;
+                        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5) !important;
                     }
-                    .app-menu-container .search-container .search-input {
-                        background: rgba(255, 255, 255, 0.16) !important;
-                        backdrop-filter: blur(16px) !important;
-                        border: 1px solid rgba(255, 255, 255, 0.28) !important;
+                    body .o_grid_apps_menu .app-menu-container .search-container .search-input {
+                        background: rgba(255, 255, 255, 0.94) !important;
+                        border: 1px solid rgba(255, 255, 255, 0.5) !important;
                         border-radius: 14px !important;
-                        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.2) !important;
+                        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.22) !important;
                     }
-                    .app-menu-container .search-container .search-input .form-control,
-                    .app-menu-container .search-container .search-input .search-icon {
-                        color: #ffffff !important;
+                    body .o_grid_apps_menu .app-menu-container .search-container .search-input .form-control,
+                    body .o_grid_apps_menu .app-menu-container .search-container .search-input .search-icon {
+                        color: #111827 !important;
                     }
-                    .app-menu-container .search-container .search-input .form-control::placeholder {
-                        color: rgba(255, 255, 255, 0.75) !important;
+                    body .o_grid_apps_menu .app-menu-container .search-container .search-input .form-control::placeholder {
+                        color: #6b7280 !important;
                     }
                     </t>
 
                     <t t-elif="menu_style == 'gradient'">
-                    .app-menu-container, .o_home_menu {
+                    body .o_grid_apps_menu .app-menu-container, body .o_home_menu {
                         background: linear-gradient(135deg, var(--studio-bg-1) 0%, var(--studio-bg-2) 100%) !important;
                     }
-                    .app-menu-container .o-app-menu-item__name,
-                    .o_home_menu .o_caption {
+                    body .o_grid_apps_menu .app-menu-container .o-app-menu-item__name,
+                    body .o_home_menu .o_caption {
                         color: #ffffff !important;
-                        font-weight: 600 !important;
-                        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4) !important;
+                        font-weight: 700 !important;
+                        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45) !important;
                     }
-                    .app-menu-container .search-container .search-input {
-                        background: rgba(255, 255, 255, 0.16) !important;
-                        backdrop-filter: blur(16px) !important;
-                        border: 1px solid rgba(255, 255, 255, 0.28) !important;
+                    body .o_grid_apps_menu .app-menu-container .search-container .search-input {
+                        background: rgba(255, 255, 255, 0.94) !important;
+                        border: 1px solid rgba(255, 255, 255, 0.5) !important;
                         border-radius: 14px !important;
                     }
-                    .app-menu-container .search-container .search-input .form-control,
-                    .app-menu-container .search-container .search-input .search-icon {
-                        color: #ffffff !important;
+                    body .o_grid_apps_menu .app-menu-container .search-container .search-input .form-control,
+                    body .o_grid_apps_menu .app-menu-container .search-container .search-input .search-icon {
+                        color: #111827 !important;
                     }
-                    .app-menu-container .search-container .search-input .form-control::placeholder {
-                        color: rgba(255, 255, 255, 0.75) !important;
+                    body .o_grid_apps_menu .app-menu-container .search-container .search-input .form-control::placeholder {
+                        color: #6b7280 !important;
                     }
                     </t>
 
                     <t t-elif="menu_style == 'cyber_dark'">
-                    .app-menu-container, .o_home_menu {
+                    body .o_grid_apps_menu .app-menu-container, body .o_home_menu {
                         background: radial-gradient(circle at top, #1e293b 0%, #090d16 100%) !important;
                     }
-                    .app-menu-container .o-app-menu-item__name,
-                    .o_home_menu .o_caption {
+                    body .o_grid_apps_menu .app-menu-container .o-app-menu-item__name,
+                    body .o_home_menu .o_caption {
                         color: #f8fafc !important;
-                        font-weight: 600 !important;
+                        font-weight: 700 !important;
+                        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
                     }
-                    .app-menu-container .search-container .search-input {
-                        background: rgba(30, 41, 59, 0.85) !important;
-                        border: 1px solid rgba(255, 255, 255, 0.14) !important;
+                    body .o_grid_apps_menu .app-menu-container .search-container .search-input {
+                        background: rgba(30, 41, 59, 0.92) !important;
+                        border: 1px solid rgba(255, 255, 255, 0.16) !important;
                         border-radius: 14px !important;
                     }
-                    .app-menu-container .search-container .search-input .form-control,
-                    .app-menu-container .search-container .search-input .search-icon {
+                    body .o_grid_apps_menu .app-menu-container .search-container .search-input .form-control,
+                    body .o_grid_apps_menu .app-menu-container .search-container .search-input .search-icon {
                         color: #f8fafc !important;
                     }
                     </t>
 
                     <t t-else="">
-                    .app-menu-container, .o_home_menu {
-                        background: linear-gradient(180deg, #f8fafc 0%, #eef2f6 100%) !important;
+                    body .o_grid_apps_menu .app-menu-container, body .o_home_menu {
+                        background: rgba(255, 255, 255, 0.72) !important;
+                        backdrop-filter: blur(28px) saturate(180%) !important;
+                        -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
                     }
-                    .app-menu-container .o-app-menu-item__name,
-                    .o_home_menu .o_caption {
-                        color: #1e293b !important;
-                        font-weight: 600 !important;
+                    body .o_grid_apps_menu .app-menu-container .o-app-menu-item__name,
+                    body .o_home_menu .o_caption {
+                        color: var(--studio-app-text, #111827) !important;
+                        font-weight: 700 !important;
                         text-shadow: none !important;
                     }
-                    .app-menu-container .search-container .search-input {
+                    body .o_grid_apps_menu .app-menu-container .search-container .search-input {
                         background: #ffffff !important;
-                        border: 1px solid #e2e8f0 !important;
+                        border: 1px solid #cbd5e1 !important;
                         border-radius: 14px !important;
-                        box-shadow: 0 6px 20px rgba(15, 23, 42, 0.06) !important;
+                        box-shadow: 0 6px 20px rgba(15, 23, 42, 0.08) !important;
+                    }
+                    body .o_grid_apps_menu .app-menu-container .search-container .search-input .form-control,
+                    body .o_grid_apps_menu .app-menu-container .search-container .search-input .search-icon {
+                        color: #111827 !important;
+                    }
+                    body .o_grid_apps_menu .app-menu-container .search-container .search-input .form-control::placeholder {
+                        color: #64748b !important;
                     }
                     </t>
 
+                    /* Keep Dark Mode Toggle (Moon Icon) Working Properly */
+                    html[data-bs-theme="dark"] body .o_grid_apps_menu .app-menu-container,
+                    html[data-color-scheme="dark"] body .o_grid_apps_menu .app-menu-container,
+                    body.o_dark_theme .o_grid_apps_menu .app-menu-container {
+                        background: rgba(15, 23, 42, 0.9) !important;
+                    }
+                    html[data-bs-theme="dark"] body .o_grid_apps_menu .app-menu-container .o-app-menu-item__name,
+                    html[data-color-scheme="dark"] body .o_grid_apps_menu .app-menu-container .o-app-menu-item__name,
+                    body.o_dark_theme .o_grid_apps_menu .app-menu-container .o-app-menu-item__name {
+                        color: #f8fafc !important;
+                    }
+
                     /* 4. App Icon Card Styles (.o-app-menu-item__icon) */
-                    .app-menu-container .o-app-menu-item__icon {
+                    body .o_grid_apps_menu .app-menu-container .o-app-menu-item__icon {
                         border-radius: 18px !important;
                         transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease !important;
                         <t t-if="icon_style == 'glass'">
-                        background: rgba(255, 255, 255, 0.18) !important;
+                        background: rgba(255, 255, 255, 0.85) !important;
                         backdrop-filter: blur(14px) !important;
                         -webkit-backdrop-filter: blur(14px) !important;
-                        border: 1px solid rgba(255, 255, 255, 0.32) !important;
-                        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18) !important;
+                        border: 1px solid rgba(226, 232, 240, 0.9) !important;
+                        box-shadow: 0 10px 25px rgba(15, 23, 42, 0.1) !important;
                         </t>
                         <t t-elif="icon_style == 'dark_card'">
                         background: rgba(30, 41, 59, 0.9) !important;
@@ -357,15 +379,15 @@
                         </t>
                         <t t-else="">
                         background: #ffffff !important;
-                        border: 1px solid rgba(226, 232, 240, 0.9) !important;
+                        border: 1px solid rgba(226, 232, 240, 0.95) !important;
                         box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08) !important;
                         </t>
                     }
 
-                    .app-menu-container .o-app-menu-item:hover .o-app-menu-item__icon,
-                    .app-menu-container .o-app-menu-item:focus .o-app-menu-item__icon {
+                    body .o_grid_apps_menu .app-menu-container .o-app-menu-item:hover .o-app-menu-item__icon,
+                    body .o_grid_apps_menu .app-menu-container .o-app-menu-item:focus .o-app-menu-item__icon {
                         transform: translateY(-5px) scale(1.05) !important;
-                        box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25) !important;
+                        box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18) !important;
                     }
                 </style>
             </t>

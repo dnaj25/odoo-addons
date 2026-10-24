@@ -35,6 +35,8 @@
                                    invisible="not x_backend_enable_theme"/>
                             <field name="x_backend_app_icon_style" widget="radio"
                                    invisible="not x_backend_enable_theme"/>
+                            <field name="x_backend_app_text_color" widget="color"
+                                   invisible="not x_backend_enable_theme"/>
                         </group>
                         <group string="Login Screen Layout &amp; Card Style">
                             <field name="login_layout_style" widget="radio"/>

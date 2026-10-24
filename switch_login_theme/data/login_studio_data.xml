@@ -128,9 +128,9 @@
         <field name="state">manual</field>
         <field name="selection_ids" eval="[
             (5, 0, 0),
-            (0, 0, {'value': 'same_as_login', 'name': 'Match Login Screen Background &amp; Overlay', 'sequence': 1}),
-            (0, 0, {'value': 'gradient', 'name': 'Brand Two-Color Gradient', 'sequence': 2}),
-            (0, 0, {'value': 'clean_light', 'name': 'Clean Light Minimalist (#f8fafc)', 'sequence': 3}),
+            (0, 0, {'value': 'clean_light', 'name': 'Clean Frosted Light (Dark Text)', 'sequence': 1}),
+            (0, 0, {'value': 'same_as_login', 'name': 'Match Login Screen Background', 'sequence': 2}),
+            (0, 0, {'value': 'gradient', 'name': 'Brand Two-Color Gradient', 'sequence': 3}),
             (0, 0, {'value': 'cyber_dark', 'name': 'Midnight Cyber Dark (#0f172a)', 'sequence': 4}),
         ]"/>
     </record>
@@ -147,6 +147,14 @@
             (0, 0, {'value': 'glass', 'name': 'Frosted Glassmorphism Tile', 'sequence': 2}),
             (0, 0, {'value': 'dark_card', 'name': 'Dark Slate Card (#1e293b)', 'sequence': 3}),
         ]"/>
+    </record>
+
+    <record id="field_res_company_x_backend_app_text_color" model="ir.model.fields">
+        <field name="name">x_backend_app_text_color</field>
+        <field name="field_description">App Names Text Color</field>
+        <field name="model_id" ref="base.model_res_company"/>
+        <field name="ttype">char</field>
+        <field name="state">manual</field>
     </record>
 
     <!-- ===================================================================
@@ -170,8 +178,9 @@ if records:
         'x_backend_enable_theme': True,
         'x_backend_navbar_style': 'gradient',
         'x_backend_navbar_color': '#2e1a47',
-        'x_backend_app_menu_style': 'same_as_login',
-        'x_backend_app_icon_style': 'glass',
+        'x_backend_app_menu_style': 'clean_light',
+        'x_backend_app_icon_style': 'elevated',
+        'x_backend_app_text_color': '#111827',
     })
 action = {'type': 'ir.actions.client', 'tag': 'reload'}
         </field>
@@ -197,6 +206,7 @@ if records:
         'x_backend_navbar_color': '#090d16',
         'x_backend_app_menu_style': 'cyber_dark',
         'x_backend_app_icon_style': 'dark_card',
+        'x_backend_app_text_color': '#f8fafc',
     })
 action = {'type': 'ir.actions.client', 'tag': 'reload'}
         </field>
@@ -220,8 +230,9 @@ if records:
         'x_backend_enable_theme': True,
         'x_backend_navbar_style': 'gradient',
         'x_backend_navbar_color': '#064e3b',
-        'x_backend_app_menu_style': 'gradient',
-        'x_backend_app_icon_style': 'glass',
+        'x_backend_app_menu_style': 'clean_light',
+        'x_backend_app_icon_style': 'elevated',
+        'x_backend_app_text_color': '#111827',
     })
 action = {'type': 'ir.actions.client', 'tag': 'reload'}
         </field>
@@ -247,6 +258,7 @@ if records:
         'x_backend_navbar_color': '#312e81',
         'x_backend_app_menu_style': 'clean_light',
         'x_backend_app_icon_style': 'elevated',
+        'x_backend_app_text_color': '#111827',
     })
 action = {'type': 'ir.actions.client', 'tag': 'reload'}
         </field>
@@ -270,8 +282,9 @@ if records:
         'x_backend_enable_theme': True,
         'x_backend_navbar_style': 'gradient',
         'x_backend_navbar_color': '#7c2d12',
-        'x_backend_app_menu_style': 'gradient',
-        'x_backend_app_icon_style': 'glass',
+        'x_backend_app_menu_style': 'clean_light',
+        'x_backend_app_icon_style': 'elevated',
+        'x_backend_app_text_color': '#111827',
     })
 action = {'type': 'ir.actions.client', 'tag': 'reload'}
         </field>
@@ -322,33 +335,23 @@ if records:
         'x_backend_enable_theme': True,
         'x_backend_navbar_style': 'gradient',
         'x_backend_navbar_color': '#2e1a47',
-        'x_backend_app_menu_style': 'same_as_login',
-        'x_backend_app_icon_style': 'glass',
+        'x_backend_app_menu_style': 'clean_light',
+        'x_backend_app_icon_style': 'elevated',
+        'x_backend_app_text_color': '#111827',
     })
 action = {'type': 'ir.actions.client', 'tag': 'reload'}
         </field>
     </record>
 
     <!-- ===================================================================
-         3. Initialize Default Values on Main Company
+         3. Initialize Default Values on Main Company (Black/Dark App Names!)
          =================================================================== -->
     <function model="res.company" name="write">
         <value eval="[ref('base.main_company')]"/>
         <value eval="{
-            'x_login_announcement_style': 'info',
-            'x_login_announcement_text': 'Welcome to our corporate portal. Contact IT support if you need assistance.',
-            'x_login_password_toggle': True,
-            'x_login_remember_email': True,
-            'x_login_animated_bg': True,
-            'x_login_support_label': 'IT Support',
-            'x_login_support_url': 'mailto:support@yourcompany.com',
-            'x_login_website_label': 'Official Website',
-            'x_login_website_url': 'https://www.odoo.com',
-            'x_backend_enable_theme': True,
-            'x_backend_navbar_style': 'gradient',
-            'x_backend_navbar_color': '#2e1a47',
-            'x_backend_app_menu_style': 'same_as_login',
-            'x_backend_app_icon_style': 'glass',
+            'x_backend_app_menu_style': 'clean_light',
+            'x_backend_app_icon_style': 'elevated',
+            'x_backend_app_text_color': '#111827',
         }"/>
     </function>
 </odoo>
